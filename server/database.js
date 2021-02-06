@@ -1,4 +1,5 @@
 const db = require('./index');
+const bcrypt = require('bcrypt');
 
 const ranNum = (max) => {
   return Math.floor(Math.random() * max);
