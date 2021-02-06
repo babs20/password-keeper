@@ -71,6 +71,12 @@ module.exports = (database) => {
       .then(account => res.send(account));
   });
 
+
+
+
+
+
+
   // GENERATE-PASSWORD //
   router.get('/generate-password', (req, res) => {
     // choices for generated password as an obj i.e. lowercase, uppercase, etc.
@@ -91,10 +97,23 @@ module.exports = (database) => {
 
   // MANAGE
   router.get('/manage', (req, res) => {
+    const orgId = req.session.orgId;
+    database.getUserOfOrg(orgId)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => console.log(err));
+
 
   });
 
-  router.put('/manage', (req, res) => {
+  router.put('/manage', (req, res) =>{
+    const orgId = req.session.orgId;
+    database.getUserOfOrg(orgId)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => console.log(err));{
 
   });
 
