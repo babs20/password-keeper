@@ -38,11 +38,18 @@ module.exports = (database) => {
   exports.login = login;
 
   router.post('/login', (req, res) => {
-    db.query(``)
-      .then(data => {
-
+    const { email, password } = req.body;
+    login(email, password)
+      .then(user => {
+        if (!user) {
+          res.send({ error: "error" });
+          return;
+        }
+        req.session.userId = user.id;
+        res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id }});
       })
-  })
+      .catch(e => res.send(e));
+  });
 
 
 
