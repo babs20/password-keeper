@@ -6,10 +6,9 @@ const ranNum = (max) => {
 
 /**
  * Generate random password
- * @param {Number} length
- * @param {Object} obj
+ * @param {Object} params
  */
-const generatePass = (length, obj) => {
+const generatePass = (params) => {
   let finalPass = '';
   let charAdded = 0;
 
@@ -18,28 +17,27 @@ const generatePass = (length, obj) => {
   const num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
   const sym = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '[', '}', ']', '|', ':', ';', '<', '>', '.', '?', '/'];
 
-  while (length > charAdded) {
+  while (params.length > charAdded) {
     let charChoice = ranNum(5);
     switch (true) {
-      case obj.lc && charChoice === 0:
+      case params.lc && charChoice === 0:
         finalPass += lc[ranNum(lc.length)];
         charAdded += 1;
         break;
-      case obj.uc && charChoice === 1:
+      case params.uc && charChoice === 1:
         finalPass += uc[ranNum(uc.length)];
         charAdded += 1;
         break;
-      case obj.num && charChoice === 2:
+      case params.num && charChoice === 2:
         finalPass += num[ranNum(num.length)];
         charAdded += 1;
         break;
-      case obj.symbols && charChoice === 3:
+      case params.symbols && charChoice === 3:
         finalPass += sym[ranNum(sym.length)];
         charAdded += 1;
         break;
     }
   }
-
   return finalPass;
 };
 exports.generatePass = generatePass;
@@ -235,3 +233,20 @@ const deleteUserInfo = function(userId) {
     .catch(err => console.log(err));
 };
 exports.deleteUserInfo = deleteUserInfo;
+
+/**
+ * Set an account to deleted
+ * @param {Object} account
+ */
+
+const deleteAccount = function(account) {
+  const query = `
+    UPDATE accounts
+    SET is_deleted = TRUE
+    WHERE id = $1 AND org_id = $2;
+  `;
+  return db.query(query, [account.id, account.org_id])
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
+};
+exports.deleteAccount = deleteAccount;
