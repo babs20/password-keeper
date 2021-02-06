@@ -32,13 +32,13 @@ module.exports = (database) => {
           return org;
         }
         return null;
-      })
-  }
+      });
+  };
   exports.orgLogin = orgLogin;
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    login(email, password)
+    orgLogin(email, password)
       .then(org => {
         if (!org) {
           res.send({ error: "error" });
