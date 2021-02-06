@@ -1,5 +1,49 @@
 const db = require('./index');
 
+const ranNum = (max) => {
+  return Math.floor(Math.random() * max);
+};
+
+/**
+ * Generate random password
+ * @param {Number} length
+ * @param {Object} obj
+ */
+const generatePass = (length, obj) => {
+  let finalPass = '';
+  let charAdded = 0;
+
+  const lc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  const uc = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+  const num = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+  const sym = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '[', '}', ']', '|', ':', ';', '<', '>', '.', '?', '/'];
+
+  while (length > charAdded) {
+    let charChoice = ranNum(5);
+    switch (true) {
+      case obj.lc && charChoice === 0:
+        finalPass += lc[ranNum(lc.length)];
+        charAdded += 1;
+        break;
+      case obj.uc && charChoice === 1:
+        finalPass += uc[ranNum(uc.length)];
+        charAdded += 1;
+        break;
+      case obj.num && charChoice === 2:
+        finalPass += num[ranNum(num.length)];
+        charAdded += 1;
+        break;
+      case obj.symbols && charChoice === 3:
+        finalPass += sym[ranNum(sym.length)];
+        charAdded += 1;
+        break;
+    }
+  }
+
+  return finalPass;
+};
+exports.generatePass = generatePass;
+
 /**
  * Get a user from the database given their email
  * @param {String} email
@@ -174,3 +218,20 @@ const updateOrgInfo = function(organization) {
     .catch(err => console.log(err));
 };
 exports.updateOrgInfo = updateOrgInfo;
+
+/**
+ * Set user to deleted
+ * @param {Number} userId
+ */
+
+const deleteUserInfo = function(userId) {
+  const query = `
+    UPDATE users
+    SET is_deleted = TRUE
+    WHERE id = $1;
+  `;
+  return db.query(query, [userId])
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
+};
+exports.deleteUserInfo = deleteUserInfo;
