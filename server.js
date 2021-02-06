@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+const methodOverride = require('method-override');
 
 // cookies
 const cookieSession = require('cookie-session');
@@ -34,6 +35,7 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(methodOverride('_method'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
