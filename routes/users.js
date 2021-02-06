@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
   // router.get("/", (req, res) => {
@@ -23,8 +24,18 @@ module.exports = (database) => {
   // });
 
   const login = function(email, password) {
-    return
+    return database.getUserWithEmail(email)
+      .then(user => {
+        bcrypt.compare(password, user.password)
+          .then(res => {
+            if (res) {
+              return user;
+            }
+            return null;
+          })
+      });
   }
+  exports.login = login;
 
   router.post('/login', (req, res) => {
     db.query(``)
