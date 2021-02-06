@@ -18,14 +18,14 @@ module.exports = (database) => {
   });
 
   router.post("/accounts", (req, res) => {
-    const user = req.body;
-    database.addAccountToOrg(user)
-      .then((user) => {
-        if(!user) {
+    const account = req.body;
+    database.addAccountToOrg(account)
+      .then((account) => {
+        if(!account) {
           res.send({error: 'There was an error!'});
           return;
         }
-        res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id }}); // Need to
+        res.send(account);
       })
       .catch((err) => console.log(err));
   });
