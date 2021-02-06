@@ -6,10 +6,12 @@
 ## localhost/users
 - /login (POST) to login and render /users/:userid/accounts
 - /logout (POST)
+- /registration (POST) registration for users
 
-## localhost/registration
-- /user (POST) registration for users
-- /organization (POST) registration for orgs
+## localhost/organizations
+- /login
+- /logout
+- /registration (POST) registration for orgs
 
 ## localhost/api
 - /user (GET) show user information
