@@ -250,3 +250,38 @@ const deleteAccount = function(account) {
     .catch(err => console.log(err));
 };
 exports.deleteAccount = deleteAccount;
+
+/**
+ * Get users for a specific organization
+ * @param {String} orgId
+ */
+
+const getUserOfOrg = function(orgId) {
+  const query = `
+    SELECT *
+    FROM users_organizations
+    WHERE org_id = $1;
+  `;
+  return db.query(query, [orgId])
+    .then(res => res.rows)
+    .catch(err => console.log(err));
+};
+exports.getUserOfOrg = getUserOfOrg;
+
+/**
+ * Delete user for a specific organization
+ * @param {Object} user
+ */
+
+const deleteUserOfOrg = function(user) { //maybe actually delete relationship in middle table. will fix after lunch
+  const query = `
+    UPDATE user
+    SET is_deleted = TRUE
+    WHERE id = $1 AND org_id = $2;
+  `;
+  return db.query(query, [user.id, user.org_id])
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
+};
+exports.deleteUserOfOrg = deleteUserOfOrg;
+
