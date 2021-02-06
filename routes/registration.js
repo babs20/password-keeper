@@ -9,7 +9,25 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (database) => {
-  // user route
+  // user route - send user obj
+  router.post('/user', (req, res) => {
+    const user = req.body;
+    bcrypt.hash(user.password, 12)
+      .then(password => {
+        user.password = password;
+      })
+    database.addUser(user)
+      .then(user => {
+        if (!user) {
+          res.send({ error: "error" });
+          return;
+        }
+        req.session.userId = user.id;
+      })
+      .catch(e => res.send(e));
+  });
+
+  // organization route
   router.post('/organization', (req, res) => {
     const user = req.body;
     database.addUser(user)
@@ -17,8 +35,6 @@ module.exports = (database) => {
         res.send(JSON.stringify(user));
       });
   })
-
-  // organization route
 
   return router;
 };
