@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = (database) => {
   router.get("/", (req, res) => {
     let query = `SELECT * FROM widgets`; // update query
     console.log(query);
@@ -21,6 +21,14 @@ module.exports = (db) => {
         res
           .status(500)
           .json({ error: err.message });
+      });
+  });
+
+  router.get("/user", (req, res) => {
+    const userId = req.body.id;
+    database.getUserInfo(userId)
+      .then((user) => {
+        res.send(JSON.stringify(user));
       });
   });
   return router;
