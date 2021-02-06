@@ -8,7 +8,7 @@
     "start": "node server.js",
     "local": "./node_modules/.bin/nodemon -L --ignore public/",
     "db:reset": "node bin/resetdb.js",
-    "build": "postcss styles/tailwind.css -o public/styles/tailwind.css "
+    "build": "postcss styles/tailwind.css -o public/styles/tailwind.css"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
