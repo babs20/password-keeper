@@ -48,13 +48,28 @@ module.exports = (database) => {
   });
 
   router.put('/accounts', (req, res) => {
-    const userId = req.session.userId;
-    database.updateAccountInfo()
+    const orgId = req.session.orgId;
+    // need to make sure that form has a hidden field/button that passes account id to this function
+    database.updateAccountInfo({...req.body, org_id: orgId})
+      .then(account => {
+        res.send(account);
+      });
   });
 
   // GENERATE-PASSWORD //
   router.get('/generate-password', (req, res) => {
+    const length = 9 || req.body.length;
+    const charAdded = 0;
+    const charRemaining = length - charAdded;
 
+    while (charRemaining > 0) {
+
+    }
+
+    // lowercase - generate ran number of lc letters
+    // uppercase - generate ran number of uc letters
+    // numbers - generate ran number of uc letters
+    // symbols - generate ran symbols of uc letters
   });
 
   // ORGANIZATION //
