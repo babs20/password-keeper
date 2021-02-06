@@ -20,6 +20,14 @@ module.exports = (database) => {
       });
   });
 
+  router.delete('/user', (req, res) => {
+    const userId = req.session.userId;
+    database.deleteUserInfo(userId)
+      .then(user => {
+        res.send(user);
+      })
+  });
+
   // ACCOUNTS //
   router.post("/accounts", (req, res) => {
     const orgId = req.session.orgId;
@@ -58,18 +66,11 @@ module.exports = (database) => {
 
   // GENERATE-PASSWORD //
   router.get('/generate-password', (req, res) => {
-    const length = 9 || req.body.length;
-    const charAdded = 0;
-    const charRemaining = length - charAdded;
-
-    while (charRemaining > 0) {
-
-    }
-
-    // lowercase - generate ran number of lc letters
-    // uppercase - generate ran number of uc letters
-    // numbers - generate ran number of uc letters
-    // symbols - generate ran symbols of uc letters
+    // choices for generated password as an obj i.e. lowercase, uppercase, etc.
+    // EXAMPLE: {lc: boolean, uc: boolean, num: boolean, sym: boolean}
+    const options = req.body.options;
+    const generatedPassword = database.generatePass();
+    res.send({password: })
   });
 
   // ORGANIZATION //
@@ -90,5 +91,4 @@ module.exports = (database) => {
 
   });
 
-  return router;
-};
+  return ro
