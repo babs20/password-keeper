@@ -7,5 +7,5 @@ CREATE TABLE users (
   last_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
-  is_deleted BOOLEAN
+  is_deleted BOOLEAN DEFAULT FALSE
 );

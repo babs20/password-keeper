@@ -8,5 +8,5 @@ CREATE TABLE accounts (
   account_type_id INTEGER REFERENCES account_types(id) ON DELETE CASCADE,
   org_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
   creation_date TIMESTAMP,
-  is_deleted BOOLEAN
+  is_deleted BOOLEAN DEFAULT FALSE
 );
