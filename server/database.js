@@ -279,7 +279,7 @@ exports.getUserOfOrg = getUserOfOrg;
 
 const deleteUserOfOrg = function(user) {
   const query = `
-    UPDATE is_deleted
+    UPDATE users_organizations
     SET is_deleted = TRUE
     WHERE user_id = $1 AND org_id = $2;
   `;
