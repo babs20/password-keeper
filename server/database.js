@@ -1,4 +1,5 @@
 const db = require('./index');
+const bcrypt = require('bcrypt');
 
 const ranNum = (max) => {
   return Math.floor(Math.random() * max);
@@ -32,7 +33,7 @@ const generatePass = (params) => {
         finalPass += num[ranNum(num.length)];
         charAdded += 1;
         break;
-      case params.symbols && charChoice === 3:
+      case params.sym && charChoice === 3:
         finalPass += sym[ranNum(sym.length)];
         charAdded += 1;
         break;
@@ -126,13 +127,14 @@ exports.updateUserInfo = updateUserInfo;
    * @param {Object} params contains all account info including org_id
 **/
 const addAccountToOrg = (params) => {
+  const hashedPassword = bcrypt.hashSync(params.password, 12);
   const query = `
   INSERT INTO accounts (name, password, website, account_type_id, org_id, creation_date)
   VALUES ($1, $2, $3, $4, $5, NOW()::timestamp)
   RETURNING *;`
   return db.query(query, [
     params.name,
-    params.password,
+    hashedPassword,
     params.website,
     params.account_type_id,
     params.org_id

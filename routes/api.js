@@ -78,10 +78,10 @@ module.exports = (database) => {
 
 
   // GENERATE-PASSWORD //
-  router.post('/generate-password', (req, res) => {
+  router.get('/generate-password', (req, res) => {
     // choices for generated password as an obj i.e. lowercase, uppercase, etc.
     // EXAMPLE: {length: num, lc: boolean, uc: boolean, num: boolean, sym: boolean}
-    const options = req.body;
+    const options = req.body.options;
     const password = database.generatePass(options);
     res.send({password});
   });
