@@ -36,5 +36,24 @@ module.exports = (database) => {
   }
   exports.orgLogin = orgLogin;
 
+  router.post('/login', (req, res) => {
+    const { email, password } = req.body;
+    login(email, password)
+      .then(org => {
+        if (!org) {
+          res.send({ error: "error" });
+          return;
+        }
+        req.session.orgId = org.id;
+        res.send({ org: { name: org.name, abbreviation: org.abbreviation, email: org.email, password: org.password }});
+      })
+      .catch(e => res.send(e));
+  });
+
+  router.post('/logout', (req, res) => {
+    req.session.orgId = null;
+    res.send({});
+  });
+
   return router;
 };
