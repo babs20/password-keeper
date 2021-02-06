@@ -3,7 +3,7 @@ const db = require('./index');
 const getUserWithEmail = function(email) {
   return db.query(`
     SELECT * FROM users
-    WHERE email = $1
+    WHERE email = $1;
   `, [email])
     .then(res => res.rows[0]);
 };
@@ -15,18 +15,18 @@ const addUser = (user) => {
   VALUES ($1, $2, $3, $3, $4)
   RETURNING *;`
   return db.query(query, [user.name, user.abbr])
-    .then((res) => res)
+    .then((res) => res.rows)
     .catch();
 };
 exports.addUser = addUser;
 
-const getUserInfo = (user) => {
+const getUserInfo = (userId) => {
   const query = `
-  INSERT INTO organizations (name, abbreviation, email, password, identifier_key)
-  VALUES ($1, $2, $3, $3, $4)
-  RETURNING *;`
-  return db.query(query, [user.name, user.abbr])
-    .then((res) => res)
-    .catch();
+  SELECT *
+  FROM users
+  WHERE id =$1;`
+  return db.query(query, [userId])
+    .then((res) => res.rows)
+    .catch((err) => console.log(err));
 };
-exports.addUser = addUser;
+exports.getUserInfo = getUserInfo;
