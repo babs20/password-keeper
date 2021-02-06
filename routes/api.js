@@ -16,5 +16,18 @@ module.exports = (database) => {
         res.send(JSON.stringify(user));
       });
   });
+
+  router.post("/accounts", (req, res) => {
+    const user = req.body;
+    database.addAccountToOrg(user)
+      .then((user) => {
+        if(!user) {
+          res.send({error: 'There was an error!'});
+          return;
+        }
+        res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id }}); // Need to
+      })
+      .catch((err) => console.log(err));
+  });
   return router;
 };

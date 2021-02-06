@@ -10,6 +10,13 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 
+// cookies
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
+
 // database helpers
 const database = require('./server/database')
 
