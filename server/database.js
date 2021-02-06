@@ -57,19 +57,26 @@ const addOrganization = function(organization) {
 exports.addOrganization = addOrganization;
 
 /**
-   * Add user to database with given information
-   * @param {String} userId
+   * Update user in database with given information
+   * @param {Object} user updated user info
 **/
-const getUserInfo = (userId) => {
+const updateUserInfo = (user) => {
+  const hashedPassword = bcrypt.hash(user.password, 12)
+    .then(password => {
+      return password;
+    });
   const query = `
-  SELECT *
-  FROM users
-  WHERE id =$1;`
-  return db.query(query, [userId])
+  UPDATE users
+  SET first_name = $1,
+      last_name = $2,
+      email = $3,
+      password = $4
+  WHERE id = $5;`
+  return db.query(query, [user.first_name, user.last_name, user.email, hashedPassword])
     .then((res) => res.rows[0])
     .catch((err) => console.log(err));
 };
-exports.getUserInfo = getUserInfo;
+exports.updateUserInfo = updateUserInfo;
 
 /**
    * Add account to specific organization on the database with given information
@@ -82,7 +89,7 @@ const addAccountToOrg = (params) => {
   RETURNING *;`
   return db.query(query, [
     params.name,
-    params.password
+    params.password,
     params.website,
     params.account_type_id,
     params.org_id
@@ -94,12 +101,25 @@ exports.addAccountToOrg = addAccountToOrg;
 
 /**
    * Get all accounts for the org based on filters
-   * @param {Object} options contains all account info including org_id
+   * @param {Object} options account_type_id and timestamp
 **/
 const getAllAccounts = (options) => {
+  const queryParams = [options.org_id];
+
   const query = `
   SELECT *
-  FROM accounts`
+  FROM accounts
+  WHERE org_id = $1`
+
+  if (options.account_type_id) {
+    queryParams.push(options.account_type_id);
+    query += ` AND account_type_id = ${queryParams.length}`;
+  }
+
+  if (options.account_type_id) {
+    queryParams.push(options.account_type_id);
+    query += ` AND account_type_id = ${queryParams.length}`;
+  }
 
   return db.query(query, [])
     .then((res) => res.rows[0])
