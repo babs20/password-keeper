@@ -18,8 +18,8 @@ module.exports = (database) => {
   });
 
   router.post("/accounts", (req, res) => {
-    const orgId = req.session.userId;
-    database.addAccountToOrg(...req.body, orgId)
+    const orgId = req.session.orgId;
+    database.addAccountToOrg({...req.body, org_id: orgId})
       .then((account) => {
         if(!account) {
           res.send({error: 'There was an error!'});
