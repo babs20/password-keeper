@@ -10,19 +10,6 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
-  // router.get("/", (req, res) => {
-  //   db.query(`SELECT * FROM users;`)
-  //     .then(data => {
-  //       const users = data.rows;
-  //       res.json({ users });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
-
   const login = function(email, password) {
     return database.getUserWithEmail(email)
       .then(user => {
@@ -51,23 +38,10 @@ module.exports = (database) => {
       .catch(e => res.send(e));
   });
 
-
-
+  router.post('/logout', (req, res) => {
+    req.session.userId = null;
+    res.send({});
+  });
 
   return router;
 };
-
-
-router.post('/login', (req, res) => {
-  const {email, password} = req.body;
-  login(email, password)
-  .then(user => {
-    if (!user) {
-      res.send({error: "error"});
-      return;
-    }
-    req.session.userId = user.id;
-    res.send({user: {name: user.name, email: user.email, id: user.id}});
-  })
-  .catch(e => res.send(e));
-});
