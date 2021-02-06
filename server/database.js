@@ -273,11 +273,11 @@ exports.getUserOfOrg = getUserOfOrg;
  * @param {Object} user
  */
 
-const deleteUserOfOrg = function(user) { //maybe actually delete relationship in middle table. will fix after lunch
+const deleteUserOfOrg = function(user) {
   const query = `
-    UPDATE user
+    UPDATE is_deleted
     SET is_deleted = TRUE
-    WHERE id = $1 AND org_id = $2;
+    WHERE user_id = $1 AND org_id = $2;
   `;
   return db.query(query, [user.id, user.org_id])
     .then(res => res.rows[0])
@@ -285,3 +285,15 @@ const deleteUserOfOrg = function(user) { //maybe actually delete relationship in
 };
 exports.deleteUserOfOrg = deleteUserOfOrg;
 
+/**
+ * Get an org from the database given their email
+ * @param {String} email
+ */
+const getOrgWithEmail = function(email) {
+  return db.query(`
+    SELECT * FROM organizations
+    WHERE email = $1;
+  `, [email])
+    .then(res => res.rows[0]);
+};
+exports.getOrgWithEmail = getOrgWithEmail;
