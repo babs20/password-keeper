@@ -51,7 +51,8 @@ const getUserWithEmail = function(email) {
     SELECT users.*, users_organizations.org_id AS org_id
     FROM users
     JOIN users_organizations ON users.id = user_id
-    WHERE email = $1;
+    WHERE email = $1
+    LIMIT 1;
   `, [email])
     .then(res => res.rows[0]);
 };
