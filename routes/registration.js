@@ -15,7 +15,7 @@ module.exports = (database) => {
     bcrypt.hash(user.password, 12)
       .then(password => {
         user.password = password;
-      })
+      });
     database.addUser(user)
       .then(user => {
         if (!user) {
@@ -29,12 +29,21 @@ module.exports = (database) => {
 
   // organization route
   router.post('/organization', (req, res) => {
-    const user = req.body;
-    database.addUser(user)
-      .then((user) => {
-        res.send(JSON.stringify(user));
+    const organization = req.body;
+    bcrypt.hash(organization.password, 12)
+      .then(password => {
+        organization.password = password;
       });
-  })
+    database.addOrganization(organization)
+      .then(organization => {
+        if (!organization) {
+          res.send({ error: "error" });
+          return;
+        }
+        req.session.orgId = organization.id;
+      })
+      .catch(e => res.send(e));
+  });
 
   return router;
 };
