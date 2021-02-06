@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
 module.exports = (database) => {
 
   // USER //
-  router.post("/user", (req, res) => {
+  router.put("/user", (req, res) => {
     const userId = req.session.userId;
     database.updateUserInfo({...req.body, id: userId})
       .then((user) => {
@@ -73,12 +73,12 @@ module.exports = (database) => {
   });
 
   // ORGANIZATION //
-  router.get('/organization', (req, res) => {
-
-  });
-
   router.put('/organization', (req, res) => {
-
+    const orgId = req.session.orgId;
+    database.updateOrgInfo({...req.body, id: orgId})
+      .then(organization => {
+        res.send(organization);
+      })
   });
 
   // MANAGE
