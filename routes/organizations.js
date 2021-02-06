@@ -10,9 +10,6 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
-
-
-  // organization route
   router.post('/registration', (req, res) => {
     const organization = req.body;
     organization.password = bcrypt.hashSync(organization.password, 12);
@@ -27,6 +24,17 @@ module.exports = (database) => {
       })
       .catch(e => res.send(e));
   });
+
+  const orgLogin = function(email, password) {
+    return database.getOrgWithEmail(email)
+      .then(org => {
+        if (bcrypt.compareSync(password, org.password)) {
+          return org;
+        }
+        return null;
+      })
+  }
+  exports.orgLogin = orgLogin;
 
   return router;
 };
