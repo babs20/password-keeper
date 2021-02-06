@@ -85,7 +85,7 @@ exports.updateUserInfo = updateUserInfo;
 const addAccountToOrg = (params) => {
   const query = `
   INSERT INTO accounts (name, password, website, account_type_id, org_id, creation_date)
-  VALUES ($1, $2, $3, $3, $4, $5, NOW()::timestamp)
+  VALUES ($1, $2, $3, $4, $5, NOW()::timestamp)
   RETURNING *;`
   return db.query(query, [
     params.name,
@@ -116,9 +116,9 @@ const getAllAccounts = (options) => {
     query += ` AND account_type_id = ${queryParams.length}`;
   }
 
-  if (options.account_type_id) {
-    queryParams.push(options.account_type_id);
-    query += ` AND account_type_id = ${queryParams.length}`;
+  if (options.creation_date) {
+    queryParams.push(options.creation_date);
+    query += ` AND creation_date = ${queryParams.length}`;
   }
 
   return db.query(query, [])
