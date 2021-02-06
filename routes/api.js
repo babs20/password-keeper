@@ -14,7 +14,7 @@ module.exports = (database) => {
   // USER //
   router.post("/user", (req, res) => {
     const userId = req.session.userId;
-    database.updateUserInfo(userId)
+    database.updateUserInfo({...req.body, id: userId})
       .then((user) => {
         res.send(user);
       });
@@ -48,7 +48,8 @@ module.exports = (database) => {
   });
 
   router.put('/accounts', (req, res) => {
-
+    const userId = req.session.userId;
+    database.updateAccountInfo()
   });
 
   // GENERATE-PASSWORD //
@@ -65,6 +66,7 @@ module.exports = (database) => {
 
   });
 
+  // MANAGE
   router.get('/manage', (req, res) => {
 
   });

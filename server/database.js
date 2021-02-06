@@ -69,7 +69,7 @@ const updateUserInfo = (user) => {
       email = $3,
       password = $4
   WHERE id = $5;`
-  return db.query(query, [user.first_name, user.last_name, user.email, hashedPassword])
+  return db.query(query, [user.first_name, user.last_name, user.email, hashedPassword, user.id])
     .then((res) => res.rows[0])
     .catch((err) => console.log(err));
 };
