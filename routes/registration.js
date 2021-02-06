@@ -12,7 +12,7 @@ const bcrypt = require('bcrypt');
 module.exports = (database) => {
   // user route - send user obj
   // need to add orgId cookie
-  router.post('/user', (req, res) => {
+  router.post('/users', (req, res) => {
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
@@ -22,12 +22,13 @@ module.exports = (database) => {
           return;
         }
         req.session.userId = user.id;
+        res.send('Worked');
       })
       .catch(e => res.send(e));
   });
 
   // organization route
-  router.post('/organization', (req, res) => {
+  router.post('/organizations', (req, res) => {
     const organization = req.body;
     organization.password = bcrypt.hashSync(organization.password, 12);
     database.addOrganization(organization)
@@ -37,6 +38,7 @@ module.exports = (database) => {
           return;
         }
         req.session.orgId = organization.id;
+        res.send('Worked');
       })
       .catch(e => res.send(e));
   });
