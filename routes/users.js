@@ -24,6 +24,7 @@ module.exports = (database) => {
   }
   exports.login = login;
 
+  // need to add a orgId cookie when logging in
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
     login(email, password)

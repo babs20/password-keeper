@@ -10,6 +10,7 @@ const router  = express.Router();
 
 module.exports = (database) => {
   // user route - send user obj
+  // need to add orgId cookie
   router.post('/user', (req, res) => {
     const user = req.body;
     bcrypt.hash(user.password, 12)
