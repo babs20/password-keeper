@@ -38,7 +38,7 @@ module.exports = (database) => {
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    login(email, password)
+    orglogin(email, password)
       .then(org => {
         if (!org) {
           res.send({ error: "error" });
