@@ -10,9 +10,8 @@ const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
 
-// PG database client/connection setup
-const db = require('./server/index');
-db.connect();
+// database helpers
+const database = require('./server/database')
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -37,9 +36,9 @@ const apiRoutes = require("./routes/api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-app.use("/users", usersRoutes(db));
-app.use("/registration", registrationRoutes(db));
-app.use("/api", apiRoutes(db));
+app.use("/users", usersRoutes(database));
+app.use("/registration", registrationRoutes(database));
+app.use("/api", apiRoutes(database));
 // Note: mount other resources here, using the same pattern above
 
 
