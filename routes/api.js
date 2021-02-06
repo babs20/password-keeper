@@ -64,13 +64,20 @@ module.exports = (database) => {
       });
   });
 
+  router.delete('/accounts', (req, res) => {
+    const orgId = req.session.orgId;
+    // need to make sure that delete button sends a value for the account id to be deleted
+    database.deleteAccount({...req.body, org_id: orgId})
+      .then(account => res.send(account));
+  });
+
   // GENERATE-PASSWORD //
   router.get('/generate-password', (req, res) => {
     // choices for generated password as an obj i.e. lowercase, uppercase, etc.
-    // EXAMPLE: {lc: boolean, uc: boolean, num: boolean, sym: boolean}
+    // EXAMPLE: {length: num, lc: boolean, uc: boolean, num: boolean, sym: boolean}
     const options = req.body.options;
-    const generatedPassword = database.generatePass();
-    res.send({password: })
+    const password = database.generatePass(options);
+    res.send({password});
   });
 
   // ORGANIZATION //
@@ -91,4 +98,5 @@ module.exports = (database) => {
 
   });
 
-  return ro
+  return router;
+};
