@@ -33,7 +33,7 @@ const generatePass = (params) => {
         finalPass += num[ranNum(num.length)];
         charAdded += 1;
         break;
-      case params.symbols && charChoice === 3:
+      case params.sym && charChoice === 3:
         finalPass += sym[ranNum(sym.length)];
         charAdded += 1;
         break;
