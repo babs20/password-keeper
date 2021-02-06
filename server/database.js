@@ -48,7 +48,9 @@ exports.generatePass = generatePass;
  */
 const getUserWithEmail = function(email) {
   return db.query(`
-    SELECT * FROM users
+    SELECT users.*, users_organizations.org_id AS org_id
+    FROM users
+    JOIN users_organizations ON users.id = user_id
     WHERE email = $1;
   `, [email])
     .then(res => res.rows[0]);
