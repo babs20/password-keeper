@@ -136,18 +136,41 @@ exports.getAllAccounts = getAllAccounts;
  * @param {Object} account
  */
 
-const updateAccountInfo = (account) => {
+const updateAccountInfo = function(account) {
   const hashedPassword = bcrypt.hashSync(account.password, 12);
   const query = `
-  UPDATE accounts
-  SET name = $1,
-      password = $2,
-      website = $3,
-      account_type_id = $4
-  WHERE id = $5 AND org_id = $6;`
+    UPDATE accounts
+    SET name = $1,
+        password = $2,
+        website = $3,
+        account_type_id = $4
+    WHERE id = $5 AND org_id = $6;
+  `;
   const queryParams = [account.name, hashedPassword, account.website, account.account_type_id, account.id, account.org_id];
   return db.query(query, queryParams)
-    .then((res) => res.rows[0])
-    .catch((err) => console.log(err));
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
 };
 exports.updateAccountInfo = updateAccountInfo;
+
+/**
+ * Update organization in database with given information
+ * @param {Object} organization
+ */
+
+const updateOrgInfo = function(organization) {
+  const hashedPassword = bcrypt.hashSync(organization.password, 12);
+  const query = `
+    UPDATE organizations
+    SET name = $1,
+        abbreviation = $2,
+        email = $3,
+        password = $4
+    WHERE id = $5;
+  `;
+  const queryParams = [organization.name, organization.abbreviation, organization.email, hashedPassword, organization.id];
+  return db.query(query, queryParams)
+    .then(res => res.rows[0])
+    .catch(err => console.log(err));
+};
+exports.updateOrgInfo = updateOrgInfo;
