@@ -42,7 +42,7 @@ module.exports = (database) => {
   });
 
   router.get("/accounts", (req, res) => {
-    const orgId = req.session.orgId // NEED TO GET orgId for the current user
+    const orgId = req.session.orgId
     database.getAllAccounts({...req.body, org_id: orgId})
       .then((account) => {
         if(!account) {
@@ -70,17 +70,11 @@ module.exports = (database) => {
       .then(account => res.send(account));
   });
 
-
-
-
-
-
-
   // GENERATE-PASSWORD //
-  router.get('/generate-password', (req, res) => {
+  router.post('/generate-password', (req, res) => {
     // choices for generated password as an obj i.e. lowercase, uppercase, etc.
     // EXAMPLE: {length: num, lc: boolean, uc: boolean, num: boolean, sym: boolean}
-    const options = req.body.options;
+    const options = req.body;
     const password = database.generatePass(options);
     res.send({password});
   });
