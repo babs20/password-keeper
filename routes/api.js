@@ -9,17 +9,33 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (database) => {
-  router.get("/user", (req, res) => {
-    const userId = req.body.id;
-    database.getUserInfo(userId)
+  router.post("/user", (req, res) => {
+    const userId = req.session.userId;
+    database.updateUserInfo(userId)
       .then((user) => {
-        res.send(JSON.stringify(user));
+        res.send(user);
       });
   });
 
   router.post("/accounts", (req, res) => {
-    const account = req.body;
-    database.addAccountToOrg(account)
+    const orgId = req.session.userId;
+    database.addAccountToOrg(...req.body, orgId)
+      .then((account) => {
+        if(!account) {
+          res.send({error: 'There was an error!'});
+          return;
+        }
+        res.send(account);
+      })
+      .catch((err) => console.log(err));
+  });
+
+  router.get("/accounts", (req, res) => {
+    const orgId = req.session.userId; // NEED TO GET orgId for the current user
+    // account_type_id
+    // date created
+
+    database.getAllAccounts(...req.body, orgId)
       .then((account) => {
         if(!account) {
           res.send({error: 'There was an error!'});
