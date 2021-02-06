@@ -40,7 +40,7 @@ app.use(methodOverride('_method'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
-const organizationRoutes = require("./routes/registration");
+const organizationRoutes = require("./routes/organizations");
 const apiRoutes = require("./routes/api");
 
 // Mount all resource routes
