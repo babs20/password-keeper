@@ -7,8 +7,11 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
+
+  // USER //
   router.post("/user", (req, res) => {
     const userId = req.session.userId;
     database.updateUserInfo(userId)
@@ -17,6 +20,7 @@ module.exports = (database) => {
       });
   });
 
+  // ACCOUNTS //
   router.post("/accounts", (req, res) => {
     const orgId = req.session.orgId;
     database.addAccountToOrg({...req.body, org_id: orgId})
@@ -31,11 +35,8 @@ module.exports = (database) => {
   });
 
   router.get("/accounts", (req, res) => {
-    const orgId = req.session.userId; // NEED TO GET orgId for the current user
-    // account_type_id
-    // date created
-
-    database.getAllAccounts(...req.body, orgId)
+    const orgId = req.session.orgId // NEED TO GET orgId for the current user
+    database.getAllAccounts({...req.body, org_id: orgId})
       .then((account) => {
         if(!account) {
           res.send({error: 'There was an error!'});
@@ -45,5 +46,32 @@ module.exports = (database) => {
       })
       .catch((err) => console.log(err));
   });
+
+  router.put('/accounts', (req, res) => {
+
+  });
+
+  // GENERATE-PASSWORD //
+  router.get('/generate-password', (req, res) => {
+
+  });
+
+  // ORGANIZATION //
+  router.get('/organization', (req, res) => {
+
+  });
+
+  router.put('/organization', (req, res) => {
+
+  });
+
+  router.get('/manage', (req, res) => {
+
+  });
+
+  router.put('/manage', (req, res) => {
+
+  });
+
   return router;
 };

@@ -7,16 +7,14 @@
 
 const express = require('express');
 const router  = express.Router();
+const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
   // user route - send user obj
   // need to add orgId cookie
   router.post('/user', (req, res) => {
     const user = req.body;
-    bcrypt.hash(user.password, 12)
-      .then(password => {
-        user.password = password;
-      });
+    user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
         if (!user) {
@@ -31,10 +29,7 @@ module.exports = (database) => {
   // organization route
   router.post('/organization', (req, res) => {
     const organization = req.body;
-    bcrypt.hash(organization.password, 12)
-      .then(password => {
-        organization.password = password;
-      });
+    organization.password = bcrypt.hashSync(organization.password, 12);
     database.addOrganization(organization)
       .then(organization => {
         if (!organization) {

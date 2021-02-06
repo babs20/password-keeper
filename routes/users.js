@@ -13,14 +13,11 @@ module.exports = (database) => {
   const login = function(email, password) {
     return database.getUserWithEmail(email)
       .then(user => {
-        bcrypt.compare(password, user.password)
-          .then(res => {
-            if (res) {
-              return user;
-            }
-            return null;
-          })
-      });
+        if (bcrypt.compareSync(password, user.password)) {
+          return user;
+        }
+        return null;
+      })
   }
   exports.login = login;
 
@@ -29,6 +26,7 @@ module.exports = (database) => {
     const { email, password } = req.body;
     login(email, password)
       .then(user => {
+        console.log(user);
         if (!user) {
           res.send({ error: "error" });
           return;

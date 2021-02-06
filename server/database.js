@@ -61,10 +61,7 @@ exports.addOrganization = addOrganization;
    * @param {Object} user updated user info
 **/
 const updateUserInfo = (user) => {
-  const hashedPassword = bcrypt.hash(user.password, 12)
-    .then(password => {
-      return password;
-    });
+  const hashedPassword = bcrypt.hashSync(user.password, 12);
   const query = `
   UPDATE users
   SET first_name = $1,
@@ -106,7 +103,7 @@ exports.addAccountToOrg = addAccountToOrg;
 const getAllAccounts = (options) => {
   const queryParams = [options.org_id];
 
-  const query = `
+  let query = `
   SELECT *
   FROM accounts
   WHERE org_id = $1`
@@ -116,13 +113,20 @@ const getAllAccounts = (options) => {
     query += ` AND account_type_id = ${queryParams.length}`;
   }
 
-  if (options.creation_date) {
-    queryParams.push(options.creation_date);
-    query += ` AND creation_date = ${queryParams.length}`;
+  if (options.website) {
+    queryParams.push(options.search);
+    query += ` AND website LIKE '%${queryParams.length}%'`;
   }
 
-  return db.query(query, [])
-    .then((res) => res.rows[0])
+  if (options.creation_date) {
+    queryParams.push(options.creation_date);
+    query += ` ORDER BY creation_date = ${queryParams.length}`;
+  }
+
+  query += ';';
+
+  return db.query(query, queryParams)
+    .then((res) => res.rows) // array of all the account objs
     .catch((err) => console.log(err));
 };
 exports.getAllAccounts = getAllAccounts;
