@@ -107,14 +107,13 @@ module.exports = (database) => {
 
   });
 
-  router.put('/manage', (req, res) =>{
+  router.delete('/manage', (req, res) => {
     const orgId = req.session.orgId;
-    database.getUserOfOrg(orgId)
+    database.deleteUserOfOrg({...req.body, id: orgId})
       .then(users => {
         res.send(users);
       })
-      .catch(err => console.log(err));{
-
+      .catch(err => console.log(err));
   });
 
   return router;
