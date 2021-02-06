@@ -38,7 +38,6 @@ module.exports = (database) => {
   }
   exports.login = login;
 
-  // need to add a orgId cookie when logging in
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
     login(email, password)
@@ -48,6 +47,7 @@ module.exports = (database) => {
           return;
         }
         req.session.userId = user.id;
+        req.session.orgId = user.org_id;
         res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id }});
       })
       .catch(e => res.send(e));
@@ -55,6 +55,7 @@ module.exports = (database) => {
 
   router.post('/logout', (req, res) => {
     req.session.userId = null;
+    req.session.orgId = null;
     res.send({});
   });
 
