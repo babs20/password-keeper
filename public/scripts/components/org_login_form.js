@@ -28,4 +28,25 @@ $(() => {
 
   window.$orgLoginForm = $orgLoginForm;
 
+  $('main').on('submit', '#org-login-form', function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    orgLogin(data)
+      .then(getOrgInfo)
+      .then(json => {
+        header.update(json.org);
+        views_manager.show('allAccounts');
+      });
+
+  });
+
+  $('main').on('click', '#user-login-link', (event) => {
+    views_manager.show('login');
+  });
+
+  $('main').on('click', '#org-sign-up-link', (event) => {
+    views_manager.show('orgSignup');
+  });
+
 });
