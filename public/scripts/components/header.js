@@ -15,8 +15,8 @@ $(() => {
             <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
-            <button class="font-sans text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
-            <button class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Register</button>
+            <button class="login-button font-sans text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
+            <button class="register-button font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Register</button>
           </div>
         </nav>
       `;
@@ -43,7 +43,7 @@ $(() => {
       updateHeader(json.user);
     });
 
-  $('header.login-button').on('click', (event) => {
+  $('header').on('click', '.login-button', (event) => {
     views_manager.show('login');
   });
 
@@ -54,7 +54,7 @@ $(() => {
       });
   });
 
-  $('header.signup-button').on('click', (event) => {
+  $('header').on('click', '.register-button', (event) => {
     views_manager.show('signup');
   });
 });
