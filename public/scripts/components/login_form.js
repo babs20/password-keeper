@@ -28,4 +28,23 @@ $(() => {
 
   window.$loginForm = $loginForm;
 
+  $('main').on('submit', '#user-login-form', function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    userLogin(data)
+      .then(getUserInfo)
+      .then(json => {
+        header.update(json.user);
+        views_manager.show('allAccounts');
+      });
+
+  });
+  $('main').on('click', '#org-login-link', (event) => {
+    views_manager.show('orgLogin');
+  });
+  $('main').on('click', '#sign-up-link', (event) => {
+    views_manager.show('signup');
+  });
+
 });
