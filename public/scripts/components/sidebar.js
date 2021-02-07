@@ -39,7 +39,7 @@ $(() => {
         </nav>
       `;
     } else if (orgId) {
-      orgLinks +=
+      orgLinks += 1; // to fix error. not done
     }
   }
 
