@@ -21,6 +21,8 @@ $(() => {
     <p>Don't have an organization account? <a id="org-sign-up-link" href="/organizations/registration">Sign Up</a>
   `);
 
+  window.$orgLoginForm = $orgLoginForm;
+
   $('#org-login-form').on('submit', function(event) {
     event.preventDefault();
 
@@ -28,7 +30,7 @@ $(() => {
     orgLogin(data)
       .then(getOrgInfo)
       .then(json => {
-        updateHeader(json.org);
+        header.update(json.org);
         // views_manager.show
       });
 
