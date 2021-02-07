@@ -36,6 +36,8 @@ $(() => {
       </div>
   `);
 
+  window.$signupForm = $signupForm;
+
   $signupForm.on('submit', function(event) {
     event.preventDefault();
 
@@ -43,7 +45,7 @@ $(() => {
     userRegistration(data)
       .then(getUserInfo)
       .then(json => {
-        updateHeader(json.user);
+        header.update(json.user);
         // views_manager.show
       })
   })
