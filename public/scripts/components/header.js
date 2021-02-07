@@ -1,6 +1,7 @@
 $(() => {
   window.header = {};
 
+  const $main = $('#main-content');
   const $pageHeader = $('#page-header');
   let currentUser = null;
   const updateHeader = function(user) {
@@ -11,7 +12,7 @@ $(() => {
       userLinks = `
         <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between border-b-2 border-gray-400">
           <div class="flex items-center justify-start">
-            <span class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4  border-black pr-6">Keeper</span>
+            <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
             <span class="font-sans text-xl lg:text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
@@ -24,7 +25,7 @@ $(() => {
       userLinks = `
       <nav id="page-header_user-links" class="page-header_user-links w-screen h-32 bg-white flex items-center justify-between">
           <div class="flex items-center justify-start">
-            <span class="font-sans text-5xl font-bold ml-10">Keeper</span>
+            <span id="logo" class="font-sans text-5xl font-bold ml-10 cursor-pointer">Keeper</span>
             <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
@@ -37,9 +38,10 @@ $(() => {
     $pageHeader.append(userLinks);
   };
 
+  // send get request to /api/user
+  // check for userId cookie - returns with user from db
   getUserInfo()
     .then(json => {
-      console.log(json);
       updateHeader(json.user);
     });
 
@@ -47,10 +49,15 @@ $(() => {
     views_manager.show('login');
   });
 
+  $('header').on('click', '#logo', (event) => {
+    views_manager.show('homepage');
+  });
+
   $('header.logout-button').on('click', (event) => {
+    const $main = $('#main-content');
     userLogout()
       .then(() => {
-
+        views_manager.show('homepage');
       });
   });
 
