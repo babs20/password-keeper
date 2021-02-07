@@ -1,6 +1,6 @@
 $(() => {
 
-  const $addAccountForm = `
+  const $addAccountForm = $(`
     <form id="generate-password-form">/<form>
     <form id="add-account-form">
       <h4 class="add-account>Add account login information</h4>
@@ -38,7 +38,7 @@ $(() => {
       <div class="add-account_field-wrapper">
         <button id="add-account-button">Add Account</button>
     </form>
-  `;
+  `);
 
   window.$addAccountForm = $addAccountForm;
 
@@ -65,7 +65,7 @@ $(() => {
 
   const $passwordField = $('.password-with-generator');
 
-  $('.generate-password').on('click', function(event) {
+  $('main').on('click', '.generate-password', function(event) {
     $generatePassword.appendTo($passwordField);
 
     $('#password-option0').on('input', function(event) {
@@ -78,7 +78,7 @@ $(() => {
         .catch(e => console.log(e));
     });
 
-    $('.password-option').on('click', function(event) {
+    $('main').on('click', '.password-option', function(event) {
       const data = $('#generate-password-form').serialize();
       generatePassword(data)
         .then(password => {
@@ -90,7 +90,7 @@ $(() => {
 
   });
 
-  $('#add-account-button').on('submit', function(event) {
+  $('main').on('submit', '#add-account-button', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
