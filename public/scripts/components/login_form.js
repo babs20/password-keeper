@@ -6,12 +6,12 @@ $(() => {
     <p class="font-sans text-2xl font-bold w-2/3 mb-1">User Login</p>
     <div class="login-form_field-wrapper flex flex-col m-3 w-2/3">
       <label for="email" class="font-bold">Email</label>
-      <input type="email" name="email" placeholder="email" class="mt-2 border-2 rounded border-gray-400 p-1">
+      <input type="email" name="email" placeholder="Email" class="input">
     </div>
 
     <div class="login-form_field_wrapper flex flex-col w-2/3 ml-3 mr-3 mb-3">
       <label for="password" class="font-bold">Password</label>
-      <input type="password" name="password" placeholder="password" class="mt-2 border-2 rounded border-gray-400 p-1">
+      <input type="password" name="password" placeholder="Password" class="input">
     </div>
 
     <div class="login-form_field_wrapper w-2/3">
