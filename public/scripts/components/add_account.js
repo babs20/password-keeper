@@ -3,6 +3,6 @@ $(() => {
   const $addAccountForm = `
   `;
 
-  window.$addAccountForm = $$addAccountForm;
+  window.$addAccountForm = $addAccountForm;
 
 });
