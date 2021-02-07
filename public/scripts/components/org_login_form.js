@@ -19,9 +19,9 @@ $(() => {
     </div>
   </form>
   <div class="flex flex-col items-center justify-center w-72 mt-2">
-    <p class="text-l font-normal">User? <button id="user-login-link" class="cursor-pointer text-button hover:underline">Login</button></p>
+    <p class="text-l font-normal">User? <button type="button" id="user-login-link" class="cursor-pointer text-button hover:underline">Login</button></p>
 
-    <p class="text-l font-normal">Don't have an account? <button id="org-sign-up-link"  class="cursor-pointer text-button hover:underline">Register</button></p>
+    <p class="text-l font-normal">Don't have an account? <button type="button" id="org-sign-up-link"  class="cursor-pointer text-button hover:underline">Register</button></p>
   </div>
 </div>
   `);
