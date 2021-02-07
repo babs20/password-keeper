@@ -35,6 +35,7 @@ $(() => {
     <div class="signup-form_field_wrapper form-field">
       <button class="button">Register</button>
     </div>
+    </form>
 </div>
   `);
 
@@ -48,7 +49,7 @@ $(() => {
       .then(getUserInfo)
       .then(json => {
         header.update(json.user);
-        // views_manager.show
-      })
-  })
+        views_manager.show('allAccounts');
+      });
+  });
 });
