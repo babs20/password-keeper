@@ -42,7 +42,7 @@ $(() => {
 
   window.$addAccountForm = $addAccountForm;
 
-  const $generatePassword = `
+  const $generatePassword = $(`
     <div class="password-generator_field-wrapper">
       <label for="length">Password Length</label>
       <input type="number" name="length" class="password-generator" placeholder="length" id="password-option0" form="generate-password-form">
@@ -61,7 +61,7 @@ $(() => {
       <input type="checkbox" id="password-option4" name="sym" value="symbols" class="password-option" form="generate-password-form">
       <label for="password-option4"> Symbols</label><br>
     </div>
-  `;
+  `);
 
   const $passwordField = $('.password-with-generator');
 
