@@ -22,7 +22,7 @@ const userLogout = function() {
 const userRegistration = function(data) {
   return $.ajax({
     method: 'POST',
-    url: '/users/registration',
+    url: '/users/register',
     data
   });
 };
@@ -45,7 +45,7 @@ const orgLogout = function() {
 const orgRegistration = function(data) {
   return $.ajax({
     method: 'POST',
-    url: '/organizations/registration',
+    url: '/organizations/register',
     data
   });
 };
