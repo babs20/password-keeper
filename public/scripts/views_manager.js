@@ -21,15 +21,40 @@ $(() => {
         break;
       case 'login':
         $loginForm.appendTo($main);
-        $('div').on('click', '#org-login-link', (event) => {
+        $('#user-login-form').on('submit', function(event) {
+          event.preventDefault();
+
+          const data = $(this).serialize();
+          userLogin(data)
+            .then(getUserInfo)
+            .then(json => {
+              header.update(json.user);
+              views_manager.show('allAccounts');
+            });
+
+        });
+        $('#org-login-link').on('click', (event) => {
           views_manager.show('orgLogin');
         });
-        $('div').on('click', '#sign-up-link', (event) => {
+        $('#sign-up-link').on('click', (event) => {
           views_manager.show('signup');
         });
         break;
       case 'orgLogin':
         $orgLoginForm.appendTo($main);
+
+        $('#org-login-form').on('submit', function(event) {
+          event.preventDefault();
+
+          const data = $(this).serialize();
+          orgLogin(data)
+            .then(getOrgInfo)
+            .then(json => {
+              header.update(json.org);
+              views_manager.show('allAccounts');
+            });
+
+        });
         $('#user-login-link').on('click', (event) => {
           views_manager.show('login');
         });
@@ -41,13 +66,14 @@ $(() => {
         $orgSignupForm.appendTo($main);
         break;
       case 'allAccounts':
+        $homepage.appendTo($main);
         break;
       case 'editUser':
-          $editUserForm.appendTo($main);
-          break;
+        $editUserForm.appendTo($main);
+        break;
       case 'addAccount':
-          $addAccountForm.appendTo($main);
-          break;
+        $addAccountForm.appendTo($main);
+        break;
     }
   };
 
