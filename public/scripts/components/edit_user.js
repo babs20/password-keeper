@@ -1,10 +1,10 @@
 $(() => {
 
   const $editUserForm = $(`
-  <form id="generate-password-form">/<form>
+  <form id="generate-password-form"><form>
   <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
   <form id="edit-user-form" class="edit-user-form w-7/12 h-100 flex flex-col items-center justify-center">
-    <h4 class="edit-user font-sans text-2xl font-bold w-2/3 my-5">Edit Account Information</h4>
+    <h4 class="edit-user font-sans text-2xl font-bold w-2/3 my-5">Edit User Information</h4>
 
     <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
       <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
@@ -26,12 +26,14 @@ $(() => {
     <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
       <div class="edit-user-form_field-wrapper flex flex-col w-full">
         <label for="password" class="label">Password</label>
-        <div class="flex justify-between w-full">
+        <div id="generator"class="flex justify-between w-full">
           <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3" id="user-password-field" form="edit-user-form">
-          <button class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+          <button type="button" class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
         </div>
       </div>
     </div>
+
+    <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400"></div>
 
     <div class="edit-user-form_field-wrapper form-field">
       <label for="confirm-password" class="label">Confirm Password</label>
@@ -43,8 +45,8 @@ $(() => {
     </div>
 
     <div class="edit-user-form_field-wrapper flex justify-between w-2/3">
-      <button class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
-      <button class="delete-user rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
+      <button type="button" class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
+      <button type="button" class="delete-user rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
     </div>
   </form>
  </div>
@@ -52,34 +54,44 @@ $(() => {
 
   window.$editUserForm = $editUserForm;
 
-  const $generatePassword = `
-
-      <div class="password-generator_field-wrapper">
-        <label for="length">Password Length</label>
-        <input type="number" name="length" class="password-generator" placeholder="length" id="password-option0" form="generate-password-form">
+  const $generatePassword = $(`
+      <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
+        <div class="flex justify-between items-center w-1/2 pr-3">
+          <label for="length " class="label">Length</label>
+          <input type="number" min="6" max="30" name="length"
+            class="font-sans password-generator mr-4 w-1/3 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md hover:text-black focus:text-black"
+            placeholder="length">
+        </div>
+        <div class="flex justify-between items-center w-1/2 pl-4">
+          <label for="password-option1" class="label ml-4"> Lower Case</label><br>
+          <input type="checkbox" id="password-option1" name="lc" value="lower-case"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+        </div>
       </div>
-
-      <div class="password-generator_field-wrapper">
-        <input type="checkbox" id="password-option1" name="lc" value="lower-case" class="password-option" form="generate-password-form">
-        <label for="password-option1"> Lower Case</label><br>
-
-        <input type="checkbox" id="password-option2" name="uc" value="upper-case" class="password-option" form="generate-password-form">
-        <label for="password-option2"> Upper Case</label><br>
-
-        <input type="checkbox" id="password-option3" name="num" value="numbers" class="password-option" form="generate-password-form">
-        <label for="password-option3"> Numbers</label><br>
-
-        <input type="checkbox" id="password-option4" name="sym" value="symbols" class="password-option" form="generate-password-form">
-        <label for="password-option4"> Symbols</label><br>
+      <div class="flex justify-between items-center pt-2 divide-x divide-gray-400">
+        <div class="flex justify-between items-center">
+          <label for="password-option2" class="label"> Upper Case</label><br>
+          <input type="checkbox" id="password-option2" name="uc" value="upper-case"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+        </div>
+        <div class="flex justify-between items-center pl-4">
+          <label for="password-option3" class="label"> Numbers</label><br>
+          <input type="checkbox" id="password-option3" name="num" value="numbers"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3 ">
+        </div>
+        <div class="flex justify-between items-center pl-4">
+          <label for="password-option4" class="label"> Symbols</label><br>
+          <input type="checkbox" id="password-option4" name="sym" value="symbols"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+        </div>
       </div>
-  `;
+  `);
 
-  const $passwordField = $('.password-with-generator');
-
-  $('.generate-password').on('click', function(event) {
+  $('main').on('click', '.generate-password', function(event) {
+    const $passwordField = $('#generate-container');
     $generatePassword.appendTo($passwordField);
 
-    $('#password-option0').on('input', function(event) {
+    $('main').on('input', '#password-option0', function(event) {
       const data = $('#generate-password-form').serialize();
       generatePassword(data)
         .then(password => {
@@ -89,7 +101,7 @@ $(() => {
         .catch(e => console.log(e));
     });
 
-    $('.password-option').on('click', function(event) {
+    $('main').on('click', '.password-option', function(event) {
       const data = $('#generate-password-form').serialize();
       generatePassword(data)
         .then(password => {
@@ -101,7 +113,7 @@ $(() => {
 
   });
 
-  $('.save-user-info').on('submit', function(event) {
+  $('main').on('submit', '#edit-user-form', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
@@ -112,11 +124,11 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('.cancel').on('click', function(event) {
+  $('main').on('click','.cancel', function(event) {
     views_manager.show('allAccounts');
   });
 
-  $('.delete-user').on('click', function(event) {
+  $('main').on('click', '.delete-user', function(event) {
     deleteUser()
       .then(userLogout)
       .then(getUserInfo)
