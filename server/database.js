@@ -303,3 +303,17 @@ const getOrgWithEmail = function(email) {
     .then(res => res.rows[0]);
 };
 exports.getOrgWithEmail = getOrgWithEmail;
+
+/**
+ * Get a user with given user id
+ * @param {Number} userId
+ */
+
+const getUserWithId = function(userId) {
+  return db.query(`
+    SELECT * FROM users
+    WHERE id = $1
+  `, [userId])
+    .then(res => res.rows[0]);
+};
+exports.getUserWithId = getUserWithId;
