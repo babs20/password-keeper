@@ -16,8 +16,8 @@ $(() => {
             <span class="font-sans text-xl lg:text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
-            <button class="login-button font-sans text-xl lg:text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
-            <button class="register-button font-sans text-xl lg:text-2xl mr-10 hover:underline hover:animate-pulse ">Register</button>
+            <button type="button" class="login-button font-sans text-xl lg:text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
+            <button type="button" class="register-button font-sans text-xl lg:text-2xl mr-10 hover:underline hover:animate-pulse ">Register</button>
           </div>
         </nav>
       `;
@@ -29,7 +29,7 @@ $(() => {
             <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
-            <button class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Logout</button>
+            <button type="button" class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Logout</button>
           </div>
       </nav>
       `;
@@ -53,7 +53,7 @@ $(() => {
     views_manager.show('homepage');
   });
 
-  $('header.logout-button').on('click', (event) => {
+  $('header').on('click', '.logout-button', (event) => {
     const $main = $('#main-content');
     userLogout()
       .then(() => {
