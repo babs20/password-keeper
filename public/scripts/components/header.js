@@ -11,12 +11,12 @@ $(() => {
       userLinks = `
         <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between border-b-2 border-gray-400">
           <div class="flex items-center justify-start">
-            <span class="font-sans text-5xl font-bold ml-10 border-r-4  border-black pr-6">Keeper</span>
-            <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
+            <span class="font-sans text-3xl font-bold ml-10 border-r-4  border-black pr-6">Keeper</span>
+            <span class="font-sans text-xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
-            <button class="login-button font-sans text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
-            <button class="register-button font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Register</button>
+            <button class="login-button font-sans text-xl mr-6  hover:underline hover:animate-pulse">Login</button>
+            <button class="register-button font-sans text-xl mr-10 hover:underline hover:animate-pulse ">Register</button>
           </div>
         </nav>
       `;
