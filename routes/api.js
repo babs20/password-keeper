@@ -7,11 +7,29 @@
 
 const express = require('express');
 const router  = express.Router();
-const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
 
   // USER //
+  router.get('/user', (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+      res.send({ message: "not logged in" });
+      return;
+    }
+
+    database.getUserWithId(userId)
+      .then(user => {
+        if (!user) {
+          res.send({ error: "no user with that id" });
+          return;
+        }
+
+        res.send({user: {firstName: user.first_name, lastName: user.last_name, email: user.email, id: userId}});
+      })
+      .catch(e => res.send(e));
+  });
+
   router.put("/user", (req, res) => {
     const userId = req.session.userId;
     database.updateUserInfo({...req.body, id: userId})
@@ -25,7 +43,7 @@ module.exports = (database) => {
     database.deleteUserInfo(userId)
       .then(user => {
         res.send(user);
-      })
+      });
   });
 
   // ACCOUNTS //
@@ -33,7 +51,7 @@ module.exports = (database) => {
     const orgId = req.session.orgId;
     database.addAccountToOrg({...req.body, org_id: orgId})
       .then((account) => {
-        if(!account) {
+        if (!account) {
           res.send({error: 'There was an error!'});
           return;
         }
@@ -46,7 +64,7 @@ module.exports = (database) => {
     const orgId = req.session.orgId // NEED TO GET orgId for the current user
     database.getAllAccounts({...req.body, org_id: orgId})
       .then((account) => {
-        if(!account) {
+        if (!account) {
           res.send({error: 'There was an error!'});
           return;
         }
@@ -71,12 +89,6 @@ module.exports = (database) => {
       .then(account => res.send(account));
   });
 
-
-
-
-
-
-
   // GENERATE-PASSWORD //
   router.get('/generate-password', (req, res) => {
     // choices for generated password as an obj i.e. lowercase, uppercase, etc.
@@ -87,12 +99,31 @@ module.exports = (database) => {
   });
 
   // ORGANIZATION //
+  router.get('/organization', (req, res) => {
+    const orgId = req.session.orgId;
+    if (!orgId) {
+      res.send({ message: "not logged in" });
+      return;
+    }
+
+    database.getOrgWithId(orgId)
+      .then(org => {
+        if (!org) {
+          res.send({ error: "no org with that id" });
+          return;
+        }
+
+        res.send({org: { name: org.name, abbreviation: org.abbreviation, email: org.email, org_id: org.org_id }});
+      })
+      .catch(e => res.send(e));
+  });
+
   router.put('/organization', (req, res) => {
     const orgId = req.session.orgId;
     database.updateOrgInfo({...req.body, id: orgId})
       .then(organization => {
         res.send(organization);
-      })
+      });
   });
 
   // MANAGE
