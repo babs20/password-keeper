@@ -10,7 +10,7 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
-  router.post('/registration', (req, res) => {
+  router.post('/register', (req, res) => {
     const organization = req.body;
     organization.password = bcrypt.hashSync(organization.password, 12);
     database.addOrganization(organization)
