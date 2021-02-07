@@ -8,6 +8,7 @@ $(() => {
     $loginForm.detach();
     $signupForm.detach();
     $orgLoginForm.detach();
+    $orgSignupForm.detach();
 
     switch (item) {
       case 'signup':
@@ -24,6 +25,9 @@ $(() => {
         break;
       case 'orgLogin':
         $orgLoginForm.appendTo($main);
+        break;
+      case 'orgSignup':
+        $orgSignupForm.appendTo($main);
         break;
     }
   };
