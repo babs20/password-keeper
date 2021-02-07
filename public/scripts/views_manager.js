@@ -12,6 +12,9 @@ $(() => {
     $editUserForm.detach();
 
     switch (item) {
+      case 'homepage':
+        $homepage.appendTo($main);
+        break;
       case 'signup':
         $signupForm.appendTo($main);
         break;
@@ -38,9 +41,10 @@ $(() => {
         break;
       case 'allAccounts':
         break;
-      case 'homepage':
-        $homepage.appendTo($main);
-        break;
+      case 'editUser':
+          $editUserForm.appendTo($main);
+          break;
+
     }
   };
 
