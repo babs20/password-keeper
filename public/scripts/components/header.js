@@ -29,7 +29,7 @@ $(() => {
             <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
-            <button type="button" class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse ">Logout</button>
+            <button type="button" class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse" id="logout-button">Logout</button>
           </div>
       </nav>
       `;
@@ -37,6 +37,8 @@ $(() => {
 
     $pageHeader.append(userLinks);
   };
+
+  header.update = updateHeader;
 
   // send get request to /api/user
   // check for userId cookie - returns with user from db
@@ -53,11 +55,11 @@ $(() => {
     views_manager.show('homepage');
   });
 
-  $('header').on('click', '.logout-button', (event) => {
+  $('header').on('click', '#logout-button', (event) => {
     userLogout()
       .then(getUserInfo)
       .then(json => {
-        header.update(json.user);
+        updateHeader(json.user);
         views_manager.show('homepage');
       });
   });
