@@ -26,9 +26,20 @@ $(() => {
         break;
       case 'orgLogin':
         $orgLoginForm.appendTo($main);
+        $('#user-login-link').on('click', (event) => {
+          views_manager.show('login');
+        });
+        $('#org-sign-up-link').on('click', (event) => {
+          views_manager.show('orgSignup');
+        });
         break;
       case 'orgSignup':
         $orgSignupForm.appendTo($main);
+        break;
+      case 'allAccounts':
+        break;
+      case 'homepage':
+        $homepage.appendTo($main);
         break;
     }
   };
