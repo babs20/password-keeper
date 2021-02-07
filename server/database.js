@@ -317,3 +317,17 @@ const getUserWithId = function(userId) {
     .then(res => res.rows[0]);
 };
 exports.getUserWithId = getUserWithId;
+
+/**
+ * Get an organization with given org id
+ * @param {Number} orgId
+ */
+
+const getOrgWithId = function(orgId) {
+  return db.query(`
+    SELECT * FROM organizations
+    WHERE id = $1
+  `, [orgId])
+    .then(res => res.rows[0]);
+};
+exports.getOrgWithId = getOrgWithId;
