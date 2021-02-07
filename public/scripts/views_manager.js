@@ -10,6 +10,7 @@ $(() => {
     $orgLoginForm.detach();
     $orgSignupForm.detach();
     $editUserForm.detach();
+    $addAccountForm.detach();
 
     switch (item) {
       case 'homepage':
@@ -44,7 +45,9 @@ $(() => {
       case 'editUser':
           $editUserForm.appendTo($main);
           break;
-
+      case 'addAccount':
+          $addAccountForm.appendTo($main);
+          break;
     }
   };
 
