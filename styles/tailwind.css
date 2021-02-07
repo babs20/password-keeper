@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-field {
+  @apply flex flex-col w-2/3 ml-3 mr-3 mb-3;
+}
+
+.label {
+  @apply font-bold;
+}
+
+.input {
+  @apply mt-2 border-2 rounded border-gray-400 p-1;
+}
+
+.button {
+  @apply mt-2 rounded p-1 bg-button w-full text-white hover:bg-hoverBlue;
+}
+
+.form-container {
+  @apply h-72 w-80 flex flex-col items-center justify-center
+}
+
