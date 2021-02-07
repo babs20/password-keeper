@@ -50,10 +50,10 @@ module.exports = (database) => {
       .catch(e => res.send(e));
   });
 
-  router.post('/logout', (req, res) => {
-    req.session.orgId = null;
-    res.send({});
-  });
+  // router.post('/logout', (req, res) => {
+  //   req.session.orgId = null;
+  //   res.send({});
+  // });
 
   return router;
 };

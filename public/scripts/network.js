@@ -35,12 +35,12 @@ const orgLogin = function(data) {
   });
 };
 
-const orgLogout = function() {
-  return $.ajax({
-    method: 'POST',
-    url: '/organizations/logout'
-  });
-};
+// const orgLogout = function() {
+//   return $.ajax({
+//     method: 'POST',
+//     url: '/organizations/logout'
+//   });
+// };
 
 const orgRegistration = function(data) {
   return $.ajax({
