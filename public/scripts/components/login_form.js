@@ -5,17 +5,17 @@ $(() => {
   <form id="user-login-form" class="user-login-form h-72 w-80 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 mb-1">User Login</p>
     <div class="login-form_field-wrapper flex flex-col m-3 w-2/3">
-      <label for="email" class="text-l font-bold">Email</label>
+      <label for="email" class="font-bold">Email</label>
       <input type="email" name="email" placeholder="email" class="mt-2 border-2 rounded border-gray-400 p-1">
     </div>
 
     <div class="login-form_field_wrapper flex flex-col w-2/3 ml-3 mr-3 mb-3">
-      <label for="password" class="text-l font-bold">Password</label>
+      <label for="password" class="font-bold">Password</label>
       <input type="password" name="password" placeholder="password" class="mt-2 border-2 rounded border-gray-400 p-1">
     </div>
 
     <div class="login-form_field_wrapper w-2/3">
-      <button class="mt-2  rounded p-1 bg-button w-full text-white hover:bg-hoverBlue">Login</button>
+      <button class="mt-2 rounded p-1 bg-button w-full text-white hover:bg-hoverBlue">Login</button>
     </div>
   </form>
   <div class="flex flex-col items-center justify-center w-72 mt-2">
