@@ -104,11 +104,11 @@ const deleteAccount = function() {
   });
 };
 
-const getGeneratePassword = function() {
-  return $.ajax({
-    url: '/api/generate-password'
-  });
-};
+// const getGeneratePassword = function() {
+//   return $.ajax({
+//     url: '/api/generate-password'
+//   });
+// };
 
 const generatePassword = function(data) {
   return $.ajax({
