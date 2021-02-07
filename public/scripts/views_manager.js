@@ -9,6 +9,7 @@ $(() => {
     $signupForm.detach();
     $orgLoginForm.detach();
     $orgSignupForm.detach();
+    $editUserForm.detach();
 
     switch (item) {
       case 'signup':
