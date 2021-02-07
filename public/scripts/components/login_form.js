@@ -28,17 +28,4 @@ $(() => {
 
   window.$loginForm = $loginForm;
 
-  $('#user-login-form').on('submit', function(event) {
-    event.preventDefault();
-
-    const data = $(this).serialize();
-    userLogin(data)
-      .then(getUserInfo)
-      .then(json => {
-        header.update(json.user);
-        views_manager.show('allAccounts');
-      });
-
-  });
-
 });
