@@ -1,5 +1,5 @@
 $(() => {
-
+  const $main = $('#main-content');
   const $homepage = $(`
     <div class="logo">
       <insert key image here>
@@ -8,6 +8,7 @@ $(() => {
 
     <h3 class="keeper-description">Keeper is a password storage system for organizations. Generate and easily share passwords for use on any website for all users in your organization.</h3>
   `);
+  window.$homepage = $homepage;
 
   $main.append($homepage);
 
