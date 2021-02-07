@@ -56,25 +56,21 @@ $(() => {
     <form id="generate-password-form">
       <div class="password-generator_field-wrapper">
         <label for="length">Password Length</label>
-        <input type="number" name="length" class="password-generator" placeholder="length">
+        <input type="number" name="length" class="password-generator" placeholder="length" id="password-option0">
       </div>
 
       <div class="password-generator_field-wrapper">
-        <input type="checkbox" id="password-option1" name="lc" value="lower-case">
+        <input type="checkbox" id="password-option1" name="lc" value="lower-case" class="password-option">
         <label for="password-option1"> Lower Case</label><br>
 
-        <input type="checkbox" id="password-option2" name="uc" value="upper-case">
+        <input type="checkbox" id="password-option2" name="uc" value="upper-case" class="password-option">
         <label for="password-option2"> Upper Case</label><br>
 
-        <input type="checkbox" id="password-option3" name="num" value="numbers">
+        <input type="checkbox" id="password-option3" name="num" value="numbers" class="password-option">
         <label for="password-option3"> Numbers</label><br>
 
-        <input type="checkbox" id="password-option4" name="sym" value="symbols">
+        <input type="checkbox" id="password-option4" name="sym" value="symbols" class="password-option">
         <label for="password-option4"> Symbols</label><br>
-      </div>
-
-      <div class="password-generator_field-wrapper">
-        <button class="generate-password-button">Generate Password</button>
       </div>
     </form>
   `;
@@ -84,10 +80,8 @@ $(() => {
   $('.generate-password').on('click', function(event) {
     $generatePassword.appendTo($passwordField);
 
-    $('.generate-password-button').on('submit', function(event) {
-      event.preventDefault();
-
-      const data = $(this).serialize();
+    $('#password-option0').on('input', function(event) {
+      const data = $('#generate-password-form').serialize();
       generatePassword(data)
         .then(password => {
           $('#user-password-field').val(password);
@@ -95,6 +89,17 @@ $(() => {
         })
         .catch(e => console.log(e));
     });
+
+    $('.password-option').on('click', function(event) {
+      const data = $('#generate-password-form').serialize();
+      generatePassword(data)
+        .then(password => {
+          $('#user-password-field').val(password);
+          $('#confirm-user-password').val(password);
+        })
+        .catch(e => console.log(e));
+    });
+
   });
 
   $('.save-user-info').on('submit', function(event) {
