@@ -1,8 +1,8 @@
-const getHomepage = function() {
-  return $.ajax({
-    url: '/',
-  });
-};
+// const getHomepage = function() {
+//   return $.ajax({
+//     url: '/',
+//   });
+// };
 
 const userLogin = function(data) {
   return $.ajax({
