@@ -36,7 +36,7 @@ $(() => {
       .then(getUserInfo)
       .then(json => {
         header.update(json.user);
-        // views_manager.show
+        views_manager.show('allAccounts');
       });
 
   });
