@@ -54,9 +54,10 @@ $(() => {
   });
 
   $('header').on('click', '.logout-button', (event) => {
-    const $main = $('#main-content');
     userLogout()
-      .then(() => {
+      .then(getUserInfo)
+      .then(json => {
+        header.update(json.user);
         views_manager.show('homepage');
       });
   });
