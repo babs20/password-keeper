@@ -113,7 +113,8 @@ const deleteAccount = function() {
 const generatePassword = function(data) {
   return $.ajax({
     method: 'POST',
-    url: '/api/generate-password'
+    url: '/api/generate-password',
+    data
   });
 };
 
