@@ -60,4 +60,8 @@ $(() => {
       $passwordField.attr('type', 'password');
     }
   });
+
+  $('main').on('click', '.edit-account', function(event) {
+    views_manager.show('editAccount');
+  });
 });
