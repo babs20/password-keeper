@@ -1,7 +1,7 @@
 $(() => {
 
   const $orgLoginForm = $(`
-  <div class="login-form w-auto h-auto flex flex-col items-center justify-start mt-3">
+  <div class="login-form w-auto h-auto flex flex-col items-center justify-start mx-auto mt-10">
   <form id="org-login-form" class="org-login-form h-72 w-80 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 mb-1">Organization Login</p>
     <div class="login-form_field-wrapper flex flex-col m-3 w-2/3">
