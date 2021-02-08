@@ -80,7 +80,7 @@ $(() => {
   // org selector listener
 
   // edit user listener
-  $('#edit-user').on('click', () => {
+  $('main').on('click', '#edit-user', () => {
     views_manager.show('editUser');
   });
 
@@ -89,11 +89,14 @@ $(() => {
   // manage org listener
 
   // add account listener
-  $('#add-account').on('click', () => {
+  $('main').on('click', '#add-account', () => {
     views_manager.show('addAccount');
   });
 
   // generate password listener
+  $('main').on('click', '#generate-pass', () => {
+    views_manager.show('generatePassword');
+  });
 
   // categories listener
 
