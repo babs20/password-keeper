@@ -54,15 +54,27 @@ $(() => {
 
     const data = $(this).serialize();
     userRegistration(data)
-      .then(getUserInfo)
+      .then((data) => {
+        if (data.emptyErr) {
+          $('.blank-field-error-message').slideDown(200);
+          $('.org-error-message').slideUp(10);
+        } else if (data.noOrgErr) {
+          $('.org-error-message').slideDown(200);
+          $('.blank-field-error-message').slideUp(10);
+        } else {
+          $('.org-error-message').slideUp(10);
+          $('.blank-field-error-message').slideUp(10);
+          return getUserInfo();
+        }
+      })
       .then(json => {
         header.update(json.user);
-        sidenav.showSidebar(json.user.org, json.user.id)
-        .then($sidebar => {
-          const $main = ('main');
-          $sidebar.appendTo($main);
-          views_manager.show('allAccounts');
-        })
+          sidenav.showSidebar(json.user.org, json.user.id)
+          .then($sidebar => {
+            const $main = ('main');
+            $sidebar.appendTo($main);
+            views_manager.show('allAccounts');
+          })
       });
   });
 });

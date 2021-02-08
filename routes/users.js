@@ -16,29 +16,43 @@ module.exports = (database) => {
   router.post('/register', (req, res) => {
     const user = req.body;
     const key = req.body.org_key;
+    if (!user.first_name || !user.last_name || !user.email || !user.password || !key) {
+      res.send({ emptyErr: "error" });
+      return;
+    }
     let options = {};
     user.password = bcrypt.hashSync(user.password, 12);
-    database.addUser(user)
-      .then(user => {
-        if (!user) {
-          res.send({ error: "error" });
-          return;
-        }
-        req.session.userId = user.id;
-        options.userId = user.id;
-        return key;
-      })
-      .then(database.getOrgIdFromKey)
+
+    database.checkOrgExists(key)
       .then(org => {
-        options.orgId = org.id;
-        return options;
+        if (!org) {
+          res.send({ noOrgErr: "error" });
+          return;
+        } else {
+          database.addUser(user)
+            .then(user => {
+              if (!user) {
+                res.send({ error: "error" });
+                return;
+              }
+              req.session.userId = user.id;
+              options.userId = user.id;
+              return key;
+            })
+            .then(database.getOrgIdFromKey)
+            .then(org => {
+              options.orgId = org.id;
+              return options;
+            })
+            .then(database.addUserToOrg)
+            .then(relationship => {
+              req.session.orgId = relationship.org_id;
+              res.send({user: {org: relationship.org_id, id: relationship.user_id}})
+            })
+            .catch(e => res.send(e));
+        }
       })
-      .then(database.addUserToOrg)
-      .then(relationship => {
-        req.session.orgId = relationship.org_id;
-        res.send({user: {org: relationship.org_id, id: relationship.user_id}})
-      })
-      .catch(e => res.send(e));
+
   });
 
   const login = function(email, password) {
