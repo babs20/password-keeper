@@ -1,12 +1,10 @@
 $(() => {
 
   const $getAllAccounts = $(`
-    <div class="all-accounts">
-      <h2 class="accounts-title">Your Organization's Accounts</h2>
-
-      <div class="accounts-table">
-        <table class="all-accounts-table">
-        </table>
+    <div class="all-accounts mx-auto mt-10">
+      <h1 class="accounts-title font-bold shadow-md rounded border-l-8 p-1 pl-2 my-3 bg-white text-black text-lg border-gray-400 w-1/2">Your Organization's Accounts</h1>
+        <div class="accounts-table rounded">
+          <table class="all-accounts-table table-auto p-2 border-collapse border-2 border-gray-400"></table>
       </div>
     </div>
   `);
