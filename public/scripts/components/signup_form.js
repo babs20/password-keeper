@@ -69,17 +69,17 @@ $(() => {
           $('.signup-email').val('');
           $('.signup-password').val('');
           $('.org-key').val('');
-          return getUserInfo();
+          getUserInfo()
+            .then(json => {
+              header.update(json.user);
+                sidenav.showSidebar(json.user.org, json.user.id)
+                .then($sidebar => {
+                  const $main = ('main');
+                  $sidebar.appendTo($main);
+                  views_manager.show('allAccounts');
+                })
+            });
         }
       })
-      .then(json => {
-        header.update(json.user);
-          sidenav.showSidebar(json.user.org, json.user.id)
-          .then($sidebar => {
-            const $main = ('main');
-            $sidebar.appendTo($main);
-            views_manager.show('allAccounts');
-          })
-      });
   });
 });
