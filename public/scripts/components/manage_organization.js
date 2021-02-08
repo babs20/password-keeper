@@ -12,7 +12,7 @@ $(() => {
 
   window.$manageOrg = $manageOrg;
 
-  const addUsersToTable = function(data) {
+  const addUsersToTable = function() {
     $('.all-users-table').empty();
     getUsersInOrg()
       .then(usersArr => {
