@@ -53,7 +53,7 @@ $(() => {
   window.addAccountToTable = addAccountToTable;
 
   $('main').on('click', '.view-password', function(event) {
-    const $passwordField = $('.account-password-field')
+    const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
     if ($passwordField.attr('type') === 'password') {
       $passwordField.attr('type', 'text');
     } else {
