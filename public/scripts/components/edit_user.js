@@ -148,6 +148,7 @@ $(() => {
       .then(() => {
         $('#user-password-field').val('');
         $('#confirm-user-password').val('');
+        $('.password-option0').val('12');
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
