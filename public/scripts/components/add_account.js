@@ -63,34 +63,7 @@ $(() => {
     </div>
   `);
 
-  const $passwordField = $('.password-with-generator');
-
-  $('main').on('click', '.generate-password', function(event) {
-    $generatePassword.appendTo($passwordField);
-
-    $('#password-option0').on('input', function(event) {
-      const data = $('#generate-password-form').serialize();
-      generatePassword(data)
-        .then(password => {
-          $('#user-password-field').val(password);
-          $('#confirm-user-password').val(password);
-        })
-        .catch(e => console.log(e));
-    });
-
-    $('main').on('click', '.password-option', function(event) {
-      const data = $('#generate-password-form').serialize();
-      generatePassword(data)
-        .then(password => {
-          $('#user-password-field').val(password);
-          $('#confirm-user-password').val(password);
-        })
-        .catch(e => console.log(e));
-    });
-
-  });
-
-  $('main').on('submit', '#add-account-button', function(event) {
+  $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
