@@ -30,7 +30,7 @@ $(() => {
               <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
                 id="user-password-field" form="edit-user-form">
               <button type="button"
-                class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+                class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm">Generate</button>
             </div>
           </div>
         </div>
