@@ -41,10 +41,11 @@ $(() => {
 
   window.$signupForm = $signupForm;
 
-  $signupForm.on('submit', function(event) {
+  $('main').on('submit', '#signup-form', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
+    console.log(data)
     userRegistration(data)
       .then(getUserInfo)
       .then(json => {
