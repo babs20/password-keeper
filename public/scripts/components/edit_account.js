@@ -1,26 +1,28 @@
 $(() => {
   const $editAccountForm = $(`
   <form id="generate-password-form" class="hidden"></form>
-  <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
-  <form id="edit-account-form">
-    <h4 class="edit-account>Edit account login information"></h4>
+    <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
+      <form id="edit-account-form" class="w-7/12 h-full flex flex-col items-center justify-start">
+        <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
 
-    <div class="edit-account_field-wrapper form-field">
-      <label for="email-username" class="label">Email/Username</label>
-      <input type="text" id="email-username" name="name" placeholder="Login" class="input">
-    </div>
-
-    <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
-      <div class="edit-account_field-wrapper flex flex-col w-full">
-        <label for="password" class="label">Password</label>
-        <div class="flex justify-between w-full">
-          <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3" id="account-password-field">
-          <button class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+        <div class="edit-account_field-wrapper form-field">
+          <label for="email-username" class="label">Email/Username</label>
+          <input type="text" id="email-username" name="name" placeholder="Login" class="input">
         </div>
-      </div>
-    </div>
 
-    <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
+        <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
+          <div class="edit-account_field-wrapper flex flex-col w-full">
+            <label for="password" class="label">Password</label>
+            <div class="flex justify-between w-full">
+              <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
+                id="account-password-field">
+              <button
+                class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm">Generate</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
           <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
             <div class="flex justify-between items-center w-1/2 pr-3">
               <label for="length " class="label">Length</label>
@@ -64,34 +66,35 @@ $(() => {
             id="confirm-account-password">
         </div>
 
-    <div class="edit-account_field-wrapper">
-      <label for="website">Website</label>
-      <input type="url" id="website" name="website" placeholder="website">
-    </div>
+        <div class="edit-account_field-wrapper form-field">
+          <label for="website" class="label">Website</label>
+          <input type="url" id="website" name="website" placeholder="Website" class="input">
+        </div>
 
-    <div class="edit-account_field-wrapper">
-      <label for="account-type">Account Type</label>
-      <select name="account-type" id="account-type-dropdown">
-        <option value="1">Work</option>
-        <option value="2">Entertainment</option>
-        <option value="3">Social</option>
-        <option value="4">Other</option>
-      </select>
-    </div>
+        <div class="edit-account_field-wrapper form-field">
+          <label for="account-type" class="label">Account Type</label>
+          <select name="account-type" id="account-type-dropdown" class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
+            <option value="1">Work</option>
+            <option value="2">Entertainment</option>
+            <option value="3">Social</option>
+            <option value="4">Other</option>
+          </select>
+        </div>
 
-    <div class="edit-account_field-wrapper form-field">
-    <button type="submit" class="save-account-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">
-    Save</button>
-    </div>
+        <div class="edit-account_field-wrapper form-field">
+          <button type="submit"
+            class="save-account-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">
+            Save</button>
+        </div>
 
-    <div class="edit-account_field-wrapper flex justify-between w-2/3">
+        <div class="edit-account_field-wrapper flex justify-between w-2/3">
           <button type="button"
             class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
           <button type="button"
             class="delete-account rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
         </div>
-  </form>
-  </div>
+      </form>
+    </div>
   `);
 
   window.$editAccountForm = $editAccountForm;
