@@ -36,7 +36,7 @@ $(() => {
 
   window.$orgSignupForm = $orgSignupForm;
 
-  $orgSignupForm.on('submit', function(event) {
+  $('main').on('submit', '#org-signup-form', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
