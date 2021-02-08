@@ -41,42 +41,72 @@
 
   <header id="page-header" class="page-header w-screen h-auto bg-white py-7 border-b-2 border-gray-400"></header>
 
-  <main id="main-content" class="bg-white-50 flex w-screen h-screen my-6 justify-between">
-      <!-- <nav id="sidebar_links" class="sidebar_links flex flex-col justify-start px-6">
-      <div class="user-options py-2 flex items-center justify-between">
-        <div class="org-swap-wrapper flex flex-col">
-          <label for="org-swap" class="py-2">Organization</label>
-          <select name="organization" id="organizations-dropdown" class="">
-          </select>
+  <main id="main-content" class="bg-white-50 flex w-screen h-screen justify-between">
+
+    <nav id="sidebar_links"
+      class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400">
+
+      <div class="user-options py-4 flex items-center justify-between px-4 h-100">
+        <div class="org-options flex flex-col w-3/4 ">
+          <h1 class="org-name-label font-bold">Organization:</h1>
+          <h3 class="org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400">Krusty Krab</h3>
         </div>
 
-        <div class="edit-user-wrapper py-2">
-          <button id="edit-user" class="pr-2"><i class="fas fa-cog"></i></button>
-        </div>
-      </div>
-
-      <div class="add-account py-2">
-        <button id="add-account">Add Account</button>
-      </div>
-
-      <div class="generate-pass py-2">
-        <button id="generate-pass">Generate Password</button>
-      </div>
-
-      <div class="account-categories py-2">
-        <button id="account-categories">Categories</button>
-        <div class="category-submenu hidden flex flex-col py-2">
-          <button id="work-category" class="py-2 pl-4">Work</button> <br>
-          <button id="entertainment-category" class="py-2 pl-4">Entertainment</button> <br>
-          <button id="social-category" class="py-2 pl-4">Social</button> <br>
-          <button id="other-category" class="py-2 pl-4">Other</button> <br>
+        <div class="edit-user-wrapper my-auto w-1/4 flex justify-end">
+          <button id="edit-user" class="pr-2">
+            <i class="fas fa-cog hover:animate-spin"></i>
+          </button>
         </div>
       </div>
 
-      <div class="account-search py-2">
-        <input type=text name="search" placeholder="search">
+      <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+        <button id="add-account" class="font-bold">Add Account</button>
       </div>
-    </nav> -->
+
+      <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+        <button id="generate-pass" class="font-bold">Generate Password</button>
+      </div>
+
+      <div class="account-categories hover:bg-white hover:text-black cursor-pointer py-4 px-4 ">
+        <div id="account-categories-button" class="">
+          <button id="account-categories" class="font-bold">Categories</button>
+        </div>
+
+        <div class="category-submenu hidden flex flex-col py-2 justify-center">
+          <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
+            <input id="account-type-work" class="hidden" name="account_type_id" value="1">
+            <button id="work-category" class="py-2 pl-4">Work</button>
+          </form>
+          <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
+            <input id="account-type-work" class="hidden" name="account_type_id" value="2">
+            <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
+          </form>
+          <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
+            <input id="account-type-work" class="hidden" name="account_type_id" value="3">
+            <button id="social-category" class="py-2 pl-4">Social</button>
+          </form>
+          <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
+            <input id="account-type-work" class="hidden" name="account_type_id" value="4">
+            <button id="other-category" class="py-2 pl-4">Other</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="account-search py-4 px-4">
+        <input type=text name="search" placeholder="Search"
+          class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button">
+      </div>
+    </nav>
+
+    <!-- <div class="all-accounts">
+      <h2 class="accounts-title">Your Organization's Accounts</h2>
+
+      <div class="accounts-table">
+        <table class="all-accounts-table">
+        </table>
+      </div>
+    </div> -->
+
   </main>
 
 </body>
