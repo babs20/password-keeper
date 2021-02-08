@@ -79,11 +79,16 @@ $(() => {
       </select>
     </div>
 
-    <div class="edit-user-form_field-wrapper flex justify-between w-2/3">
+    <div class="edit-account_field-wrapper form-field">
+    <button type="submit" class="save-account-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">
+    Save</button>
+    </div>
+
+    <div class="edit-account_field-wrapper flex justify-between w-2/3">
           <button type="button"
             class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
           <button type="button"
-            class="delete-user rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
+            class="delete-account rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
         </div>
   </form>
   </div>
