@@ -23,7 +23,7 @@ $(() => {
         <input type="email" name="email" placeholder="Email" class="input">
       </div>
 
-      <div class="password-with-generator flex items-center justify-between mb-3 w-2/3 w-full">
+      <div class="password-with-generator flex items-center justify-between mb-3 w-full">
         <div class="edit-org-form_field-wrapper flex flex-col w-full">
           <label for="password" class="label">Password</label>
           <div id="generator" class="flex justify-between w-full">
@@ -35,7 +35,7 @@ $(() => {
         </div>
       </div>
 
-      <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden w-full">
+      <div id="generate-container" class="flex flex-col mb-3 divide-y divide-gray-400 hidden w-full">
         <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
           <div class="flex justify-between items-center w-1/2 pr-3">
             <label for="length " class="label">Length</label>
