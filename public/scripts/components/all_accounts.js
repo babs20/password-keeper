@@ -13,10 +13,11 @@ $(() => {
 
   window.$getAllAccounts = $getAllAccounts;
 
-  const addAccountToTable = function() {
+  const addAccountToTable = function(data) {
     $('.all-accounts-table').empty();
-    getAllAccounts()
+    getAllAccounts(data)
       .then(accountsArr => {
+        console.log(accountsArr);
         const $accountsTableHeader = $(`
             <tr>
               <th>Website</th>
@@ -30,7 +31,17 @@ $(() => {
             <tr>
               <td>${account.website}</td>
               <td>${account.name}</td>
-              <td>${account.password}</td>
+              <td>
+                <div class="account-password-cell">
+                  <input type="password" class="account-password-field" value="${account.password}"readonly>
+
+                  <div class="password-buttons">
+                    <button type="button" class="view-password"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="copy-password"><i class="far fa-clipboard"></i></button>
+                    <button type="button" class="edit-account"><i class="fas fa-edit"></i></button>
+                  </div>
+                </div>
+              </td>
             </tr>
           `);
 
@@ -40,4 +51,13 @@ $(() => {
   };
 
   window.addAccountToTable = addAccountToTable;
+
+  $('main').on('click', '.view-password', function(event) {
+    const $passwordField = $('.account-password-field')
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+    } else {
+      $passwordField.attr('type', 'password');
+    }
+  });
 });
