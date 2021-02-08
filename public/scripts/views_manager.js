@@ -12,6 +12,7 @@ $(() => {
     $editUserForm.detach();
     $addAccountForm.detach();
     $generatePasswordForm.detach();
+    $getAllAccounts.detach();
 
     switch (item) {
       case 'homepage':
@@ -30,7 +31,8 @@ $(() => {
         $orgSignupForm.appendTo($main);
         break;
       case 'allAccounts':
-        $editUserForm.appendTo($main);
+        $getAllAccounts.appendTo($main);
+        addAccountToTable();
         break;
       case 'editUser':
         $editUserForm.appendTo($main);
