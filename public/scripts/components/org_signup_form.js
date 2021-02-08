@@ -1,7 +1,7 @@
 $(() => {
 
   const $orgSignupForm = $(`
-  <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
+  <div class="w-screen h-100 flex flex-col items-center justify-start mb-10">
   <form id="org-signup-form" class="org-signup-form w-1/2 h-100 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a Free<br>Organization Account</p>
 
@@ -44,7 +44,13 @@ $(() => {
       .then(getOrgInfo)
       .then(json => {
         header.update(json.org);
-        views_manager.show('allAccounts');
+        console.log(json);
+        sidenav.showSidebar(json.org.orgId, json.org.user_id)
+          .then($sidebar => {
+            const $main = ('main');
+            $sidebar.appendTo($main);
+            views_manager.show('allAccounts');
+          })
       });
   });
 

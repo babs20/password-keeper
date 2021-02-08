@@ -39,8 +39,8 @@ $(() => {
         .then($sidebar => {
           const $main = ('main');
           $sidebar.appendTo($main);
+          views_manager.show('allAccounts');
         })
-        views_manager.show('allAccounts');
       });
 
   });

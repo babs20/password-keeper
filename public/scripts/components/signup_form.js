@@ -1,7 +1,7 @@
 $(() => {
 
   const $signupForm = $(`
-  <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
+  <div class="w-screen h-100 flex flex-col items-center justify-start mb-10">
   <form id="signup-form" class="signup-form w-7/12 h-100 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a free account</p>
 
@@ -29,7 +29,7 @@ $(() => {
 
     <div class="signup-form_field-wrapper form-field">
       <label for="org_id" class="label">Organization ID</label>
-      <input type="text" name="org_id" placeholder="Organization ID"  class="input">
+      <input type="text" name="org_key" placeholder="Organization ID"  class="input">
     </div>
 
     <div class="signup-form_field_wrapper form-field">
@@ -49,7 +49,12 @@ $(() => {
       .then(getUserInfo)
       .then(json => {
         header.update(json.user);
-        views_manager.show('allAccounts');
+        sidenav.showSidebar(json.user.org, json.user.id)
+        .then($sidebar => {
+          const $main = ('main');
+          $sidebar.appendTo($main);
+          views_manager.show('allAccounts');
+        })
       });
   });
 });
