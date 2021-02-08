@@ -67,7 +67,7 @@ $(() => {
 
         <div class="add-account_field-wrapper form-field">
           <label for="account-type" class="label">Account Type</label>
-          <select name="account-type" id="account-type-dropdown" class="text-left font-sans w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none text-center bg-white font-semibold text-md text-black focus:text-black">
+          <select name="account-type" id="account-type-dropdown" class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
             <option value="1">Work</option>
             <option value="2">Entertainment</option>
             <option value="3">Social</option>
