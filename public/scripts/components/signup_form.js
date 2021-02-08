@@ -5,6 +5,14 @@ $(() => {
   <form id="signup-form" class="signup-form w-7/12 h-100 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a free account</p>
 
+    <div class="sign-up-blank-error">
+      <h2 class="blank-field-error-message hidden">Please fill in all fields before submitting</h2>
+    </div>
+
+    <div class="sign-up-org-error">
+      <h2 class="org-error-message hidden">Incorrect Organization ID</h2>
+    </div>
+
     <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
       <div class="signup-form_field-wrapper flex flex-col w-9/20">
         <label for="first_name" class="label">First Name</label>
