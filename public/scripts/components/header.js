@@ -10,7 +10,7 @@ $(() => {
     let userLinks;
     if (!user) {
       userLinks = `
-        <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between border-b-2 border-gray-400">
+        <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between">
           <div class="flex items-center justify-start">
             <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
             <span class="font-sans text-xl lg:text-2xl ml-6 mt-2">Remember Passwords Better</span>
@@ -23,14 +23,14 @@ $(() => {
       `;
     } else {
       userLinks = `
-      <nav id="page-header_user-links" class="page-header_user-links w-screen h-32 bg-white flex items-center justify-between">
-          <div class="flex items-center justify-start">
-            <span id="logo" class="font-sans text-5xl font-bold ml-10 cursor-pointer">Keeper</span>
-            <span class="font-sans text-2xl ml-6 mt-2">Remember Passwords Better</span>
-          </div>
-          <div class="flex items-center justify-start">
-            <button type="button" class="font-sans text-2xl mr-10 hover:underline hover:animate-pulse" id="logout-button">Logout</button>
-          </div>
+      <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between">
+        <div class="flex items-center justify-start">
+          <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
+          <span class="font-sans text-xl lg:text-2xl ml-6 mt-2">Remember Passwords Better</span>
+        </div>
+        <div class="flex items-center justify-start">
+            <button type="button" class="font-sans text-xl lg:text-2xl mr-10 hover:underline hover:animate-pulse" id="logout-button">Logout</button>
+        </div>
       </nav>
       `;
     }
@@ -61,6 +61,7 @@ $(() => {
       .then(json => {
         updateHeader(json.user);
         views_manager.show('homepage');
+        window.sidenav.detachSidebar();
       });
   });
 
