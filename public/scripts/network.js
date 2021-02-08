@@ -27,6 +27,12 @@ const userRegistration = function(data) {
   });
 };
 
+const getUserOrgs = function() {
+  return $.ajax({
+    url: '/users/organizations'
+  });
+};
+
 const orgLogin = function(data) {
   return $.ajax({
     method: 'POST',
@@ -80,7 +86,7 @@ const createAccount = function(data) {
 };
 
 const getAllAccounts = function(params) {
-  let url = '/api/properties';
+  let url = '/api/accounts';
   if (params) {
     url += '?' + params;
   }
