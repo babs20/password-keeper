@@ -2,26 +2,28 @@ $(() => {
 
   const $addAccountForm = $(`
   <form id="generate-password-form" class="hidden"></form>
-  <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
-  <form id="add-account-form">
-    <h4 class="add-account>Add account login information"></h4>
+    <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
+      <form id="add-account-form" class="add-account-form w-2/3 h-full flex flex-col items-center justify-start mb-10 mt-3">
+        <h4 class="add-account font-sans text-2xl font-bold w-2/3 my-5">Add Account Login Information</h4>
 
-    <div class="add-account_field-wrapper form-field">
-      <label for="email-username" class="label">Email/Username</label>
-      <input type="text" id="email-username" name="name" placeholder="Login" class="input">
-    </div>
-
-    <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
-      <div class="add-account_field-wrapper flex flex-col w-full">
-        <label for="password" class="label">Password</label>
-        <div class="flex justify-between w-full">
-          <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3" id="account-password-field">
-          <button class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+        <div class="add-account_field-wrapper form-field">
+          <label for="email-username" class="label">Email / Username</label>
+          <input type="text" id="email-username" name="name" placeholder="Login" class="input">
         </div>
-      </div>
-    </div>
 
-    <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
+        <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
+          <div class="add-account_field-wrapper flex flex-col w-full">
+            <label for="password" class="label">Password</label>
+            <div class="flex justify-between w-full">
+              <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
+                id="account-password-field">
+              <button
+                class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center">Generate</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
           <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
             <div class="flex justify-between items-center w-1/2 pr-3">
               <label for="length " class="label">Length</label>
@@ -58,25 +60,25 @@ $(() => {
           </div>
         </div>
 
-    <div class="add-account_field-wrapper">
-      <label for="website">Website</label>
-      <input type="url" id="website" name="website" placeholder="website">
-    </div>
+        <div class="add-account_field-wrapper form-field">
+          <label for="website" class="label">Website</label>
+          <input type="url" id="website" name="website" placeholder="Website" class="input">
+        </div>
 
-    <div class="add-account_field-wrapper">
-      <label for="account-type">Account Type</label>
-      <select name="account-type" id="account-type-dropdown">
-        <option value="1">Work</option>
-        <option value="2">Entertainment</option>
-        <option value="3">Social</option>
-        <option value="4">Other</option>
-      </select>
-    </div>
+        <div class="add-account_field-wrapper form-field">
+          <label for="account-type" class="label">Account Type</label>
+          <select name="account-type" id="account-type-dropdown" class="text-left font-sans w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none text-center bg-white font-semibold text-md text-black focus:text-black">
+            <option value="1">Work</option>
+            <option value="2">Entertainment</option>
+            <option value="3">Social</option>
+            <option value="4">Other</option>
+          </select>
+        </div>
 
-    <div class="add-account_field-wrapper">
-      <button id="add-account-button">Add Account</button>
-  </form>
-  </div>
+        <div class="add-account_field-wrapper form-field">
+          <button id="add-account-button" class="button font-bold">Add Account</button>
+      </form>
+    </div>
   `);
 
   window.$addAccountForm = $addAccountForm;
