@@ -1,77 +1,84 @@
 <!DOCTYPE html>
-<html lang="en" class="min-w-full min-h-full container">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=deice-width, initial-scale=1.0">
+<html lang="en" class="">
 
-    <title>Keeper</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/styles/tailwind.css" type="text/css" />
+  <title>Keeper</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/tailwind.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script src="https://kit.fontawesome.com/1d6cd369b1.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+    rel="stylesheet">
 
-    <script type="text/javascript" src="/scripts/network.js"></script>
-    <script type="text/javascript" src="/scripts/views_manager.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://kit.fontawesome.com/1d6cd369b1.js" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="/scripts/components/header.js"></script>
-    <script type="text/javascript" src="/scripts/components/homepage.js"></script>
-    <script type="text/javascript" src="/scripts/components/login_form.js"></script>
-    <script type="text/javascript" src="/scripts/components/org_login_form.js"></script>
-    <script type="text/javascript" src="/scripts/components/signup_form.js"></script>
-    <script type="text/javascript" src="/scripts/components/org_signup_form.js"></script>
-    <script type="text/javascript" src="/scripts/components/edit_user.js"></script>
-    <script type="text/javascript" src="/scripts/components/sidebar.js"></script>
-  </head>
+  <script type="text/javascript" src="/scripts/network.js"></script>
+  <script type="text/javascript" src="/scripts/views_manager.js"></script>
 
-  <body class="w-screen h-screen bg-blue-50 flex flex-col">
-    <header id="page-header" class="page-header w-screen h-1/6 bg-white">
+  <script type="text/javascript" src="/scripts/components/header.js"></script>
+  <script type="text/javascript" src="/scripts/components/sidebar.js"></script>
+  <script type="text/javascript" src="/scripts/components/homepage.js"></script>
+  <script type="text/javascript" src="/scripts/components/login_form.js"></script>
+  <script type="text/javascript" src="/scripts/components/org_login_form.js"></script>
+  <script type="text/javascript" src="/scripts/components/signup_form.js"></script>
+  <script type="text/javascript" src="/scripts/components/org_signup_form.js"></script>
+  <script type="text/javascript" src="/scripts/components/edit_user.js"></script>
+  <script type="text/javascript" src="/scripts/components/add_account.js"></script>
+  <script type="text/javascript" src="/scripts/components/all_accounts.js"></script>
+  <script type="text/javascript" src="/scripts/components/generate_password_form.js"></script>
+</head>
 
-    </header>
+<body class="w-100 min-h-0 bg-blue-50">
 
+  <header id="page-header" class="page-header w-screen h-auto bg-white py-7 border-b-2 border-gray-400"></header>
 
+  <main id="main-content" class="bg-white-50 flex w-screen h-screen my-6 justify-between">
+      <!-- <nav id="sidebar_links" class="sidebar_links flex flex-col justify-start px-6">
+      <div class="user-options py-2 flex items-center justify-between">
+        <div class="org-swap-wrapper flex flex-col">
+          <label for="org-swap" class="py-2">Organization</label>
+          <select name="organization" id="organizations-dropdown" class="">
+          </select>
+        </div>
 
-    <main id="main-content" class="bg-white-50 flex justify-center w-screen h-full">
-      <!-- <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
-        <form id="signup-form" class="signup-form w-7/12 h-100 flex flex-col items-center justify-center">
-          <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a free account</p>
+        <div class="edit-user-wrapper py-2">
+          <button id="edit-user" class="pr-2"><i class="fas fa-cog"></i></button>
+        </div>
+      </div>
 
-          <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
-            <div class="signup-form_field-wrapper flex flex-col w-9/20">
-              <label for="first_name" class="label">First Name</label>
-              <input type="text" name="first_name" placeholder="First Name" class="input">
-            </div>
+      <div class="add-account py-2">
+        <button id="add-account">Add Account</button>
+      </div>
 
-            <div class="signup-form_field-wrapper flex flex-col w-9/20">
-              <label for="last_name" class="label">Last Name</label>
-              <input type="text" name="last_name" placeholder="Last Name" class="input">
-            </div>
-          </div>
+      <div class="generate-pass py-2">
+        <button id="generate-pass">Generate Password</button>
+      </div>
 
-          <div class="signup-form_field-wrapper form-field">
-            <label for="email" class="label">Email</label>
-            <input type="email" name="email" placeholder="Email" class="input">
-          </div>
+      <div class="account-categories py-2">
+        <button id="account-categories">Categories</button>
+        <div class="category-submenu hidden flex flex-col py-2">
+          <button id="work-category" class="py-2 pl-4">Work</button> <br>
+          <button id="entertainment-category" class="py-2 pl-4">Entertainment</button> <br>
+          <button id="social-category" class="py-2 pl-4">Social</button> <br>
+          <button id="other-category" class="py-2 pl-4">Other</button> <br>
+        </div>
+      </div>
 
-          <div class="signup-form_field-wrapper form-field">
-            <label for="password" class="label">Password</label>
-            <input type="password" name="password" placeholder="Password" class="input">
-          </div>
+      <div class="account-search py-2">
+        <input type=text name="search" placeholder="search">
+      </div>
+    </nav> -->
+  </main>
 
-          <div class="signup-form_field-wrapper form-field">
-            <label for="org_id" class="label">Organization ID</label>
-            <input type="text" name="org_id" placeholder="Organization ID"  class="input">
-          </div>
+</body>
 
-          <div class="signup-form_field_wrapper form-field">
-            <button class="button">Register</button>
-          </div>
-      </div> -->
-    </main>
-  </body>
 </html>
