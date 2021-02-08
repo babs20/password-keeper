@@ -9,9 +9,11 @@ module.exports = {
       colors: {
         'button': '#445C77',
         'hoverBlue': '#7796b8',
+        'warning': '#b52f2f',
+        'warningHover': '#8c1919',
       },
       width: {
-        '9/20': '45%',
+        '9/20': '48.5%',
       },
     }
   },
@@ -21,5 +23,7 @@ module.exports = {
       animation: ['hover', 'focus'],
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/custom-forms'),
+  ],
 };

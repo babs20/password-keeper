@@ -11,7 +11,7 @@
 }
 
 .input {
-  @apply mt-2 border-2 rounded border-gray-400 p-1;
+  @apply mt-2 border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button;
 }
 
 .button {
