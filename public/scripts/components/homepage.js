@@ -12,6 +12,6 @@ $(() => {
   `);
   window.$homepage = $homepage;
 
-  $main.append($homepage);
+  // $main.append($homepage);
 
 });
