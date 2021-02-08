@@ -15,6 +15,7 @@ $(() => {
     $getAllAccounts.detach();
     $editAccountForm.detach();
     $editOrgForm.detach();
+    $manageOrg.detach();
 
     switch (item) {
       case 'homepage':
@@ -50,6 +51,10 @@ $(() => {
         break;
       case 'editOrg':
         $editOrgForm.appendTo($main);
+        break;
+      case 'manageOrg':
+        $manageOrg.appendTo($main);
+        addUsersToTable();
         break;
     }
   };
