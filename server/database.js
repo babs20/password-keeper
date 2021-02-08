@@ -306,13 +306,16 @@ exports.getOrgWithEmail = getOrgWithEmail;
 
 /**
  * Get a user with given user id
- * @param {Number} userId
+ * @param {Number} obj
  */
 
 const getUserWithId = function(userId) {
   return db.query(`
-    SELECT * FROM users
-    WHERE id = $1
+    SELECT users.*, org_id
+    FROM users_organizations
+    JOIN users ON user_id = users.id
+    WHERE users_organizations.user_id = $1
+    LIMIT 1;
   `, [userId])
     .then(res => res.rows[0]);
 };
@@ -331,3 +334,52 @@ const getOrgWithId = function(orgId) {
     .then(res => res.rows[0]);
 };
 exports.getOrgWithId = getOrgWithId;
+
+/**
+ * Get all of a user's organizations
+ * @param {Number} userId
+ */
+
+const getOrgsForUser = function(userId) {
+  const query = `
+    SELECT organizations.abbreviation AS abbreviation, org_id
+    FROM users_organizations
+    JOIN organizations ON org_id = organizations.id
+    WHERE user_id = $1;
+  `;
+  return db.query(query, [userId])
+    .then(res => res.rows);
+};
+exports.getOrgsForUser = getOrgsForUser;
+
+/**
+ * Get all of a user's organizations
+ * @param {Number} userId
+ */
+
+const getOrgIdFromKey = function(orgKey) {
+  const query = `
+    SELECT id
+    FROM organizations
+    WHERE identifier_key = $1;
+  `;
+  return db.query(query, [orgKey])
+    .then(res => res.rows[0]);
+};
+exports.getOrgIdFromKey = getOrgIdFromKey;
+
+/**
+ * Get all of a user's organizations
+ * @param {Number} userId
+ */
+
+const addUserToOrg = function(options) {
+  const query = `
+    INSERT INTO users_organizations(user_id, org_id)
+    VALUES ($1, $2)
+    RETURNING *;
+  `;
+  return db.query(query, [options.userId, options.orgId])
+    .then(res => res.rows[0]);
+};
+exports.addUserToOrg = addUserToOrg;
