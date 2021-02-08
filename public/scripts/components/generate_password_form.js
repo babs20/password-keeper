@@ -46,7 +46,7 @@ $(() => {
       <div class="new-password_field-wrapper">
         <label for="new-password">New Password</label>
         <input type="text" id="new-password" placeholder="password" readonly>
-        <i class="far fa-clipboard"></i>
+        <button type="button" class="copy-password"><i class="far fa-clipboard"></i></button>
         <span id="custom-tooltip">copied!</span>
       </div>
   `);
