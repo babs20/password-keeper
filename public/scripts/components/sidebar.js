@@ -78,57 +78,64 @@ $(() => {
         .then(json => {
           orgName = json.org.name;
           const $orgLinks = $(`
-          <nav id="sidebar_links" class="sidebar_links">
-            <div class="org-options>
-              <h2 class="org-name-label">Organization:</h2>
-              <h3 class="org-name">${orgName}</h3>
-            </div>
+            <nav id="sidebar_links"
+              class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400">
 
-            <div class="edit-org-wrapper">
-              <button type="button" id="edit-org"><i class="fas fa-cog"></i></button>
-            </div>
+              <div class="org-options py-4 flex items-center justify-between px-4 h-100">
+                <div class="org-options flex flex-col w-3/4 ">
+                  <h1 class="org-name-label font-bold">Organization:</h1>
+                  <h3 class="org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400">${orgName}</h3>
+                </div>
 
-            <div class="manage-org">
-              <button type="button" id="manage-org">Manage Organization</button>
-            </div>
-
-            <div class="add-account">
-              <button type="button" id="add-account">Add Account</button>
-            </div>
-
-            <div class="generate-pass">
-              <button type="button" id="generate-pass">Generate Password</button>
-            </div>
-
-            <div class="account-categories">
-              <div id="account-categories-button">
-                <button type="button" id="account-categories">Categories</button>
+                <div class="edit-org-wrapper my-auto w-1/4 flex justify-end">
+                  <button id="edit-org" class="pr-2">
+                    <i class="fas fa-cog hover:animate-spin"></i>
+                  </button>
+                </div>
               </div>
-              <div class="category-submenu hidden">
-                <form id="account-type-work">
-                <input id="account-type-work" class="hidden" name="account_type_id" value="1">
-                  <button id="work-category">Work</button>
-                </form>
-                <form id="account-type-entertainment">
-                <input id="account-type-work" class="hidden" name="account_type_id" value="2">
-                  <button id="entertainment-category">Entertainment</button>
-                </form>
-                <form id="account-type-social">
-                <input id="account-type-work" class="hidden" name="account_type_id" value="3">
-                  <button id="social-category">Social</button>
-                </form>
-                <form id="account-type-other">
-                <input id="account-type-work" class="hidden" name="account_type_id" value="4">
-                  <button id="other-category">Other</button>
-                </form>
-              </div>
-            </div>
 
-            <div class="account-search">
-              <input type=text name="website" placeholder="search">
-              <button id="sidebar-search">Seach</button>
-            </div>
-          </nav>
+              <div class="manage-org  py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+                <button type="button" id="manage-org" class="font-bold">Manage Organization</button>
+              </div>
+
+              <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+                <button id="add-account" class="font-bold">Add Account</button>
+              </div>
+
+              <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+                <button id="generate-pass" class="font-bold">Generate Password</button>
+              </div>
+
+              <div class="account-categories hover:bg-white hover:text-black cursor-pointer py-4 px-4 ">
+                <div id="account-categories-button" class="">
+                  <button id="account-categories" class="font-bold">Categories</button>
+                </div>
+
+                <div class="category-submenu hidden flex flex-col py-2 justify-center">
+                  <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
+                    <input id="account-type-work" class="hidden" name="account_type_id" value="1">
+                    <button id="work-category" class="py-2 pl-4">Work</button>
+                  </form>
+                  <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
+                    <input id="account-type-work" class="hidden" name="account_type_id" value="2">
+                    <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
+                  </form>
+                  <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
+                    <input id="account-type-work" class="hidden" name="account_type_id" value="3">
+                    <button id="social-category" class="py-2 pl-4">Social</button>
+                  </form>
+                  <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
+                    <input id="account-type-work" class="hidden" name="account_type_id" value="4">
+                    <button id="other-category" class="py-2 pl-4">Other</button>
+                  </form>
+                </div>
+              </div>
+
+              <div class="account-search py-4 px-4">
+                <input type=text name="search" placeholder="Search"
+                  class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button">
+              </div>
+            </nav>
           `);
 
           return $orgLinks;
@@ -153,8 +160,14 @@ $(() => {
   });
 
   // edit org listener
+  $('main').on('click', '#edit-org', () => {
+    views_manager.show('editOrg');
+  });
 
   // manage org listener
+  $('main').on('click', '#manage-org', () => {
+    views_manager.show('manageOrg');
+  });
 
   // add account listener
   $('main').on('click', '.add-account', () => {
