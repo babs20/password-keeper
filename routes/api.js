@@ -20,7 +20,6 @@ module.exports = (database) => {
 
     database.getUserWithId(userId)
       .then(user => {
-        console.log(user);
         if (!user) {
           res.send({ error: "no user with that id" });
           return;
@@ -63,7 +62,8 @@ module.exports = (database) => {
 
   router.get("/accounts", (req, res) => {
     const orgId = req.session.orgId // NEED TO GET orgId for the current user
-    database.getAllAccounts({...req.body, org_id: orgId})
+    // console.log(req.query);
+    database.getAllAccounts({...req.query, org_id: orgId})
       .then((account) => {
         if (!account) {
           res.send({error: 'There was an error!'});
