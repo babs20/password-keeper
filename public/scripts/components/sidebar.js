@@ -40,19 +40,19 @@ $(() => {
 
             <div class="category-submenu hidden flex flex-col py-2 justify-center">
               <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
-                <input id="account-type-work" class="hidden" name="account_type_id" value="1">
+                <input id="work" class="hidden" name="account_type_id" value="1">
                 <button id="work-category" class="py-2 pl-4">Work</button>
               </form>
               <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
-              <input id="account-type-work" class="hidden" name="account_type_id" value="2">
+              <input id="entertainment" class="hidden" name="account_type_id" value="2">
                 <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
               </form>
               <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
-              <input id="account-type-work" class="hidden" name="account_type_id" value="3">
+              <input id="social" class="hidden" name="account_type_id" value="3">
                 <button id="social-category" class="py-2 pl-4">Social</button>
               </form>
               <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
-              <input id="account-type-work" class="hidden" name="account_type_id" value="4">
+              <input id="other" class="hidden" name="account_type_id" value="4">
                 <button id="other-category" class="py-2 pl-4">Other</button>
               </form>
             </div>
@@ -113,19 +113,19 @@ $(() => {
 
                 <div class="category-submenu hidden flex flex-col py-2 justify-center">
                   <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
-                    <input id="account-type-work" class="hidden" name="account_type_id" value="1">
+                    <input id="work" class="hidden" name="account_type_id" value="1">
                     <button id="work-category" class="py-2 pl-4">Work</button>
                   </form>
                   <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
-                    <input id="account-type-work" class="hidden" name="account_type_id" value="2">
+                    <input id="entertainment" class="hidden" name="account_type_id" value="2">
                     <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
                   </form>
                   <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
-                    <input id="account-type-work" class="hidden" name="account_type_id" value="3">
+                    <input id="social" class="hidden" name="account_type_id" value="3">
                     <button id="social-category" class="py-2 pl-4">Social</button>
                   </form>
                   <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
-                    <input id="account-type-work" class="hidden" name="account_type_id" value="4">
+                    <input id="other" class="hidden" name="account_type_id" value="4">
                     <button id="other-category" class="py-2 pl-4">Other</button>
                   </form>
                 </div>

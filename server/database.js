@@ -383,3 +383,18 @@ const addUserToOrg = function(options) {
     .then(res => res.rows[0]);
 };
 exports.addUserToOrg = addUserToOrg;
+
+/**
+ * Check if an organization exists with a given org key
+ * @param {String} orgKey
+ */
+
+const checkOrgExists = function(orgKey) {
+  const query = `
+    SELECT * FROM organizations
+    WHERE identifier_key = $1;
+  `;
+  return db.query(query, [orgKey])
+    .then(res => res.rows[0]);
+}
+exports.checkOrgExists = checkOrgExists;

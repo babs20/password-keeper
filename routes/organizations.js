@@ -12,17 +12,23 @@ const bcrypt = require('bcrypt');
 module.exports = (database) => {
   router.post('/register', (req, res) => {
     const organization = req.body;
+
+    if (!organization.name || !organization.abbreviation || !organization.email || !organization.password) {
+      res.send({ blankFieldErr: "error" });
+      return;
+    }
     organization.password = bcrypt.hashSync(organization.password, 12);
+
     database.addOrganization(organization)
-      .then(organization => {
-        if (!organization) {
-          res.send({ error: "error" });
-          return;
-        }
-        req.session.orgId = organization.id;
-        res.send('Worked');
-      })
-      .catch(e => res.send(e));
+    .then(organization => {
+      if (!organization) {
+        res.send({ error: "error" });
+        return;
+      }
+      req.session.orgId = organization.id;
+      res.send('Worked');
+    })
+    .catch(e => res.send(e));
   });
 
   const orgLogin = function(email, password) {
