@@ -164,6 +164,7 @@ $(() => {
       .then(json => {
         header.update(json.user);
         views_manager.show('homepage');
+        window.sidenav.detachSidebar();
       });
   });
 
