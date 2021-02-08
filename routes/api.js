@@ -20,12 +20,13 @@ module.exports = (database) => {
 
     database.getUserWithId(userId)
       .then(user => {
+        console.log(user);
         if (!user) {
           res.send({ error: "no user with that id" });
           return;
         }
 
-        res.send({user: {firstName: user.first_name, lastName: user.last_name, email: user.email, id: userId}});
+        res.send({user: {firstName: user.first_name, lastName: user.last_name, email: user.email, id: userId, org: user.org_id}});
       })
       .catch(e => res.send(e));
   });
@@ -113,7 +114,7 @@ module.exports = (database) => {
           return;
         }
 
-        res.send({org: { name: org.name, abbreviation: org.abbreviation, email: org.email, org_id: org.org_id }});
+        res.send({org: { name: org.name, abbreviation: org.abbreviation, email: org.email, orgId }});
       })
       .catch(e => res.send(e));
   });

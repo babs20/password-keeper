@@ -45,7 +45,7 @@ module.exports = (database) => {
           return;
         }
         req.session.orgId = org.id;
-        res.send({ org: { name: org.name, abbreviation: org.abbreviation, email: org.email, password: org.password }});
+        res.send({ org: { name: org.name, abbreviation: org.abbreviation, email: org.email, id: org.id }});
       })
       .catch(e => res.send(e));
   });

@@ -8,12 +8,15 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
+const { addUserToOrg } = require('../server/database');
 
 module.exports = (database) => {
   // user route - send user obj
   // need to add orgId cookie
   router.post('/register', (req, res) => {
     const user = req.body;
+    const key = req.body.org_key;
+    let options = {};
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
@@ -22,7 +25,18 @@ module.exports = (database) => {
           return;
         }
         req.session.userId = user.id;
-        res.send('Worked');
+        options.userId = user.id;
+        return key;
+      })
+      .then(database.getOrgIdFromKey)
+      .then(org => {
+        options.orgId = org.id;
+        return options;
+      })
+      .then(database.addUserToOrg)
+      .then(relationship => {
+        req.session.orgId = relationship.org_id;
+        res.send({user: {org: relationship.org_id, id: relationship.user_id}})
       })
       .catch(e => res.send(e));
   });
@@ -48,7 +62,7 @@ module.exports = (database) => {
         }
         req.session.userId = user.id;
         req.session.orgId = user.org_id;
-        res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id }});
+        res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id, org: user.org_id }});
       })
       .catch(e => res.send(e));
   });
@@ -57,6 +71,14 @@ module.exports = (database) => {
     req.session.userId = null;
     req.session.orgId = null;
     res.send({});
+  });
+
+  router.get('/organizations', (req, res) => {
+    const userId = req.session.userId;
+    database.getOrgsForUser(userId)
+      .then(orgs => {
+        res.send(orgs)
+      });
   });
 
   return router;
