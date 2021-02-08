@@ -151,9 +151,10 @@ const getUsersInOrg = function() {
   });
 };
 
-const removeUserFromOrg = function() {
+const removeUserFromOrg = function(data) {
   return $.ajax({
     method: 'DELETE',
-    url: '/api/manage'
+    url: '/api/manage',
+    data
   });
 };
