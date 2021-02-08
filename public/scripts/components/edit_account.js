@@ -96,5 +96,22 @@ $(() => {
 
   window.$editAccountForm = $editAccountForm;
 
+  $('main').on('submit', '#edit-account-form', function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    editAccount(data)
+      .then(() => {
+        views_manager.show('allAccounts');
+      })
+      .catch(e => console.log(e));
+  });
+
+  $('main').on('click', '.delete-account', function(event) {
+    deleteAccount()
+      .then(() => {
+        views_manager.show('allAccounts');
+      })
+  });
 
 });
