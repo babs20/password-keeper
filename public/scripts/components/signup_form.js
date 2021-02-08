@@ -45,7 +45,6 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    console.log(data)
     userRegistration(data)
       .then(getUserInfo)
       .then(json => {
