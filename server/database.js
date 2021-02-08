@@ -263,7 +263,7 @@ exports.deleteAccount = deleteAccount;
 
 const getUserOfOrg = function(orgId) {
   const query = `
-    SELECT users.first_name, users.last_name, users.email
+    SELECT users.first_name, users.last_name, users.email, users.id AS userId
     FROM users_organizations
     JOIN users ON user_id = users.id
     WHERE org_id = $1;
