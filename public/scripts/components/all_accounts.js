@@ -17,35 +17,37 @@ $(() => {
     $('.all-accounts-table').empty();
     getAllAccounts(data)
       .then(accountsArr => {
-        console.log(accountsArr);
         const $accountsTableHeader = $(`
-            <tr>
-              <th>Website</th>
-              <th>Email/Username</th>
-              <th>Password</th>
-            </tr>
+        <thead class="border-2 border-gray-400">
+          <tr class="border-b-2 border-gray-400 py-2">
+            <th class="p-2 border-2 border-gray-400 font-black text-sm">Website</th>
+            <th class="p-2 border-2 border-gray-400 font-black text-sm">Email / Username</th>
+            <th class="p-2 border-2 border-gray-400 font-black text-sm">Password</th>
+          </tr>
+        </thead>
+        <tbody id="all-accounts-body"></tbody>
         `);
         $accountsTableHeader.appendTo('.all-accounts-table')
         for (const account of accountsArr) {
           const $accountRow = $(`
-            <tr>
-              <td>${account.website}</td>
-              <td>${account.name}</td>
-              <td>
-                <div class="account-password-cell">
-                  <input type="password" class="account-password-field" value="${account.password}"readonly>
+          <tr class="border-t-2 border-b-2 border-gray-400 p-2">
+            <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${account.website}</td>
+              <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${account.name}</td>
+                <td class="p-2 border-2 border-gray-400 font-semibold text-sm">
+                    <div class="account-password-cell flex justify-around">
+                      <input type="password" class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-7/12" value="${account.password}" readonly>
 
-                  <div class="password-buttons">
-                    <button type="button" class="view-password"><i class="fas fa-eye"></i></button>
-                    <button type="button" class="copy-password"><i class="far fa-clipboard"></i></button>
-                    <button type="button" class="edit-account"><i class="fas fa-edit"></i></button>
-                  </div>
-                </div>
-              </td>
+                      <div class="password-buttons flex justify-around w-9/20 ml-1">
+                        <button type="button" class="view-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-eye px-1"></i></button>
+                        <button type="button" class="copy-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="far fa-clipboard px-1"></i></button>
+                        <button type="button" class="edit-account flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-edit px-1"></i></button>
+                      </div>
+                    </div>
+                </td>
             </tr>
           `);
 
-          $accountRow.appendTo('.all-accounts-table');
+          $accountRow.appendTo('#all-accounts-body');
         }
       })
   };
