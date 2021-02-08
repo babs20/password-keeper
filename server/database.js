@@ -149,8 +149,7 @@ exports.addAccountToOrg = addAccountToOrg;
    * @param {Object} options account_type_id and timestamp
 **/
 const getAllAccounts = (options) => {
-  const queryParams = [options.org_id];
-
+  const queryParams = [options.org_id]
   let query = `
   SELECT *
   FROM accounts
@@ -158,17 +157,17 @@ const getAllAccounts = (options) => {
 
   if (options.account_type_id) {
     queryParams.push(options.account_type_id);
-    query += ` AND account_type_id = ${queryParams.length}`;
+    query += ` AND account_type_id = $${queryParams.length}`;
   }
 
   if (options.website) {
     queryParams.push(options.search);
-    query += ` AND website LIKE '%${queryParams.length}%'`;
+    query += ` AND website LIKE '%$${queryParams.length}%'`;
   }
 
   if (options.creation_date) {
     queryParams.push(options.creation_date);
-    query += ` ORDER BY creation_date = ${queryParams.length}`;
+    query += ` ORDER BY creation_date = $${queryParams.length}`;
   }
 
   query += ';';
