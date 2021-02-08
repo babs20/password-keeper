@@ -11,6 +11,7 @@ module.exports = {
         'hoverBlue': '#7796b8',
         'warning': '#b52f2f',
         'warningHover': '#8c1919',
+        'navbar': '#7f8fb5',
       },
       width: {
         '9/20': '48.5%',
