@@ -16,28 +16,28 @@ $(() => {
     <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
       <div class="signup-form_field-wrapper flex flex-col w-9/20">
         <label for="first_name" class="label">First Name</label>
-        <input type="text" name="first_name" placeholder="First Name" class="input">
+        <input type="text" name="first_name" placeholder="First Name" class="first-name input">
       </div>
 
       <div class="signup-form_field-wrapper flex flex-col w-9/20">
         <label for="last_name" class="label">Last Name</label>
-        <input type="text" name="last_name" placeholder="Last Name" class="input">
+        <input type="text" name="last_name" placeholder="Last Name" class="last-name input">
       </div>
     </div>
 
     <div class="signup-form_field-wrapper form-field">
       <label for="email" class="label">Email</label>
-      <input type="email" name="email" placeholder="Email" class="input">
+      <input type="email" name="email" placeholder="Email" class="signup-email input">
     </div>
 
     <div class="signup-form_field-wrapper form-field">
       <label for="password" class="label">Password</label>
-      <input type="password" name="password" placeholder="Password" class="input">
+      <input type="password" name="password" placeholder="Password" class="signup-password input">
     </div>
 
     <div class="signup-form_field-wrapper form-field">
       <label for="org_id" class="label">Organization ID</label>
-      <input type="text" name="org_key" placeholder="Organization ID"  class="input">
+      <input type="text" name="org_key" placeholder="Organization ID"  class="org-key input">
     </div>
 
     <div class="signup-form_field_wrapper form-field">
@@ -64,6 +64,11 @@ $(() => {
         } else {
           $('.org-error-message').slideUp(10);
           $('.blank-field-error-message').slideUp(10);
+          $('.first-name').val('');
+          $('.last-name').val('');
+          $('.signup-email').val('');
+          $('.signup-password').val('');
+          $('.org-key').val('');
           return getUserInfo();
         }
       })
