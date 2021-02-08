@@ -109,7 +109,7 @@ $(() => {
     $('#generate-container').slideToggle(300);
   });
 
-  $('main').on('input', '#password-option0', function(event) {
+  $('main').on('input', '.password-option0', function(event) {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
       .then(password => {
@@ -135,6 +135,8 @@ $(() => {
     const data = $(this).serialize();
     editUserInfo(data)
       .then(() => {
+        $('#user-password-field').val('');
+        $('#confirm-user-password').val('');
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
