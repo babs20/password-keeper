@@ -1,7 +1,7 @@
 $(() => {
 
   const $orgLoginForm = $(`
-  <div class="login-form w-screen h-100 flex flex-col items-center justify-center mb-10">
+  <div class="login-form w-auto h-auto flex flex-col items-center justify-start mt-3">
   <form id="org-login-form" class="org-login-form h-72 w-80 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 mb-1">Organization Login</p>
     <div class="login-form_field-wrapper flex flex-col m-3 w-2/3">
@@ -33,9 +33,13 @@ $(() => {
 
     const data = $(this).serialize();
     orgLogin(data)
-      .then(getOrgInfo)
       .then(json => {
         header.update(json.org);
+        sidenav.showSidebar(json.org.id, json.org.user_id)
+        .then($sidebar => {
+          const $main = ('main');
+          $sidebar.appendTo($main);
+        })
         views_manager.show('allAccounts');
       });
 
