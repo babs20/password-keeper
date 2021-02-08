@@ -13,6 +13,7 @@ $(() => {
     $addAccountForm.detach();
     $generatePasswordForm.detach();
     $getAllAccounts.detach();
+    $editAccountForm.detach();
 
     switch (item) {
       case 'homepage':
@@ -42,6 +43,9 @@ $(() => {
         break;
       case 'generatePassword':
         $generatePasswordForm.appendTo($main);
+        break;
+      case 'editAccount':
+        $editAccountForm.appendTo($main);
         break;
     }
   };
