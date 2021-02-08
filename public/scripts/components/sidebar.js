@@ -32,10 +32,18 @@ $(() => {
             <div class="account-categories">
               <button id="account-categories">Categories</button>
               <div class="category-submenu hidden">
-                <button id="work-category">Work</button>
-                <button id="entertainment-category">Entertainment</button>
-                <button id="social-category">Social</button>
-                <button id="other-category">Other</button>
+                <form id="account-type-work">
+                  <button id="work-category" value="1">Work</button>
+                </form>
+                <form id="account-type-entertainment">
+                  <button id="entertainment-category" value="2">Entertainment</button>
+                </form>
+                <form id="account-type-social">
+                  <button id="social-category" value="3">Social</button>
+                </form>
+                <form id="account-type-other">
+                  <button id="other-category" value="4">Other</button>
+                </form>
               </div>
             </div>
 
@@ -84,10 +92,18 @@ $(() => {
             <div class="account-categories">
               <button type="button" id="account-categories">Categories</button>
               <div class="category-submenu hidden">
-                <button id="work-category">Work</button>
-                <button id="entertainment-category">Entertainment</button>
-                <button id="social-category">Social</button>
-                <button id="other-category">Other</button>
+                <form id="account-type-work">
+                  <button id="work-category" value="1">Work</button>
+                </form>
+                <form id="account-type-entertainment">
+                  <button id="entertainment-category" value="2">Entertainment</button>
+                </form>
+                <form id="account-type-social">
+                  <button id="social-category" value="3">Social</button>
+                </form>
+                <form id="account-type-other">
+                  <button id="other-category" value="4">Other</button>
+                </form>
               </div>
             </div>
 
@@ -140,12 +156,24 @@ $(() => {
   });
 
   // work listener
+  $('main').on('submit', '#account-type-work', function(event) {
+    views_manager.show('allAccounts');
+  });
 
   // enterntainment listener
+  $('main').on('submit', '#account-type-entertainment', function(event) {
+    views_manager.show('allAccounts');
+  });
 
   // social listener
+  $('main').on('submit', '#account-type-social', function(event) {
+    views_manager.show('allAccounts');
+  });
 
   // other listener
+  $('main').on('submit', '#account-type-other', function(event) {
+    views_manager.show('allAccounts');
+  });
 
   // search button listener
 
