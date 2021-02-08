@@ -63,7 +63,7 @@ $(() => {
       });
   });
 
-  $('main').on('click', '.fa-clipboard', function(event) {
+  $('main').on('click', '.copy-password', function(event) {
     $('#new-password').val().select();
     document.execCommand('copy');
   });
