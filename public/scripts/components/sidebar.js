@@ -28,6 +28,12 @@ $(() => {
 
           <div class="account-categories">
             <button id="account-categories">Categories</button>
+            <div class="category-submenu hidden">
+              <button id="work-category">Work</button>
+              <button id="entertainment-category">Entertainment</button>
+              <button id="social-category">Social</button>
+              <button id="other-category">Other</button>
+            </div>
           </div>
 
           <div class="account-search">
@@ -61,6 +67,12 @@ $(() => {
 
           <div class="account-categories">
             <button type="button" id="account-categories">Categories</button>
+            <div class="category-submenu hidden">
+              <button id="work-category">Work</button>
+              <button id="entertainment-category">Entertainment</button>
+              <button id="social-category">Social</button>
+              <button id="other-category">Other</button>
+            </div>
           </div>
 
           <div class="account-search">
@@ -99,6 +111,10 @@ $(() => {
   });
 
   // categories listener
+  $('main').on('click', '#account-categories', () => {
+    views_manager.show('allAccounts');
+    $('.category-submenu').slideToggle(300);
+  });
 
   // work listener
 
