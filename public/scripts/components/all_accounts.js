@@ -17,13 +17,13 @@ $(() => {
       .then(accountsArr => {
         const $accountsTableHeader = $(`
         <thead class="border-2 border-gray-400">
-          <tr class="border-b-2 border-gray-400 py-2">
+          <tr class="border-b-2 border-gray-400 py-2 bg-button text-white">
             <th class="p-2 border-2 border-gray-400 font-black text-sm">Website</th>
             <th class="p-2 border-2 border-gray-400 font-black text-sm">Email / Username</th>
             <th class="p-2 border-2 border-gray-400 font-black text-sm">Password</th>
           </tr>
         </thead>
-        <tbody id="all-accounts-body"></tbody>
+        <tbody id="all-accounts-body" class="bg-white"></tbody>
         `);
         $accountsTableHeader.appendTo('.all-accounts-table')
         for (const account of accountsArr) {
