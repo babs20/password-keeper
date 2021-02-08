@@ -1,7 +1,7 @@
 $(() => {
 
   const $editUserForm = $(`
-  <form id="generate-password-form"><form>
+  <form id="generate-password-form" class="hidden"></form>
   <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
   <form id="edit-user-form" class="edit-user-form w-7/12 h-100 flex flex-col items-center justify-center">
     <h4 class="edit-user font-sans text-2xl font-bold w-2/3 my-5">Edit User Information</h4>
@@ -41,14 +41,14 @@ $(() => {
     </div>
 
     <div class="edit-user-form_field-wrapper form-field">
-      <button class="save-user-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5" form="edit-user-form">Save Account</button>
+      <button type="submit" class="save-user-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5" form="edit-user-form">Save Account</button>
     </div>
+  </form>
 
     <div class="edit-user-form_field-wrapper flex justify-between w-2/3">
       <button type="button" class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
       <button type="button" class="delete-user rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
     </div>
-  </form>
  </div>
   `);
 
@@ -60,29 +60,29 @@ $(() => {
           <label for="length " class="label">Length</label>
           <input type="number" min="6" max="30" name="length"
             class="font-sans password-generator mr-4 w-1/3 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md hover:text-black focus:text-black"
-            placeholder="length">
+            placeholder="length" id="password-option0" value="12" form="generate-password-form">
         </div>
         <div class="flex justify-between items-center w-1/2 pl-4">
           <label for="password-option1" class="label ml-4"> Lower Case</label><br>
-          <input type="checkbox" id="password-option1" name="lc" value="lower-case"
-            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+          <input type="checkbox" id="password-option1" name="lc" value="true"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" form="generate-password-form" checked>
         </div>
       </div>
       <div class="flex justify-between items-center pt-2 divide-x divide-gray-400">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center w-full pr-4">
           <label for="password-option2" class="label"> Upper Case</label><br>
-          <input type="checkbox" id="password-option2" name="uc" value="upper-case"
-            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+          <input type="checkbox" id="password-option2" name="uc" value="true"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" form="generate-password-form">
         </div>
-        <div class="flex justify-between items-center pl-4">
+        <div class="flex justify-between items-center px-4 w-full">
           <label for="password-option3" class="label"> Numbers</label><br>
-          <input type="checkbox" id="password-option3" name="num" value="numbers"
-            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3 ">
+          <input type="checkbox" id="password-option3" name="num" value="true"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" form="generate-password-form">
         </div>
-        <div class="flex justify-between items-center pl-4">
+        <div class="flex justify-between items-center pl-4 w-full">
           <label for="password-option4" class="label"> Symbols</label><br>
-          <input type="checkbox" id="password-option4" name="sym" value="symbols"
-            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+          <input type="checkbox" id="password-option4" name="sym" value="true"
+            class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" form="generate-password-form">
         </div>
       </div>
   `);
@@ -90,27 +90,26 @@ $(() => {
   $('main').on('click', '.generate-password', function(event) {
     const $passwordField = $('#generate-container');
     $generatePassword.appendTo($passwordField);
+  });
 
-    $('main').on('input', '#password-option0', function(event) {
-      const data = $('#generate-password-form').serialize();
-      generatePassword(data)
-        .then(password => {
-          $('#user-password-field').val(password);
-          $('#confirm-user-password').val(password);
-        })
-        .catch(e => console.log(e));
-    });
+  $('main').on('input', '#password-option0', function(event) {
+    const data = $('#generate-password-form').serialize();
+    generatePassword(data)
+      .then(password => {
+        $('#user-password-field').val(password);
+        $('#confirm-user-password').val(password);
+      })
+      .catch(e => console.log(e));
+  });
 
-    $('main').on('click', '.password-option', function(event) {
-      const data = $('#generate-password-form').serialize();
-      generatePassword(data)
-        .then(password => {
-          $('#user-password-field').val(password);
-          $('#confirm-user-password').val(password);
-        })
-        .catch(e => console.log(e));
-    });
-
+  $('main').on('click', '.password-option', function(event) {
+    const data = $('#generate-password-form').serialize();
+    generatePassword(data)
+      .then(password => {
+        $('#user-password-field').val(password);
+        $('#confirm-user-password').val(password);
+      })
+      .catch(e => console.log(e));
   });
 
   $('main').on('submit', '#edit-user-form', function(event) {
