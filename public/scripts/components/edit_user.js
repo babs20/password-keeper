@@ -17,6 +17,11 @@ $(() => {
 
         const $customUserForm = $(`
         <h4 class="edit-user font-sans text-2xl font-bold w-2/3 my-5">Edit User Information</h4>
+
+        <div class="password-match-error hidden">
+          <h2 class="password-match-message">Passwords do not match</h2>
+        </div>
+
         <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
                 <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
                   <label for="first_name" class="label">First Name</label>
@@ -132,6 +137,12 @@ $(() => {
   $('main').on('submit', '#edit-user-form', function(event) {
     event.preventDefault();
 
+    if ($('#user-password-field').val() !== $('#confirm-user-password').val()) {
+      $('.password-match-error').slideDown(150);
+      return;
+    }
+
+    $('.password-match-error').slideUp();
     const data = $(this).serialize();
     editUserInfo(data)
       .then(() => {
