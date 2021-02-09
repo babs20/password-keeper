@@ -13,6 +13,13 @@ $(() => {
       </h4>
     </div>
 
+    <div class="sign-up-org-exists-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+      <h4 class="sign-up-org-exists-error-message text-white p-2 font-bold text-sm">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        This Email is Already Registered
+      </h4>
+    </div>
+
     <div class="name-abbrev flex items-center justify-between mb-3 w-full">
       <div class="signup-form_field-wrapper flex flex-col w-7/12 ">
         <label for="name" class="label">Organization Name</label>
@@ -53,10 +60,16 @@ $(() => {
     orgRegistration(data)
       .then(res => {
         if (res.blankFieldErr) {
+          $('.sign-up-org-exists-error').slideUp(10);
           $('.sign-up-blank-error').slideDown(200);
+          return;
+        } else if (res.orgExistsErr) {
+          $('.sign-up-blank-error').slideUp(10);
+          $('.sign-up-org-exists-error').slideDown(200);
           return;
         } else {
           $('.sign-up-blank-error').slideUp(10);
+          $('.sign-up-org-exists-error').slideUp(10);
           $('.org-name').val('');
           $('.org-abbrev').val('');
           $('.org-email').val('');
