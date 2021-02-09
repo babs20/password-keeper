@@ -16,10 +16,7 @@ module.exports = (database) => {
   router.post('/register', (req, res) => {
     const user = req.body;
     const key = req.body.org_key;
-    if (!user.first_name || !user.last_name || !user.email || !user.password || !key) {
-      res.send({ emptyErr: "error" });
-      return;
-    }
+
     let options = {};
     user.password = bcrypt.hashSync(user.password, 12);
 
