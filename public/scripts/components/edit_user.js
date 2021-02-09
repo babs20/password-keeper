@@ -142,16 +142,25 @@ $(() => {
     event.preventDefault();
 
     if ($('#user-password-field').val() !== $('#confirm-user-password').val()) {
+      $('.password-blank-error').slideUp();
       $('.password-match-error').slideDown(150);
       return;
     }
 
+    if ($('#user-password-field').val().length < 1) {
+      $('.password-match-error').slideUp();
+      $('.password-blank-error').slideDown(150);
+      return;
+    }
+
     $('.password-match-error').slideUp();
+    $('.password-blank-error').slideUp();
     const data = $(this).serialize();
     editUserInfo(data)
       .then(() => {
         $('#user-password-field').val('');
         $('#confirm-user-password').val('');
+        $('.password-option0').val('12');
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
