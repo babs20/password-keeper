@@ -16,7 +16,10 @@ $(() => {
         const org = json.org;
         $('#edit-org-form').empty();
         const $orgSpecificForm = $(`
-        <h4 class="edit-org font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Edit Organization Information</h4>
+        <div class="edit-org-header-section">
+          <h2 class="edit-org font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Edit Organization Information</h2>
+          <h4 class="org-identifier-key">${org.key}</h4>
+        </div>
 
         <div class="password-match-error hidden">
           <h2 class="password-match-message">Passwords do not match</h2>
