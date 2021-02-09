@@ -47,12 +47,43 @@ $(() => {
       updateHeader(json.user);
     });
 
+  getOrgInfo()
+    .then(json => {
+      updateHeader(json.org);
+    });
+
   $('header').on('click', '.login-button', (event) => {
     views_manager.show('login');
   });
 
   $('header').on('click', '#logo', (event) => {
-    views_manager.show('homepage');
+    getUserInfo()
+    .then(json => {
+      if (json.user) {
+        header.update(json.user);
+        sidenav.showSidebar(json.user.org, json.user.id)
+          .then($sidebar => {
+            const $main = $('main');
+            $sidebar.appendTo($main);
+            views_manager.show('allAccounts');
+          })
+      } else {
+        getOrgInfo()
+          .then(json => {
+            if (json.org) {
+              header.update(json.org);
+              sidenav.showSidebar(json.org.orgId, json.org.user_id)
+                .then($sidebar => {
+                  const $main = $('main');
+                  $sidebar.appendTo($main);
+                  views_manager.show('allAccounts');
+                })
+            } else {
+              views_manager.show('homepage');
+            }
+          })
+      }
+    })
   });
 
   $('header').on('click', '#logout-button', (event) => {
