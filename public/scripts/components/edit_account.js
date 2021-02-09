@@ -93,7 +93,7 @@ $(() => {
 
             <div class="edit-account_field-wrapper form-field">
               <label for="account-type" class="label">Account Type</label>
-              <select name="account-type" id="account-type-dropdown"
+              <select name="account_type_id" id="account-type-dropdown"
               class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
               </select>
             </div>
