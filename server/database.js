@@ -48,7 +48,6 @@ exports.generatePass = generatePass;
  * @param {String} email
  */
 const getUserWithEmail = function(email) {
-  console.log(email);
   return db.query(`
     SELECT users.*, users_organizations.org_id AS org_id
     FROM users

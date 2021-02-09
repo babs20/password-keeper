@@ -39,6 +39,7 @@ $(() => {
         break;
       case 'editUser':
         $editUserForm.appendTo($main);
+        createEditUserForm();
         break;
       case 'addAccount':
         $addAccountForm.appendTo($main);
