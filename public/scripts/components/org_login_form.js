@@ -53,7 +53,7 @@ $(() => {
           $('.login-password').val('');
           sidenav.showSidebar(json.org.id, json.org.user_id)
           .then($sidebar => {
-            const $main = ('main');
+            const $main = $('main');
             $sidebar.appendTo($main);
             views_manager.show('allAccounts');
           })
