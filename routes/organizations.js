@@ -14,10 +14,6 @@ module.exports = (database) => {
     const organization = req.body;
     const email = req.body.email;
 
-    if (!organization.name || !organization.abbreviation || !organization.email || !organization.password) {
-      res.send({ blankFieldErr: "error" });
-      return;
-    }
     organization.password = bcrypt.hashSync(organization.password, 12);
 
     database.getOrgWithEmail(email)

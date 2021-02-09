@@ -56,14 +56,21 @@ $(() => {
   $('main').on('submit', '#org-signup-form', function(event) {
     event.preventDefault();
 
+    const $orgName = $('.org-name').val().length;
+    const $orgAbbrev = $('.org-abbrev').val().length;
+    const $orgEmail = $('.org-email').val().length;
+    const $orgPassword = $('.org-password').val().length;
+
+    if ($orgName < 1 || $orgAbbrev < 1 || $orgEmail < 1 || $orgPassword < 1) {
+      $('.sign-up-org-exists-error').slideUp(10);
+      $('.sign-up-blank-error').slideDown(200);
+      return;
+    }
+
     const data = $(this).serialize();
     orgRegistration(data)
       .then(res => {
-        if (res.blankFieldErr) {
-          $('.sign-up-org-exists-error').slideUp(10);
-          $('.sign-up-blank-error').slideDown(200);
-          return;
-        } else if (res.orgExistsErr) {
+        if (res.orgExistsErr) {
           $('.sign-up-blank-error').slideUp(10);
           $('.sign-up-org-exists-error').slideDown(200);
           return;
