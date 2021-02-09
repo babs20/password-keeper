@@ -16,6 +16,7 @@ $(() => {
       .then(accountArr => {
         $('#edit-account-form').empty();
         $('.edit-account-buttons').empty();
+        $('#account-type-dropdown').empty();
         const account = accountArr[0];
         const $specificAccountForm = $(`
         <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
@@ -87,12 +88,9 @@ $(() => {
 
             <div class="edit-account_field-wrapper form-field">
               <label for="account-type" class="label">Account Type</label>
-              <select name="account-type" id="account-type-dropdown" class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black" value="${account.account_type_id}">
-                <option value="1">Work</option>
-                <option value="2">Entertainment</option>
-                <option value="3">Social</option>
-                <option value="4">Other</option>
-              </select>
+              <select name="account-type" id="account-type-dropdown"
+              class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
+
             </div>
 
             <input type="number" class="account-id hidden" name="id" value="${account.id}">
@@ -115,8 +113,47 @@ $(() => {
       </div>
       `);
 
+      const accountType = account.account_type_id;
+      let $options;
+
+      switch (true) {
+        case Number(accountType) === 1:
+          $options = $(`
+          <option value="1" selected>Work</option>
+          <option value="2">Entertainment</option>
+          <option value="3">Social</option>
+          <option value="4">Other</option>
+          `)
+          break;
+        case Number(accountType) === 2:
+          $options = $(`
+          <option value="1">Work</option>
+          <option value="2" selected>Entertainment</option>
+          <option value="3">Social</option>
+          <option value="4">Other</option>
+          `)
+          break;
+        case Number(accountType) === 3:
+          $options = $(`
+          <option value="1">Work</option>
+          <option value="2">Entertainment</option>
+          <option value="3" selected>Social</option>
+          <option value="4">Other</option>
+          `)
+          break;
+        case Number(accountType) === 4:
+          $options = $(`
+          <option value="1">Work</option>
+          <option value="2">Entertainment</option>
+          <option value="3">Social</option>
+          <option value="4" selected>Other</option>
+          `)
+          break;
+      }
+
       $specificAccountForm.appendTo('#edit-account-form');
       $editAccountButtons.appendTo('.edit-account-buttons');
+      $options.appendTo('#account-type-dropdown');
     });
   };
 
@@ -124,6 +161,10 @@ $(() => {
 
   $('main').on('submit', '#edit-account-form', function(event) {
     event.preventDefault();
+
+    const $emailUsername = $();
+    const $password = $();
+    const $confirmPassword = $();
 
     const data = $(this).serialize();
     editAccount(data)
