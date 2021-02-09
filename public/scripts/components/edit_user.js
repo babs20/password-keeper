@@ -22,6 +22,10 @@ $(() => {
           <h2 class="password-match-message">Passwords do not match</h2>
         </div>
 
+        <div class="password-blank-error hidden">
+          <h2 class="password-blank-message">Password field cannot be empty</h2>
+        </div>
+
         <div class="first-last-name flex items-center justify-between mx-3 mb-3 w-full">
           <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
             <label for="first_name" class="label">First Name</label>
