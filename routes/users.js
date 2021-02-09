@@ -23,35 +23,43 @@ module.exports = (database) => {
     let options = {};
     user.password = bcrypt.hashSync(user.password, 12);
 
-    database.checkOrgExists(key)
-      .then(org => {
-        if (!org) {
-          res.send({ noOrgErr: "error" });
-          return;
-        } else {
-          database.addUser(user)
-            .then(user => {
-              if (!user) {
-                res.send({ error: "error" });
-                return;
-              }
-              req.session.userId = user.id;
-              options.userId = user.id;
-              return key;
-            })
-            .then(database.getOrgIdFromKey)
-            .then(org => {
-              options.orgId = org.id;
-              return options;
-            })
-            .then(database.addUserToOrg)
-            .then(relationship => {
-              req.session.orgId = relationship.org_id;
-              res.send({user: {org: relationship.org_id, id: relationship.user_id}})
-            })
-            .catch(e => res.send(e));
-        }
-      })
+    database.getUserWithEmail(user.email)
+    .then(userExists => {
+      if (userExists) {
+        res.send({userExistsErr: "error"});
+        return;
+      } else {
+        database.checkOrgExists(key)
+        .then(org => {
+          if (!org) {
+            res.send({ noOrgErr: "error" });
+            return;
+          } else {
+            database.addUser(user)
+              .then(user => {
+                if (!user) {
+                  res.send({ error: "error" });
+                  return;
+                }
+                req.session.userId = user.id;
+                options.userId = user.id;
+                return key;
+              })
+              .then(database.getOrgIdFromKey)
+              .then(org => {
+                options.orgId = org.id;
+                return options;
+              })
+              .then(database.addUserToOrg)
+              .then(relationship => {
+                req.session.orgId = relationship.org_id;
+                res.send({user: {org: relationship.org_id, id: relationship.user_id}})
+              })
+              .catch(e => res.send(e));
+          }
+        })
+      }
+    })
 
   });
 
