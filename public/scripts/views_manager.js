@@ -52,6 +52,7 @@ $(() => {
         break;
       case 'editOrg':
         $editOrgForm.appendTo($main);
+        createEditOrgForm();
         break;
       case 'manageOrg':
         $manageOrg.appendTo($main);
