@@ -61,6 +61,7 @@ $(() => {
     .then(json => {
       if (json.user) {
         header.update(json.user);
+        sidenav.detachSidebar();
         sidenav.showSidebar(json.user.org, json.user.id)
           .then($sidebar => {
             const $main = $('main');
@@ -72,6 +73,7 @@ $(() => {
           .then(json => {
             if (json.org) {
               header.update(json.org);
+              sidenav.detachSidebar();
               sidenav.showSidebar(json.org.orgId, json.org.user_id)
                 .then($sidebar => {
                   const $main = $('main');
