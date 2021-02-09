@@ -20,6 +20,13 @@ $(() => {
       </h4>
     </div>
 
+    <div class="sign-up-exists-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+      <h4 class="exists-error-message text-white p-2 font-bold text-sm">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        This Email is Already Registered
+      </h4>
+    </div>
+
     <div class="first-last-name flex items-center justify-between mb-3 w-full">
       <div class="signup-form_field-wrapper flex flex-col w-9/20">
         <label for="first_name" class="label">First Name</label>
@@ -65,14 +72,21 @@ $(() => {
     userRegistration(data)
       .then((data) => {
         if (data.emptyErr) {
-          $('.sign-up-blank-error').slideDown(200);
+          $('.sign-up-exists-error').slideUp(10);
           $('.sign-up-org-error').slideUp(10);
+          $('.sign-up-blank-error').slideDown(200);
         } else if (data.noOrgErr) {
-          $('.sign-up-org-error').slideDown(200);
+          $('.sign-up-exists-error').slideUp(10);
           $('.sign-up-blank-error').slideUp(10);
+          $('.sign-up-org-error').slideDown(200);
+        } else if (data.userExistsErr) {
+          $('.sign-up-org-error').slideUp(10);
+          $('.sign-up-blank-error').slideUp(10);
+          $('.sign-up-exists-error').slideDown(200);
         } else {
           $('.sign-up-org-error').slideUp(10);
           $('.sign-up-blank-error').slideUp(10);
+          $('.sign-up-exists-error').slideUp(10);
           $('.first-name').val('');
           $('.last-name').val('');
           $('.signup-email').val('');
