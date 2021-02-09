@@ -142,8 +142,6 @@ module.exports = (database) => {
         res.send(users);
       })
       .catch(err => console.log(err));
-
-
   });
 
   router.delete('/manage', (req, res) => {
