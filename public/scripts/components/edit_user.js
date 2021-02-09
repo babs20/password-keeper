@@ -2,8 +2,8 @@ $(() => {
 
   const $editUserForm = $(`
   <form id="generate-password-form" class="hidden"></form>
-    <div class="w-screen h-100 flex flex-col items-center justify-center">
-      <form id="edit-user-form" class="edit-user-form w-7/12 flex flex-col items-center justify-start mx-auto pb-10">
+    <div class="w-10/12 h-100 mx-auto flex flex-col items-center justify-start">
+      <form id="edit-user-form" class="edit-user-form w-7/12 flex flex-col items-center justify-start mx-auto pt-5">
       </form>
     </div>
   `);
