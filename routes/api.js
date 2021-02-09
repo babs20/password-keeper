@@ -61,6 +61,10 @@ module.exports = (database) => {
   });
 
   router.get("/accounts", (req, res) => {
+    if (req.query.organization) {
+      req.session.orgId = req.query.organization;
+    }
+
     const orgId = req.session.orgId // NEED TO GET orgId for the current user
     database.getAllAccounts({...req.query, org_id: orgId})
       .then((account) => {
