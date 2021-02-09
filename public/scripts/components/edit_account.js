@@ -95,7 +95,7 @@ $(() => {
               <label for="account-type" class="label">Account Type</label>
               <select name="account-type" id="account-type-dropdown"
               class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
-
+              </select>
             </div>
 
             <input type="number" class="account-id hidden" name="id" value="${account.id}">
@@ -189,7 +189,6 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    console.log(data);
     deleteAccount(data)
       .then(() => {
         views_manager.show('allAccounts');
