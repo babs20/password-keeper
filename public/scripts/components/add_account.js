@@ -6,6 +6,11 @@ $(() => {
       <form id="add-account-form" class="add-account-form w-7/12 min-h-full flex flex-col items-center justify-start pt-5 mx-auto">
         <h4 class="add-account font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Add Account Login Information</h4>
 
+        <div class="empty-fields-error hidden">
+          <h2 class="empty-fields-message">Email/username and password fields cannot be empty</h2>
+        </div>
+
+
         <div class="add-account_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
           <label for="email-username" class="label">Email / Username</label>
           <input type="text" id="email-username" name="name" placeholder="Login" class="input">
@@ -87,9 +92,15 @@ $(() => {
   $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
 
+    if ($('#email-username').val().length < 1 || $('#account-password-field').val().legnth < 1) {
+      $('.empty-fields-error').slideDown(150);
+      return;
+    }
+
     const data = $(this).serialize();
     createAccount(data)
       .then(() => {
+        $('.empty-fields-error').slideUp();
         $('#email-username').val('');
         $('#account-password-field').val('');
         $('#website').val('https://');
