@@ -6,7 +6,7 @@ $(() => {
       <form id="add-account-form" class="add-account-form w-7/12 min-h-full flex flex-col items-center justify-start pt-5 mx-auto">
         <h4 class="add-account font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Add Account Login Information</h4>
 
-        <div class="add-account_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+        <div class="add-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
           <label for="email-username" class="label">Email / Username</label>
           <input type="text" id="email-username" name="name" placeholder="Login" class="input">
         </div>
@@ -60,7 +60,7 @@ $(() => {
           </div>
         </div>
 
-        <div class="add-account_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+        <div class="add-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
           <label for="website" class="label">Website</label>
           <input type="url" id="website" name="website" placeholder="Website" class="input" value="https://">
         </div>
