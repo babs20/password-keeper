@@ -17,29 +17,37 @@ $(() => {
         $('#edit-org-form').empty();
         const $orgSpecificForm = $(`
         <h4 class="edit-org font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Edit Organization Information</h4>
+
+        <div class="password-match-error hidden">
+          <h2 class="password-match-message">Passwords do not match</h2>
+        </div>
+
+        <div class="fields-blank-error hidden">
+          <h2 class="fields-blank-message">Please fill out all fields</h2>
+        </div>
+
         <div class="name-abbrev flex items-center justify-between mb-3 w-full">
           <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
             <label for="name" class="label">Name</label>
-            <input type="text" name="name" placeholder="Name" class="input" value="${org.name}">
+            <input type="text" id="org-name" name="name" placeholder="Name" class="org-name input" value="${org.name}">
           </div>
 
           <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
             <label for="abbreviation" class="label">Abbreviation</label>
-            <input type="text" name="abbreviation" placeholder="Abbreviation" class="input" value="${org.abbreviation}">
+            <input type="text" name="abbreviation" placeholder="Abbreviation" class="org-abbrev input" value="${org.abbreviation}">
           </div>
         </div>
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
           <label for="email" class="label">Email</label>
-          <input type="email" name="email" placeholder="Email" class="input" value="${org.email}">
+          <input type="email" name="email" placeholder="Email" class="org-email input" value="${org.email}">
         </div>
 
         <div class="password-with-generator flex items-center justify-between mb-3 w-full">
           <div class="edit-org-form_field-wrapper flex flex-col w-full">
             <label for="password" class="label">Password</label>
             <div id="generator" class="flex justify-between w-full">
-              <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
-                id="org-password-field">
+              <input type="password" name="password" placeholder="Password" class="org-password-field input w-3/4 mr-3">
               <button type="button"
                 class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
             </div>
@@ -85,8 +93,7 @@ $(() => {
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
           <label for="confirm-password" class="label">Confirm Password</label>
-          <input type="password" name="confirm-password" placeholder="Confirm Password" class="input"
-            id="confirm-user-password">
+          <input type="password" name="confirm-password" placeholder="Confirm Password" class="confirm-org-password input">
         </div>
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
@@ -109,9 +116,30 @@ $(() => {
   $('main').on('submit', '#edit-org-form', function(event) {
     event.preventDefault();
 
+    const $orgName = $('#org-name').val();
+    const $orgAbbrev = $('.org-abbrev').val();
+    const $orgEmail = $('.org-email').val();
+    const $orgPassword = $('.org-password-field').val();
+    const $confirmOrgPass = $('.confirm-org-password').val();
+
+    if ($orgName.length < 1 || $orgAbbrev.length < 1 || $orgEmail.length < 1 || $orgPassword.length < 1 || $confirmOrgPass.length < 1) {
+      $('.password-match-error').slideUp(10);
+      $('.fields-blank-error').slideDown(150);
+      return;
+    }
+
+    if ($orgPassword !== $confirmOrgPass) {
+      $('.fields-blank-error').slideUp(10);
+      $('.password-match-error').slideDown(150);
+      return;
+    }
+
     const data = $(this).serialize();
     editOrgInfo(data)
       .then(() => {
+        $('.password-match-error').slideUp(10);
+        $('.fields-blank-error').slideUp(10);
+        $('.sidebar-org-name').text($orgName);
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
