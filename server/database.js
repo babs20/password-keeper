@@ -153,6 +153,11 @@ const getAllAccounts = (options) => {
   FROM accounts
   WHERE org_id = $1`
 
+  if (options.id) {
+    queryParams.push(options.id);
+    query += ` AND id = $${queryParams.length}`;
+  }
+
   if (options.account_type_id) {
     queryParams.push(options.account_type_id);
     query += ` AND account_type_id = $${queryParams.length}`;
