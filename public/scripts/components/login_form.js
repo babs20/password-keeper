@@ -2,6 +2,7 @@ $(() => {
 
   const $loginForm = $(`
   <div class="login-form w-auto h-auto flex flex-col items-center justify-start mx-auto mt-10">
+    <div>
       <form id="user-login-form" class="user-login-form h-100 w-80 flex flex-col items-center justify-center">
         <p class="font-sans text-2xl font-bold w-full mb-1">User Login</p>
 
@@ -31,6 +32,7 @@ $(() => {
         <p class="text-l font-normal">Organization? <button type="button" id="org-login-link" class="cursor-pointer text-button hover:underline">Login</button></p>
 
         <p class="text-l font-normal">Don't have an account? <button type="button" id="sign-up-link"  class="cursor-pointer text-button hover:underline">Register</button></p>
+      </div>
       </div>
 
     </div>
