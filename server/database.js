@@ -52,7 +52,7 @@ const getUserWithEmail = function(email) {
     SELECT users.*, users_organizations.org_id AS org_id
     FROM users
     JOIN users_organizations ON users.id = user_id
-    WHERE email = $1
+    WHERE email = $1 AND users.is_deleted = FALSE
     LIMIT 1;
   `, [email])
     .then(res => res.rows[0]);
@@ -303,7 +303,8 @@ exports.deleteUserOfOrg = deleteUserOfOrg;
 const getOrgWithEmail = function(email) {
   return db.query(`
     SELECT * FROM organizations
-    WHERE email = $1;
+    WHERE email = $1
+    AND is_deleted = FALSE;
   `, [email])
     .then(res => res.rows[0]);
 };

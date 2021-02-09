@@ -91,7 +91,7 @@ $(() => {
       $('#custom-tooltip').fadeIn(150);
       setTimeout(() => {
         $('#custom-tooltip').fadeOut(150);
-      }, 5000)
+      }, 3000)
     }
   });
 

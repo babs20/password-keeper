@@ -52,12 +52,12 @@ $(() => {
             <div id="generator" class="flex justify-between w-full">
               <input type="password" name="password" placeholder="Password" class="org-password-field input w-3/4 mr-3">
               <button type="button"
-                class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+                class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
             </div>
           </div>
         </div>
 
-        <div id="generate-container" class="flex flex-col mb-3 divide-y divide-gray-400 hidden w-full">
+        <div id="generate-org-container" class="flex flex-col mb-3 divide-y divide-gray-400 hidden w-full">
           <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
             <div class="flex justify-between items-center w-1/2 pr-3">
               <label for="length " class="label">Length</label>
@@ -68,7 +68,7 @@ $(() => {
             <div class="flex justify-between items-center w-1/2 pl-4">
               <label for="password-option1" class="label ml-4"> Lower Case</label><br>
               <input type="checkbox" name="lc" value="true"
-                class="password-option1 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+                class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form" checked>
             </div>
           </div>
@@ -76,19 +76,19 @@ $(() => {
             <div class="flex justify-between items-center w-full pr-4">
               <label for="password-option2" class="label"> Upper Case</label><br>
               <input type="checkbox" name="uc" value="true"
-                class="password-option2 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+                class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
             <div class="flex justify-between items-center px-4 w-full">
               <label for="password-option3" class="label"> Numbers</label><br>
               <input type="checkbox" name="num" value="true"
-                class="password-option3 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+                class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
             <div class="flex justify-between items-center pl-4 w-full">
               <label for="password-option4" class="label"> Symbols</label><br>
               <input type="checkbox" name="sym" value="true"
-                class="password-option4 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+                class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
           </div>
@@ -116,6 +116,20 @@ $(() => {
 
   window.createEditOrgForm = createEditOrgForm;
 
+  $('main').on('click', '.generate-org-password', function(event) {
+    $('#generate-org-container').slideToggle(300, () => {
+      if (!$('#generate-org-container').is(':hidden')) {
+        const data = $('#generate-password-form').serialize();
+        generatePassword(data)
+          .then(password => {
+            $('.org-password-field').val(password);
+            $('.confirm-org-password').val(password);
+          })
+          .catch(e => console.log(e));
+      }
+    });
+  });
+
   $('main').on('input', '.password-option0', function(event) {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
@@ -126,7 +140,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('click', '.password-option', function(event) {
+  $('main').on('change', '.password-option', function(event) {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
       .then(password => {
