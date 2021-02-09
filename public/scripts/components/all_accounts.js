@@ -61,6 +61,19 @@ $(() => {
     }
   });
 
+  $('main').on('click', '.copy-password', function(event) {
+    const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+      $passwordField.select();
+      document.execCommand('copy');
+      $passwordField.attr('type', 'password');
+    } else {
+      $passwordField.select();
+      document.execCommand('copy');
+    }
+  });
+
   $('main').on('click', '.edit-account', function(event) {
     views_manager.show('editAccount');
   });

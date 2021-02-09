@@ -193,6 +193,7 @@ $(() => {
 
     const data = $(this).serialize();
     const $main = $('#main-content');
+    views_manager.show();
     $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
@@ -203,6 +204,7 @@ $(() => {
 
     const data = $(this).serialize();
     const $main = $('#main-content');
+    views_manager.show();
     $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
@@ -213,6 +215,7 @@ $(() => {
 
     const data = $(this).serialize();
     const $main = $('#main-content');
+    views_manager.show();
     $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
@@ -223,6 +226,7 @@ $(() => {
 
     const data = $(this).serialize();
     const $main = $('#main-content');
+    views_manager.show();
     $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
