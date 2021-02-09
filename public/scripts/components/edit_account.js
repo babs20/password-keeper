@@ -20,6 +20,11 @@ $(() => {
         const account = accountArr[0];
         const $specificAccountForm = $(`
         <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
+
+        <div class="empty-fields-error hidden">
+        <h2 class="empty-fields-message">Email/username and password fields cannot be empty</h2>
+        </div>
+
         <div class="edit-account_field-wrapper form-field">
               <label for="email-username" class="label">Email/Username</label>
               <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${account.name}">
@@ -162,13 +167,19 @@ $(() => {
   $('main').on('submit', '#edit-account-form', function(event) {
     event.preventDefault();
 
-    const $emailUsername = $();
-    const $password = $();
-    const $confirmPassword = $();
+    const $emailUsername = $('#email-username').val();
+    const $password = $('#account-password-field').val();
+    const $confirmPassword = $('#confirm-account-password').val();
+
+    if ($emailUsername < 1 || $password < 1 || $confirmPassword < 1) {
+      $('.empty-fields-error').slideDown(150);
+      return;
+    }
 
     const data = $(this).serialize();
     editAccount(data)
       .then(() => {
+        $('.empty-fields-error').slideUp(10);
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
