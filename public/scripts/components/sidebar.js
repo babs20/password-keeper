@@ -29,9 +29,9 @@ $(() => {
                 </select>
               </div>
 
-              <div class="edit-user-wrapper my-auto w-1/4 flex justify-end">
+              <div class="edit-user-wrapper h-full w-1/4 flex justify-end">
                 <button id="edit-user" class="pr-2">
-                  <i class="fas fa-cog hover:animate-spin"></i>
+                  <i class="fas fa-cog hover:animate-spin text-center text-xl" title="Edit User Information"></i>
                 </button>
               </div>
             </div>
@@ -71,7 +71,7 @@ $(() => {
 
             <div class="account-search py-4 px-4 w-auto">
               <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
-                class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-auto">
+                class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full">
             </div>
           </nav>
           `;
@@ -86,16 +86,16 @@ $(() => {
           orgName = json.org.name;
           const $orgLinks = $(`
           <nav id="sidebar_links"
-          class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400">
+          class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 sm:w-1/4">
           <div class="org-options py-4 flex items-center justify-between px-4 h-100">
             <div class="org-options flex flex-col w-3/4 ">
               <h1 class="org-name-label font-bold">Organization:</h1>
               <h3 class="sidebar-org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400 break-words">${orgName}</h3>
             </div>
 
-            <div class="edit-org-wrapper my-auto w-1/4 flex justify-end">
+            <div class="edit-org-wrapper h-full w-1/4 flex justify-end">
               <button id="edit-org" class="pr-2">
-                <i class="fas fa-cog hover:animate-spin"></i>
+                <i class="fas fa-cog hover:animate-spin text-xl" title="Edit Organization Information"></i>
               </button>
             </div>
           </div>
@@ -140,7 +140,7 @@ $(() => {
           <div class="account-search py-4 px-4 w-auto">
             <form id="search-bar-form">
             <input type=text name="website" placeholder="Search" size="15" id="account-search-bar"
-              class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-auto">
+              class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full">
             </form>
           </div>
         </nav>
