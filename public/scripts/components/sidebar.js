@@ -82,11 +82,11 @@ $(() => {
           orgName = json.org.name;
           const $orgLinks = $(`
           <nav id="sidebar_links"
-          class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 ">
+          class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400">
           <div class="org-options py-4 flex items-center justify-between px-4 h-100">
             <div class="org-options flex flex-col w-3/4 ">
               <h1 class="org-name-label font-bold">Organization:</h1>
-              <h3 class="org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400 break-words">${orgName}</h3>
+              <h3 class="sidebar-org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400 break-words">${orgName}</h3>
             </div>
 
             <div class="edit-org-wrapper my-auto w-1/4 flex justify-end">

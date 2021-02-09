@@ -113,7 +113,7 @@ module.exports = (database) => {
           return;
         }
 
-        res.send({org: { name: org.name, abbreviation: org.abbreviation, email: org.email, orgId }});
+        res.send({org: { name: org.name, abbreviation: org.abbreviation, email: org.email, orgId, key: org.identifier_key }});
       })
       .catch(e => res.send(e));
   });
