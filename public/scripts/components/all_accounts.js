@@ -39,7 +39,7 @@ $(() => {
                         <button type="button" class="view-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-eye px-1"></i></button>
                         <button type="button" class="copy-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="far fa-clipboard px-1"></i></button>
                         <form class="button-to-edit-account">
-                          <input type="number" class="edit-account-id hidden" value="${account.id}">
+                          <input type="number" class="edit-account-id hidden" name="id" value="${account.id}">
                           <button class="edit-account flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-edit px-1"></i></button>
                         </form>
                       </div>
