@@ -59,7 +59,7 @@ $(() => {
         </div>
         <div class="flex">
           <button type="button" class="copy-password rounded-full p-1 w-12 l-10 bg-button text-white hover:bg-hoverBlue self-end mb-1"><i class="far fa-clipboard"></i></button>
-          <span id="custom-tooltip" class="self-end mb-2 ml-2 font-bold">Copied!</span>
+          <span id="custom-tooltip" class="hidden self-end mb-2 ml-2 font-bold">Copied!</span>
         </div>
       </div>
     </div>
@@ -78,8 +78,14 @@ $(() => {
   });
 
   $('main').on('click', '.copy-password', function(event) {
-    $('#new-password').select();
-    document.execCommand('copy');
+    if ($('#new-password').val().length > 0) {
+      $('#new-password').select();
+      document.execCommand('copy');
+      $('#custom-tooltip').fadeIn(150);
+      setTimeout(() => {
+        $('#custom-tooltip').fadeOut(150);
+      }, 5000)
+    }
   });
 
   $('main').on('input', '#password-option0', () => {
