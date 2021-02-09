@@ -151,7 +151,8 @@ const getAllAccounts = (options) => {
   let query = `
   SELECT *
   FROM accounts
-  WHERE org_id = $1`
+  WHERE org_id = $1
+  AND is_deleted = FALSE`
 
   if (options.id) {
     queryParams.push(options.id);
@@ -187,7 +188,6 @@ exports.getAllAccounts = getAllAccounts;
  */
 
 const updateAccountInfo = function(account) {
-  const hashedPassword = bcrypt.hashSync(account.password, 12);
   const query = `
     UPDATE accounts
     SET name = $1,
@@ -196,7 +196,7 @@ const updateAccountInfo = function(account) {
         account_type_id = $4
     WHERE id = $5 AND org_id = $6;
   `;
-  const queryParams = [account.name, hashedPassword, account.website, account.account_type_id, account.id, account.org_id];
+  const queryParams = [account.name, account.password, account.website, account.account_type_id, account.id, account.org_id];
   return db.query(query, queryParams)
     .then(res => res.rows[0])
     .catch(err => console.log(err));

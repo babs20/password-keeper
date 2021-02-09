@@ -4,6 +4,8 @@ $(() => {
     <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
       <form id="edit-account-form" class="w-7/12 h-full flex flex-col items-center justify-start">
       </form>
+      <div class="edit-account-buttons">
+      </div>
     </div>
   `);
 
@@ -13,6 +15,7 @@ $(() => {
     getAllAccounts(accountId)
       .then(accountArr => {
         $('#edit-account-form').empty();
+        $('.edit-account-buttons').empty();
         const account = accountArr[0];
         const $specificAccountForm = $(`
         <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
@@ -92,23 +95,28 @@ $(() => {
               </select>
             </div>
 
-            <input type="number" class="account-id hidden" value="${account.id}">
+            <input type="number" class="account-id hidden" name="id" value="${account.id}">
 
             <div class="edit-account_field-wrapper form-field">
               <button type="submit"
                 class="save-account-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">
                 Save</button>
             </div>
-
-            <div class="edit-account_field-wrapper flex justify-between w-2/3">
-              <button type="button"
-                class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
-              <button type="button"
-                class="delete-account rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
-            </div>
     `);
 
+      const $editAccountButtons = $(`
+      <div class="edit-account_field-wrapper flex justify-between w-2/3">
+      <button type="button"
+        class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
+        <form id="delete-account-form">
+        <input type="number" class="account-id hidden" name="id" value="${account.id}">
+          <button class="delete-account rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
+        </form>
+      </div>
+      `);
+
       $specificAccountForm.appendTo('#edit-account-form');
+      $editAccountButtons.appendTo('.edit-account-buttons');
     });
   };
 
@@ -125,8 +133,12 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('click', '.delete-account', function(event) {
-    deleteAccount()
+  $('main').on('submit', '#delete-account-form', function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
+    console.log(data);
+    deleteAccount(data)
       .then(() => {
         views_manager.show('allAccounts');
       })
