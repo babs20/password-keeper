@@ -103,10 +103,11 @@ const editAccount = function(data) {
   });
 };
 
-const deleteAccount = function() {
+const deleteAccount = function(data) {
   return $.ajax({
     method: 'DELETE',
-    url: '/api/accounts'
+    url: '/api/accounts',
+    data
   });
 };
 
