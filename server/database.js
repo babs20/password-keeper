@@ -401,3 +401,19 @@ const checkOrgExists = function(orgKey) {
     .then(res => res.rows[0]);
 }
 exports.checkOrgExists = checkOrgExists;
+
+/**
+ * Set an organization is_deleted to true with a given orgId
+ * @param {number} orgId
+ */
+
+const deleteOrg = function(orgId) {
+  const query = `
+    UPDATE organizations
+    SET is_deleted = TRUE
+    WHERE id = $1;
+  `;
+  return db.query(query, [orgId])
+    .then(res => res.rows[0]);
+};
+exports.deleteOrg = deleteOrg;
