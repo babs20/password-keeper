@@ -161,6 +161,16 @@ $(() => {
 
   // org selector listener
   // make sure to change org cookie upon changing org
+  $('main').on('change', '#organizations-dropdown', function(event) {
+    const data = $(this).serialize();
+    const $main = $('#main-content');
+    views_manager.show();
+    getAllAccounts(data)
+      .then(() => {
+        $getAllAccounts.appendTo($main);
+        addAccountToTable();
+      })
+  });
 
   // edit user listener
   $('main').on('click', '#edit-user', () => {
