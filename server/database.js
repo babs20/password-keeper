@@ -151,7 +151,8 @@ const getAllAccounts = (options) => {
   let query = `
   SELECT *
   FROM accounts
-  WHERE org_id = $1`
+  WHERE org_id = $1
+  AND is_deleted = FALSE`
 
   if (options.id) {
     queryParams.push(options.id);
