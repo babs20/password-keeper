@@ -38,7 +38,10 @@ $(() => {
                       <div class="password-buttons flex justify-around w-9/20 ml-1">
                         <button type="button" class="view-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-eye px-1"></i></button>
                         <button type="button" class="copy-password flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="far fa-clipboard px-1"></i></button>
-                        <button type="button" class="edit-account flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-edit px-1"></i></button>
+                        <form class="button-to-edit-account">
+                          <input type="number" class="edit-account-id hidden" value="${account.id}">
+                          <button class="edit-account flex justify-center items-center hover:bg-button rounded-full w-1/3 hover:text-white"><i class="fas fa-edit px-1"></i></button>
+                        </form>
                       </div>
                     </div>
                 </td>
@@ -74,7 +77,11 @@ $(() => {
     }
   });
 
-  $('main').on('click', '.edit-account', function(event) {
+  $('main').on('submit', '.button-to-edit-account', function(event) {
+    event.preventDefault();
+
+    const data = $(this).serialize();
     views_manager.show('editAccount');
+    createEditAccountForm(data);
   });
 });
