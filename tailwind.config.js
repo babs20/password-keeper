@@ -12,6 +12,7 @@ module.exports = {
         'warning': '#b52f2f',
         'warningHover': '#8c1919',
         'navbar': '#7f8fb5',
+        'alertRed': '#d26161',
       },
       width: {
         '9/20': '48.5%',

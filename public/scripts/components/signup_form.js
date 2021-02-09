@@ -5,12 +5,18 @@ $(() => {
   <form id="signup-form" class="signup-form w-7/12 h-100 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a free account</p>
 
-    <div class="sign-up-blank-error">
-      <h2 class="blank-field-error-message hidden">Please fill in all fields before submitting</h2>
+    <div class="sign-up-blank-error flex flex-col mb-3 w-2/3 hidden bg-alertRed rounded-lg">
+      <h4 class="blank-field-error-message text-white p-2 font-bold text-sm">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        Please Complete All Fields
+      </h4>
     </div>
 
-    <div class="sign-up-org-error">
-      <h2 class="org-error-message hidden">Incorrect Organization ID</h2>
+    <div class="sign-up-org-error flex flex-col mb-3 w-2/3 hidden bg-alertRed rounded-lg">
+      <h4 class="org-error-message text-white p-2 font-bold text-sm">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        Incorrect Organization ID
+      </h4>
     </div>
 
     <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
@@ -56,14 +62,14 @@ $(() => {
     userRegistration(data)
       .then((data) => {
         if (data.emptyErr) {
-          $('.blank-field-error-message').slideDown(200);
-          $('.org-error-message').slideUp(10);
+          $('.sign-up-blank-error').slideDown(200);
+          $('.sign-up-org-error').slideUp(10);
         } else if (data.noOrgErr) {
-          $('.org-error-message').slideDown(200);
-          $('.blank-field-error-message').slideUp(10);
+          $('.sign-up-org-error').slideDown(200);
+          $('.sign-up-blank-error').slideUp(10);
         } else {
-          $('.org-error-message').slideUp(10);
-          $('.blank-field-error-message').slideUp(10);
+          $('.sign-up-org-error').slideUp(10);
+          $('.sign-up-blank-error').slideUp(10);
           $('.first-name').val('');
           $('.last-name').val('');
           $('.signup-email').val('');

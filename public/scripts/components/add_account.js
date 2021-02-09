@@ -65,7 +65,7 @@ $(() => {
           </div>
         </div>
 
-        <div class="add-account_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+        <div class="add-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
           <label for="website" class="label">Website</label>
           <input type="url" id="website" name="website" placeholder="Website" class="input" value="https://">
         </div>

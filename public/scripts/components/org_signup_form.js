@@ -5,8 +5,11 @@ $(() => {
   <form id="org-signup-form" class="org-signup-form w-1/2 h-100 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-2/3 my-5">Sign up for a Free<br>Organization Account</p>
 
-    <div class="sign-up-blank-error">
-      <h2 class="blank-field-error-message hidden">Please fill in all fields before submitting</h2>
+    <div class="sign-up-blank-error flex flex-col mb-3 w-2/3 hidden bg-alertRed rounded-lg">
+      <h4 class="blank-field-error-message text-white p-2 font-bold text-sm">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        Please Complete All Fields
+      </h4>
     </div>
 
     <div class="name-abbrev flex items-center justify-between mb-3 w-2/3">
@@ -47,10 +50,10 @@ $(() => {
     orgRegistration(data)
       .then(res => {
         if (res.blankFieldErr) {
-          $('.blank-field-error-message').slideDown(200);
+          $('.sign-up-blank-error').slideDown(200);
           return;
         } else {
-          $('.blank-field-error-message').slideUp(10);
+          $('.sign-up-blank-error').slideUp(10);
           $('.org-name').val('');
           $('.org-abbrev').val('');
           $('.org-email').val('');
