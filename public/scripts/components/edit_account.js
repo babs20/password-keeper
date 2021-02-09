@@ -4,7 +4,7 @@ $(() => {
     <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
       <form id="edit-account-form" class="w-7/12 h-full flex flex-col items-center justify-start">
       </form>
-      <div class="edit-account-buttons">
+      <div class="edit-account-buttons w-7/12 h-full flex flex-col items-center justify-start">
       </div>
     </div>
   `);
@@ -106,9 +106,9 @@ $(() => {
       <div class="edit-account_field-wrapper flex justify-between w-2/3">
       <button type="button"
         class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
-        <form id="delete-account-form">
+        <form id="delete-account-form" class="w-1/3">
         <input type="number" class="account-id hidden" name="id" value="${account.id}">
-          <button class="delete-account rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
+          <button class="delete-account rounded p-1 bg-warning w-full text-white hover:bg-warningHover mt-1.5">Delete</button>
         </form>
       </div>
       `);
