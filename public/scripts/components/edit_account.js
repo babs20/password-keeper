@@ -25,6 +25,10 @@ $(() => {
         <h2 class="empty-fields-message">Email/username and password fields cannot be empty</h2>
         </div>
 
+        <div class="password-match-error hidden">
+        <h2 class="password-match-message">Email/username and password fields cannot be empty</h2>
+        </div>
+
         <div class="edit-account_field-wrapper form-field">
               <label for="email-username" class="label">Email/Username</label>
               <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${account.name}">
@@ -172,7 +176,14 @@ $(() => {
     const $confirmPassword = $('#confirm-edit-password').val();
 
     if ($emailUsername < 1 || $password < 1 || $confirmPassword < 1) {
+      $('.password-match-error').slideUp(10);
       $('.empty-fields-error').slideDown(150);
+      return;
+    }
+
+    if ($password !== $confirmPassword) {
+      $('.empty-fields-error').slideUp(10);
+      $('.password-match-error').slideDown(150);
       return;
     }
 
@@ -180,6 +191,7 @@ $(() => {
     editAccount(data)
       .then(() => {
         $('.empty-fields-error').slideUp(10);
+        $('.password-match-error').slideUp(10);
         views_manager.show('allAccounts');
       })
       .catch(e => console.log(e));
