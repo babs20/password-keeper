@@ -269,7 +269,8 @@ const getUserOfOrg = function(orgId) {
     SELECT users.first_name, users.last_name, users.email, users.id AS userId
     FROM users_organizations
     JOIN users ON user_id = users.id
-    WHERE org_id = $1;
+    WHERE org_id = $1
+    AND is_deleted = FALSE;
   `;
   return db.query(query, [orgId])
     .then(res => res.rows)
