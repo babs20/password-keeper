@@ -22,3 +22,7 @@
   @apply h-72 w-80 flex flex-col items-center justify-center
 }
 
+button {
+  @apply focus:outline-none;
+}
+
