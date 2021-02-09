@@ -1,9 +1,9 @@
 $(() => {
 
   const $loginForm = $(`
-  <div class="login-form w-auto h-auto flex flex-col items-center justify-start mx-auto mt-10">
-    <div>
-      <form id="user-login-form" class="user-login-form h-100 w-80 flex flex-col items-center justify-center">
+  <div class="login-form w-9/12 h-auto flex flex-col items-center justify-start mx-auto mt-10">
+    <div class="w-full flex flex-col items-center h-full pt-32">
+      <form id="user-login-form" class="user-login-form h-100 w-9/12 xl:w-1/2 flex flex-col items-center justify-center">
         <p class="font-sans text-2xl font-bold w-full mb-1">User Login</p>
 
         <div class="login-error flex flex-col mt-3 w-full hidden bg-alertRed rounded-lg">
@@ -13,7 +13,7 @@ $(() => {
           </h4>
         </div>
 
-        <div class="login-form_field-wrapper flex flex-col mt-3 w-full">
+        <div class="login-form_field-wrapper flex flex-col my-3 w-full">
           <label for="email" class="font-bold">Email</label>
           <input type="email" name="email" placeholder="Email" class="input login-email">
         </div>
@@ -70,6 +70,10 @@ $(() => {
   });
 
   $('main').on('click', '#sign-up-link', (event) => {
+    views_manager.show('signup');
+  });
+
+  $('main').on('click', '#user-sign-up-link', (event) => {
     views_manager.show('signup');
   });
 

@@ -1,8 +1,9 @@
 $(() => {
 
   const $orgLoginForm = $(`
-  <div class="login-form w-auto h-auto flex flex-col items-center justify-start mx-auto mt-10">
-      <form id="org-login-form" class="org-login-form h-100 w-80 flex flex-col items-center justify-center">
+  <div class="login-form w-9/12 h-auto flex flex-col items-center justify-start mx-auto mt-10">
+    <div class="w-full flex flex-col items-center h-full pt-32">
+      <form id="org-login-form" class="org-login-form h-100 w-9/12 xl:w-1/2 flex flex-col items-center justify-center">
         <p class="font-sans text-2xl font-bold w-full mb-1">Organization Login</p>
 
         <div class="login-error flex flex-col mt-3 w-full hidden bg-alertRed rounded-lg">
@@ -32,7 +33,7 @@ $(() => {
 
         <p class="text-l font-normal">Don't have an account? <button type="button" id="org-sign-up-link"  class="cursor-pointer text-button hover:underline">Register</button></p>
       </div>
-
+    </div>
     </div>
   `);
 

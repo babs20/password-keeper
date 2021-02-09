@@ -33,7 +33,7 @@ $(() => {
             <td class="p-2 border-2 border-gray-400 font-semibold text-sm">
               <form class="remove-user-from-org">
                 <input type="number" name="user_id" value="${user.userid}" class="hidden">
-                <button class="remove-user rounded p-1 bg-button w-full text-white hover:bg-hoverBlue">Remove</button>
+                <button class="remove-user rounded p-1 bg-warning w-full text-white hover:bg-warningHover">Remove</button>
               </form>
             </td>
           </tr>
