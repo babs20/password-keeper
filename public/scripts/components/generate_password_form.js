@@ -2,7 +2,7 @@ $(() => {
   const $generatePasswordForm = $(`
     <div class="h-100 flex flex-col items-center justify-start mb-10 mx-auto">
       <div class="mt-10">
-        <form id="generate-password-form">
+        <form id="generate-password-form-full">
           <div class="w-full h-full divide-y divide-gray-400">
 
             <h2
@@ -11,6 +11,7 @@ $(() => {
 
             <div class="flex flex-col justify-between items-center w-full py-4">
               <label for="length " class="label w-full mb-2">Length</label>
+              <p id="password-length-value">12</p>
               <input type="range" min="6" max="30" increment="1" name="length"
                 class="rounded-lg appearance-none w-full h-3  border-gray-400 shadow-md" placeholder="length"
                 id="password-option0" value="12">
@@ -66,19 +67,24 @@ $(() => {
 
   window.$generatePasswordForm = $generatePasswordForm;
 
-  $('main').on('submit', '#generate-password-form', function(event) {
+  $('main').on('submit', '#generate-password-form-full', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
-    generatePassword()
+    generatePassword(data)
       .then(password => {
         $('#new-password').val(password);
       });
   });
 
   $('main').on('click', '.copy-password', function(event) {
-    $('#new-password').val().select();
+    $('#new-password').select();
     document.execCommand('copy');
   });
+
+  $('main').on('input', '#password-option0', () => {
+    const passwordLength = $('#password-option0').val();
+    $('#password-length-value').text(passwordLength);
+  })
 
 });
