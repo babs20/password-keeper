@@ -68,14 +68,23 @@ $(() => {
   $('main').on('submit', '#signup-form', function(event) {
     event.preventDefault();
 
+    const $firstName = $('.first-name').val().length;
+    const $lastName = $('.last-name').val().length;
+    const $email = $('.signup-email').val().length;
+    const $password = $('.signup-password').val().length;
+    const $orgID = $('.org-key').val().length;
+
+    if ($firstName < 1 || $lastName < 1 || $email < 1 || $password < 1 || $orgID < 1) {
+      $('.sign-up-exists-error').slideUp(10);
+      $('.sign-up-org-error').slideUp(10);
+      $('.sign-up-blank-error').slideDown(200);
+      return;
+    }
+
     const data = $(this).serialize();
     userRegistration(data)
       .then((data) => {
-        if (data.emptyErr) {
-          $('.sign-up-exists-error').slideUp(10);
-          $('.sign-up-org-error').slideUp(10);
-          $('.sign-up-blank-error').slideDown(200);
-        } else if (data.noOrgErr) {
+        if (data.noOrgErr) {
           $('.sign-up-exists-error').slideUp(10);
           $('.sign-up-blank-error').slideUp(10);
           $('.sign-up-org-error').slideDown(200);
