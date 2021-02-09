@@ -22,21 +22,25 @@ $(() => {
           <h2 class="password-match-message">Passwords do not match</h2>
         </div>
 
+        <div class="fields-blank-error hidden">
+          <h2 class="fields-blank-message">Please fill out all fields</h2>
+        </div>
+
         <div class="first-last-name flex items-center justify-between mx-3 mb-3 w-full">
           <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
             <label for="first_name" class="label">First Name</label>
-            <input type="text" name="first_name" placeholder="First Name" class="input" value="${json.user.firstName}">
+            <input type="text" name="first_name" placeholder="First Name" class="user-first-name input" value="${json.user.firstName}">
           </div>
 
           <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
             <label for="last_name" class="label">Last Name</label>
-            <input type="text" name="last_name" placeholder="Last Name" class="input" value="${json.user.lastName}">
+            <input type="text" name="last_name" placeholder="Last Name" class="user-last-name input" value="${json.user.lastName}">
           </div>
         </div>
 
         <div class="edit-user-form_field-wrapper flex flex-col mx-3 mb-3 w-full">
           <label for="email" class="label">Email</label>
-          <input type="email" name="email" placeholder="Email" class="input" value="${json.user.email}">
+          <input type="email" name="email" placeholder="Email" class="user-email input" value="${json.user.email}">
         </div>
 
         <div class="password-with-generator flex flex-col mx-3 mb-3 w-full">
@@ -142,19 +146,19 @@ $(() => {
     event.preventDefault();
 
     if ($('#user-password-field').val() !== $('#confirm-user-password').val()) {
-      $('.password-blank-error').slideUp();
+      $('.fields-blank-error').slideUp();
       $('.password-match-error').slideDown(150);
       return;
     }
 
-    if ($('#user-password-field').val().length < 1) {
+    if ($('#user-password-field').val().length < 1 || $('.user-first-name').val().length < 1 || $('.user-last-name').val().length < 1 || $('.user-email').val().length < 1) {
       $('.password-match-error').slideUp();
-      $('.password-blank-error').slideDown(150);
+      $('.fields-blank-error').slideDown(150);
       return;
     }
 
     $('.password-match-error').slideUp();
-    $('.password-blank-error').slideUp();
+    $('.fields-blank-error').slideUp();
     const data = $(this).serialize();
     editUserInfo(data)
       .then(() => {
