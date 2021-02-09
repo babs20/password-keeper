@@ -148,6 +148,7 @@ exports.addAccountToOrg = addAccountToOrg;
 **/
 const getAllAccounts = (options) => {
   const queryParams = [options.org_id]
+  const websiteParam = `%${options.website}%`
   let query = `
   SELECT *
   FROM accounts
@@ -165,8 +166,8 @@ const getAllAccounts = (options) => {
   }
 
   if (options.website) {
-    queryParams.push(options.search);
-    query += ` AND website LIKE '%$${queryParams.length}%'`;
+    queryParams.push(websiteParam);
+    query += ` AND website LIKE $${queryParams.length}`;
   }
 
   if (options.creation_date) {
@@ -270,7 +271,7 @@ const getUserOfOrg = function(orgId) {
     FROM users_organizations
     JOIN users ON user_id = users.id
     WHERE org_id = $1
-    AND is_deleted = FALSE;
+    AND users_organizations.is_deleted = FALSE;
   `;
   return db.query(query, [orgId])
     .then(res => res.rows)
