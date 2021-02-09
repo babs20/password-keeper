@@ -62,33 +62,33 @@ $(() => {
             <div class="flex justify-between items-center w-1/2 pr-3">
               <label for="length " class="label">Length</label>
               <input type="number" min="6" max="30" name="length"
-                class="font-sans password-generator mr-4 w-1/3 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md hover:text-black focus:text-black"
-                placeholder="length" id="password-option0" value="12" form="generate-password-form">
+                class="password-option0 font-sans password-generator mr-4 w-1/3 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md hover:text-black focus:text-black"
+                placeholder="length" value="12" form="generate-password-form">
             </div>
             <div class="flex justify-between items-center w-1/2 pl-4">
               <label for="password-option1" class="label ml-4"> Lower Case</label><br>
-              <input type="checkbox" id="password-option1" name="lc" value="true"
-                class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+              <input type="checkbox" name="lc" value="true"
+                class="password-option1 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form" checked>
             </div>
           </div>
           <div class="flex justify-between items-center pt-2 divide-x divide-gray-400">
             <div class="flex justify-between items-center w-full pr-4">
               <label for="password-option2" class="label"> Upper Case</label><br>
-              <input type="checkbox" id="password-option2" name="uc" value="true"
-                class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+              <input type="checkbox" name="uc" value="true"
+                class="password-option2 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
             <div class="flex justify-between items-center px-4 w-full">
               <label for="password-option3" class="label"> Numbers</label><br>
-              <input type="checkbox" id="password-option3" name="num" value="true"
-                class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+              <input type="checkbox" name="num" value="true"
+                class="password-option3 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
             <div class="flex justify-between items-center pl-4 w-full">
               <label for="password-option4" class="label"> Symbols</label><br>
-              <input type="checkbox" id="password-option4" name="sym" value="true"
-                class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
+              <input type="checkbox" name="sym" value="true"
+                class="password-option4 form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
                 form="generate-password-form">
             </div>
           </div>
@@ -115,6 +115,26 @@ $(() => {
   }
 
   window.createEditOrgForm = createEditOrgForm;
+
+  $('main').on('input', '.password-option0', function(event) {
+    const data = $('#generate-password-form').serialize();
+    generatePassword(data)
+      .then(password => {
+        $('.org-password-field').val(password);
+        $('.confirm-org-password').val(password);
+      })
+      .catch(e => console.log(e));
+  });
+
+  $('main').on('click', '.password-option', function(event) {
+    const data = $('#generate-password-form').serialize();
+    generatePassword(data)
+      .then(password => {
+        $('.org-password-field').val(password);
+        $('.confirm-org-password').val(password);
+      })
+      .catch(e => console.log(e));
+  });
 
   $('main').on('submit', '#edit-org-form', function(event) {
     event.preventDefault();
@@ -155,8 +175,9 @@ $(() => {
       .then(userLogout)
       .then(getOrgInfo)
       .then(json => {
-        header.update(json.user);
+        header.update(json.org);
         views_manager.show('homepage');
+        sidenav.detachSidebar();
       });
   });
 });

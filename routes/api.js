@@ -126,6 +126,14 @@ module.exports = (database) => {
       });
   });
 
+  router.delete('/organization', (req, res) => {
+    const orgId = req.session.orgId;
+    database.deleteOrg(orgId)
+      .then(() => {
+        res.send('Deleted');
+      })
+  });
+
   // MANAGE
   router.get('/manage', (req, res) => {
     const orgId = req.session.orgId;
@@ -134,8 +142,6 @@ module.exports = (database) => {
         res.send(users);
       })
       .catch(err => console.log(err));
-
-
   });
 
   router.delete('/manage', (req, res) => {

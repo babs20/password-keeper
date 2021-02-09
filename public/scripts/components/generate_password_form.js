@@ -2,7 +2,7 @@ $(() => {
   const $generatePasswordForm = $(`
     <div class="h-100 flex flex-col items-center justify-start mb-10 mx-auto">
       <div class="mt-10">
-        <form id="generate-password-form">
+        <form id="generate-password-form-full">
           <div class="w-full h-full divide-y divide-gray-400">
 
             <h2
@@ -11,6 +11,7 @@ $(() => {
 
             <div class="flex flex-col justify-between items-center w-full py-4">
               <label for="length " class="label w-full mb-2">Length</label>
+              <p id="password-length-value">12</p>
               <input type="range" min="6" max="30" increment="1" name="length"
                 class="rounded-lg appearance-none w-full h-3  border-gray-400 shadow-md" placeholder="length"
                 id="password-option0" value="12">
@@ -58,7 +59,7 @@ $(() => {
         </div>
         <div class="flex">
           <button type="button" class="copy-password rounded-full p-1 w-12 l-10 bg-button text-white hover:bg-hoverBlue self-end mb-1"><i class="far fa-clipboard"></i></button>
-          <span id="custom-tooltip" class="self-end mb-2 ml-2 font-bold">Copied!</span>
+          <span id="custom-tooltip" class="hidden self-end mb-2 ml-2 font-bold">Copied!</span>
         </div>
       </div>
     </div>
@@ -66,19 +67,30 @@ $(() => {
 
   window.$generatePasswordForm = $generatePasswordForm;
 
-  $('main').on('submit', '#generate-password-form', function(event) {
+  $('main').on('submit', '#generate-password-form-full', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
-    generatePassword()
+    generatePassword(data)
       .then(password => {
         $('#new-password').val(password);
       });
   });
 
   $('main').on('click', '.copy-password', function(event) {
-    $('#new-password').val().select();
-    document.execCommand('copy');
+    if ($('#new-password').val().length > 0) {
+      $('#new-password').select();
+      document.execCommand('copy');
+      $('#custom-tooltip').fadeIn(150);
+      setTimeout(() => {
+        $('#custom-tooltip').fadeOut(150);
+      }, 5000)
+    }
   });
+
+  $('main').on('input', '#password-option0', () => {
+    const passwordLength = $('#password-option0').val();
+    $('#password-length-value').text(passwordLength);
+  })
 
 });

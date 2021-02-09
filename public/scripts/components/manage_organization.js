@@ -32,8 +32,8 @@ $(() => {
             <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${user.email}</td>
             <td class="p-2 border-2 border-gray-400 font-semibold text-sm">
               <form class="remove-user-from-org">
-              <input name="user_id" value="${user.userId}" class="hidden">
-              <button type="button" class="remove-user rounded p-1 bg-warning w-full text-white hover:bg-warningHover">Remove</button>
+                <input type="number" name="user_id" value="${user.userid}" class="hidden">
+                <button class="remove-user rounded p-1 bg-warning w-full text-white hover:bg-warningHover">Remove</button>
               </form>
             </td>
           </tr>
@@ -46,10 +46,10 @@ $(() => {
 
   window.addUsersToTable = addUsersToTable;
 
-  $('main').on('submit', '.remove-user', function(event) {
+  $('main').on('submit', '.remove-user-from-org', function(event) {
     event.preventDefault();
-
-    const data = $(this).serialize();
+    const $specificUser = $(this).closest('.remove-user-from-org');
+    const data = $($specificUser).serialize();
     removeUserFromOrg(data)
       .then(() => {
         views_manager.show('manageOrg');

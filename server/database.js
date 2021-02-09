@@ -269,7 +269,8 @@ const getUserOfOrg = function(orgId) {
     SELECT users.first_name, users.last_name, users.email, users.id AS userId
     FROM users_organizations
     JOIN users ON user_id = users.id
-    WHERE org_id = $1;
+    WHERE org_id = $1
+    AND is_deleted = FALSE;
   `;
   return db.query(query, [orgId])
     .then(res => res.rows)
@@ -288,7 +289,7 @@ const deleteUserOfOrg = function(user) {
     SET is_deleted = TRUE
     WHERE user_id = $1 AND org_id = $2;
   `;
-  return db.query(query, [user.id, user.org_id])
+  return db.query(query, [user.user_id, user.org_id])
     .then(res => res.rows[0])
     .catch(err => console.log(err));
 };
@@ -401,3 +402,19 @@ const checkOrgExists = function(orgKey) {
     .then(res => res.rows[0]);
 }
 exports.checkOrgExists = checkOrgExists;
+
+/**
+ * Set an organization is_deleted to true with a given orgId
+ * @param {number} orgId
+ */
+
+const deleteOrg = function(orgId) {
+  const query = `
+    UPDATE organizations
+    SET is_deleted = TRUE
+    WHERE id = $1;
+  `;
+  return db.query(query, [orgId])
+    .then(res => res.rows[0]);
+};
+exports.deleteOrg = deleteOrg;
