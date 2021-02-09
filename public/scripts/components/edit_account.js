@@ -92,7 +92,7 @@ $(() => {
               </select>
             </div>
 
-            <input type="number" class="account-id hidden" value="${account.id}">
+            <input type="number" class="account-id hidden" name="id" value="${account.id}">
 
             <div class="edit-account_field-wrapper form-field">
               <button type="submit"
