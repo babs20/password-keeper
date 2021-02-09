@@ -7,71 +7,75 @@ $(() => {
       // get org abbreviation for a given user
       return getUserOrgs()
         .then(orgsArr => {
-          const $userLinks = $(`
-          <nav id="sidebar_links"
-          class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 ">
-          <div class="user-options py-4 flex items-center justify-between px-4 h-100">
-            <div class="org-swap-wrapper flex flex-col w-3/4 ">
-              <label for="org-swap" class="pb-2 font-bold">Organization</label>
-              <select name="organization" id="organizations-dropdown"
-                class="font-sans mr-4 w-100 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md text-black focus:text-black">
-                <option value="cat">Cat</option>
-                <option value="dog">Dog</option>
-              </select>
-            </div>
-
-            <div class="edit-user-wrapper my-auto w-1/4 flex justify-end">
-              <button id="edit-user" class="pr-2">
-                <i class="fas fa-cog hover:animate-spin"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
-            <button id="add-account" class="font-bold text-left">Add Account</button>
-          </div>
-
-          <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start">
-            <button id="generate-pass" class="font-bold text-left">Generate Password</button>
-          </div>
-
-          <div class="account-categories hover:bg-white hover:text-black cursor-pointer py-4 px-4 ">
-            <div id="account-categories-button" class="">
-              <button id="account-categories" class="font-bold text-left">Categories</button>
-            </div>
-
-            <div class="category-submenu hidden flex flex-col py-2 justify-center">
-              <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
-                <input id="work" class="hidden" name="account_type_id" value="1">
-                <button id="work-category" class="py-2 pl-4">Work</button>
-              </form>
-              <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
-                <input id="entertainment" class="hidden" name="account_type_id" value="2">
-                <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
-              </form>
-              <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
-                <input id="social" class="hidden" name="account_type_id" value="3">
-                <button id="social-category" class="py-2 pl-4">Social</button>
-              </form>
-              <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
-                <input id="other" class="hidden" name="account_type_id" value="4">
-                <button id="other-category" class="py-2 pl-4">Other</button>
-              </form>
-            </div>
-          </div>
-
-          <div class="account-search py-4 px-4 w-auto">
-            <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
-              class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-auto">
-          </div>
-        </nav>
-          `);
+          let userOrgs = '';
           for (const org of orgsArr) {
-            const $orgSelect = $(`
-              <option value="${org.org_id}">${org.abbreviation}</option>
-            `);
-            $orgSelect.appendTo('#organizations-dropdown');
+            const $orgSelect = `
+              <option name="org_id" value="${org.org_id}">${org.abbreviation}</option>
+            `;
+            userOrgs += $orgSelect;
           }
+
+          let sidebar1 = `
+            <nav id="sidebar_links"
+            class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 ">
+            <div class="user-options py-4 flex items-center justify-between px-4 h-100">
+              <div class="org-swap-wrapper flex flex-col w-3/4 ">
+                <label for="org-swap" class="pb-2 font-bold">Organization</label>
+                <select name="organization" id="organizations-dropdown"
+                  class="font-sans mr-4 w-100 rounded border-gray-400 border outline-none focus:outline-none text-center bg-white font-semibold text-md text-black focus:text-black">
+            `;
+          sidebar1 += userOrgs;
+          sidebar1 += `
+                </select>
+              </div>
+
+              <div class="edit-user-wrapper my-auto w-1/4 flex justify-end">
+                <button id="edit-user" class="pr-2">
+                  <i class="fas fa-cog hover:animate-spin"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
+              <button id="add-account" class="font-bold text-left">Add Account</button>
+            </div>
+
+            <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start">
+              <button id="generate-pass" class="font-bold text-left">Generate Password</button>
+            </div>
+
+            <div class="account-categories hover:bg-white hover:text-black cursor-pointer py-4 px-4 ">
+              <div id="account-categories-button" class="">
+                <button id="account-categories" class="font-bold text-left">Categories</button>
+              </div>
+
+              <div class="category-submenu hidden flex flex-col py-2 justify-center">
+                <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
+                  <input id="work" class="hidden" name="account_type_id" value="1">
+                  <button id="work-category" class="py-2 pl-4">Work</button>
+                </form>
+                <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
+                  <input id="entertainment" class="hidden" name="account_type_id" value="2">
+                  <button id="entertainment-category" class="py-2 pl-4">Entertainment</button>
+                </form>
+                <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
+                  <input id="social" class="hidden" name="account_type_id" value="3">
+                  <button id="social-category" class="py-2 pl-4">Social</button>
+                </form>
+                <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
+                  <input id="other" class="hidden" name="account_type_id" value="4">
+                  <button id="other-category" class="py-2 pl-4">Other</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="account-search py-4 px-4 w-auto">
+              <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
+                class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-auto">
+            </div>
+          </nav>
+          `;
+          const $userLinks = $(sidebar1);
           return $userLinks;
         });
     } else if (orgId) {
