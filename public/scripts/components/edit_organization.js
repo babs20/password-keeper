@@ -2,11 +2,11 @@ $(() => {
 
   const $editOrgForm = $(`
   <form id="generate-password-form" class="hidden"></form>
-  <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
-    <form id="edit-org-form" class="edit-org-form w-7/12 min-h-full flex flex-col items-center justify-start mb-10">
-      <h4 class="edit-org font-sans text-2xl font-bold w-2/3 my-5">Edit Organization Information</h4>
+  <div class="w-screen h-100 flex flex-col items-center justify-center">
+    <form id="edit-org-form" class="edit-org-form w-7/12 min-h-full flex flex-col items-center justify-start pt-5">
 
-      <div class="name-abbrev flex items-center justify-between mb-3 w-2/3">
+      <h4 class="edit-org font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Edit Organization Information</h4>
+      <div class="name-abbrev flex items-center justify-between mb-3 w-full">
         <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
           <label for="name" class="label">Name</label>
           <input type="text" name="name" placeholder="Name" class="input">
@@ -14,16 +14,16 @@ $(() => {
 
         <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
           <label for="abbreviation" class="label">Abbreviation</label>
-          <input type="text" name="abbreviation" placeholder="abbreviation" class="input">
+          <input type="text" name="abbreviation" placeholder="Abbreviation" class="input">
         </div>
       </div>
 
-      <div class="edit-org-form_field-wrapper form-field">
+      <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
         <label for="email" class="label">Email</label>
         <input type="email" name="email" placeholder="Email" class="input">
       </div>
 
-      <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
+      <div class="password-with-generator flex items-center justify-between mb-3 w-full">
         <div class="edit-org-form_field-wrapper flex flex-col w-full">
           <label for="password" class="label">Password</label>
           <div id="generator" class="flex justify-between w-full">
@@ -35,7 +35,7 @@ $(() => {
         </div>
       </div>
 
-      <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
+      <div id="generate-container" class="flex flex-col mb-3 divide-y divide-gray-400 hidden w-full">
         <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
           <div class="flex justify-between items-center w-1/2 pr-3">
             <label for="length " class="label">Length</label>
@@ -72,16 +72,16 @@ $(() => {
         </div>
       </div>
 
-      <div class="edit-org-form_field-wrapper form-field">
+      <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
         <label for="confirm-password" class="label">Confirm Password</label>
         <input type="password" name="confirm-password" placeholder="Confirm Password" class="input"
           id="confirm-user-password">
       </div>
 
-      <div class="edit-org-form_field-wrapper form-field">
+      <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
         <button type="submit" class="save-org-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">Save</button>
       </div>
-      <div class="edit-org-form_field-wrapper flex justify-between w-2/3">
+      <div class="edit-org-form_field-wrapper flex justify-between w-full">
         <button type="button"
           class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
         <button type="button"

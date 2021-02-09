@@ -44,16 +44,16 @@ $(() => {
               </div>
 
               <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
-                <div class="edit-user-form_field-wrapper flex flex-col w-full">
-                  <label for="password" class="label">Password</label>
-                  <div id="generator" class="flex justify-between w-full">
-                    <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
-                      id="user-password-field">
-                    <button type="button"
-                      class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
-                  </div>
+              <div class="edit-user-form_field-wrapper flex flex-col w-full">
+                <label for="password" class="label">Password</label>
+                <div id="generator" class="flex justify-between w-full">
+                  <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
+                    id="user-password-field" form="edit-user-form">
+                  <button type="button"
+                    class="generate-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm">Generate</button>
                 </div>
               </div>
+            </div>
 
               <div id="generate-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
                 <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
