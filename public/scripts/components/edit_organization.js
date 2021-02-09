@@ -175,8 +175,9 @@ $(() => {
       .then(userLogout)
       .then(getOrgInfo)
       .then(json => {
-        header.update(json.user);
+        header.update(json.org);
         views_manager.show('homepage');
+        sidenav.detachSidebar();
       });
   });
 });
