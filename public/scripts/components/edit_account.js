@@ -3,7 +3,6 @@ $(() => {
   <form id="generate-password-form" class="hidden"></form>
     <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
       <form id="edit-account-form" class="w-7/12 h-full flex flex-col items-center justify-start">
-        <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
       </form>
     </div>
   `);
@@ -13,8 +12,10 @@ $(() => {
   const createEditAccountForm = function(accountId) {
     getAllAccounts(accountId)
       .then(accountArr => {
+        $('#edit-account-form').empty();
         const account = accountArr[0];
         const $specificAccountForm = $(`
+        <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
         <div class="edit-account_field-wrapper form-field">
               <label for="email-username" class="label">Email/Username</label>
               <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${account.name}">
