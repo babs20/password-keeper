@@ -22,6 +22,10 @@ $(() => {
           <h2 class="password-match-message">Passwords do not match</h2>
         </div>
 
+        <div class="password-blank-error hidden">
+          <h2 class="password-blank-message">Password field cannot be empty</h2>
+        </div>
+
         <div class="first-last-name flex items-center justify-between mb-3 w-2/3">
                 <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
                   <label for="first_name" class="label">First Name</label>
@@ -138,11 +142,19 @@ $(() => {
     event.preventDefault();
 
     if ($('#user-password-field').val() !== $('#confirm-user-password').val()) {
+      $('.password-blank-error').slideUp();
       $('.password-match-error').slideDown(150);
       return;
     }
 
+    if ($('#user-password-field').val().length < 1) {
+      $('.password-match-error').slideUp();
+      $('.password-blank-error').slideDown(150);
+      return;
+    }
+
     $('.password-match-error').slideUp();
+    $('.password-blank-error').slideUp();
     const data = $(this).serialize();
     editUserInfo(data)
       .then(() => {
