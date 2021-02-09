@@ -288,7 +288,7 @@ const deleteUserOfOrg = function(user) {
     SET is_deleted = TRUE
     WHERE user_id = $1 AND org_id = $2;
   `;
-  return db.query(query, [user.id, user.org_id])
+  return db.query(query, [user.user_id, user.org_id])
     .then(res => res.rows[0])
     .catch(err => console.log(err));
 };
