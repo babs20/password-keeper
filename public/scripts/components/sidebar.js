@@ -17,7 +17,7 @@ $(() => {
 
           let sidebar1 = `
             <nav id="sidebar_links"
-            class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 ">
+            class="sidebar_links sm:w-1/4 flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 ">
             <div class="user-options py-4 flex items-center justify-between px-4 h-100">
               <div class="org-swap-wrapper flex flex-col w-3/4 ">
                 <label for="org-swap" class="pb-2 font-bold">Organization</label>
