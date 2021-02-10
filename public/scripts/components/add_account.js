@@ -129,7 +129,7 @@ $(() => {
       $passwordField.select();
       document.execCommand('copy');
     }
-  })
+  });
 
   $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
