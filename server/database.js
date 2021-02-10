@@ -150,10 +150,12 @@ const getAllAccounts = (options) => {
   const queryParams = [options.org_id]
   const websiteParam = `%${options.website}%`
   let query = `
-  SELECT *
+  SELECT accounts.*
   FROM accounts
+  JOIN organizations ON org_id = organizations.id
   WHERE org_id = $1
-  AND is_deleted = FALSE`
+  AND accounts.is_deleted = FALSE
+  AND organizations.is_deleted = FALSE`
 
   if (options.id) {
     queryParams.push(options.id);
