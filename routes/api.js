@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const aes256 = require('aes256');
 
 module.exports = (database) => {
 
@@ -50,7 +51,7 @@ module.exports = (database) => {
   router.post("/accounts", (req, res) => {
     const orgId = req.session.orgId;
     const cipher = req.session.cipher;
-    req.body.password = cipher.encrypt(req.body.password);
+    req.body.password = aes256.encrypt(cipher, req.body.password);
     database.addAccountToOrg({...req.body, org_id: orgId})
       .then((account) => {
         if (!account) {
@@ -77,7 +78,7 @@ module.exports = (database) => {
           return;
         }
         for (const account of accounts) {
-          account.password = cipher.decrypt(account.password);
+          account.password = aes256.decrypt(cipher, account.password);
         }
         res.send(accounts);
       })
@@ -87,7 +88,7 @@ module.exports = (database) => {
   router.put('/accounts', (req, res) => {
     const orgId = req.session.orgId;
     const cipher = req.session.cipher;
-    req.body.password = cipher.encrypt(req.body.password);
+    req.body.password = aes256.encrypt(cipher, req.body.password);
     // need to make sure that form has a hidden field/button that passes account id to this function
     database.updateAccountInfo({...req.body, org_id: orgId})
       .then(account => {
