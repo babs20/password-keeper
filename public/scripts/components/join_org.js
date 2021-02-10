@@ -54,8 +54,16 @@ $(() => {
           $('.org-key-error').slideUp(10);
           $('.empty-fields-error').slideUp(10);
           $('.org-joined-error').slideUp(10);
+          $('#org-key').val('');
           views_manager.show('allAccounts');
-          $('#organizations-dropdown').val(json.org_id);
+          sidenav.detachSidebar();
+          sidenav.showSidebar(json.org_id, json.user_id)
+            .then($sidebar => {
+              const $main = $('main');
+              $sidebar.appendTo($main);
+              $('#organizations-dropdown').val(json.org_id);
+              views_manager.show('allAccounts');
+            })
         }
       });
   });
