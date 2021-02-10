@@ -141,6 +141,11 @@ module.exports = (database) => {
       .then(org => {
         if (!bcrypt.compareSync(req.body.current_master_password,org.master_password)) {
           res.send({ incorrectMasterPassErr: "error" })
+        } else if (req.body.current_master_password === req.body.new_master_password) {
+          database.updateOrgInfo({...req.body, id: orgId})
+          .then(organization => {
+            res.send(organization);
+          });
         } else {
           const oldCipher = req.session.cipher;
           const newCipher = req.body.new_master_password;
