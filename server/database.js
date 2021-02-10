@@ -398,7 +398,8 @@ exports.addUserToOrg = addUserToOrg;
 const checkOrgExists = function(orgKey) {
   const query = `
     SELECT * FROM organizations
-    WHERE identifier_key = $1;
+    WHERE identifier_key = $1
+    AND is_deleted = FALSE;
   `;
   return db.query(query, [orgKey])
     .then(res => res.rows[0]);
