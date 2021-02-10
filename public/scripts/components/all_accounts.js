@@ -3,6 +3,7 @@ $(() => {
   const $getAllAccounts = $(`
   <div class="w-10/12 mx-auto h-full flex justify-center">
     <div class="all-accounts mx-5 mt-10 w-11/12 flex flex-col items-center pb-8">
+    <div id="no-key-container" class="w-full"></div>
       <h1 class="accounts-title font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min self-start whitespace-nowrap">Your Organization's Accounts</h1>
       <div id="no-accounts-container" class="w-full"></div>
         <div class="accounts-table w-full overflow-y-auto border-b-2 border-t-2 border-gray-400 relative" id="accounts-table">
@@ -17,43 +18,52 @@ $(() => {
   const addAccountToTable = function(data) {
     $('.all-accounts-table').empty();
     $('#no-accounts-container').empty();
+    $('#no-key-container').empty();
     getAllAccounts(data)
       .then(accountsArr => {
         if (accountsArr.noCipherErr) {
           const $noCipherError = $(`
-            <div class="no-cipher-error flex flex mb-3 rounded-lg items-center">
-              <h4 class="no-cipher-error-message font-bold text-base">
-                Please provide your organization's master key.
-              </h4>
-              <h4 class="org-name">Organization: ${accountsArr.org}</h4>
+          <div class="no-cipher-error w-10/12 h-100 mx-auto flex flex-col items-center justify-start">
+          <form id="master-password-form">
+          <h2 class="no-cipher-error-message font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">
+            Please provide your organization's master key.
+          </h2>
+          <h2
+            class="org-name font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min whitespace-nowrap">
+            Organization: ${accountsArr.org}</h2>
 
-              <div class="blank-field-error flex flex mb-3 bg-alertRed rounded-lg items-center hidden">
-                <h4 class="blank-error-message text-white p-2 font-bold text-base">
-                  Master Password Cannot Be Empty
-                </h4>
-              </div>
+          <div class="blank-field-error flex mb-3 bg-alertRed rounded-lg items-center hidden">
+            <h2 class="blank-error-message text-white p-2 font-bold text-base">
+            <i class="fas fa-exclamation-triangle px-2"></i>
+              Master Password Cannot Be Empty
+            </h2>
+          </div>
 
-              <div class="master-password-error flex flex mb-3 bg-alertRed rounded-lg items-center hidden">
-                <h4 class="master-password-error-message text-white p-2 font-bold text-base">
-                  Incorrect Master Password
-                </h4>
-              </div>
+          <div class="master-password-error flex mb-3 bg-alertRed rounded-lg items-center hidden">
+            <h2 class="master-password-error-message text-white p-2 font-bold text-base">
+            <i class="fas fa-exclamation-triangle px-2"></i>
+              Incorrect Master Password
+            </h2>
+          </div>
 
-              <form id="master-password-form">
-                <div class="master-password_field-wrapper">
-                  <label for="master_password">Master Password</label>
-                  <input type="password" name="master_password" placeholder="Master Password" id="master-password" class="input">
-                </div>
-
-                <div class="master-password_field-wrapper">
-                  <button class="master-password button">Submit</button>
-                </div>
-              </form>
+            <div class="master-password_field-wrapper flex flex-col">
+              <label for="master_password" class="label">Master Password</label>
+              <input type="password" name="master_password" placeholder="Master Password" id="master-password"
+                class="input">
             </div>
-          `);
 
-          $noCipherError.appendTo('#no-accounts-container');
+            <div class="master-password_field-wrapper">
+              <button class="master-password button">Submit</button>
+            </div>
+          </form>
+        </div>
+          `);
+          $('.accounts-title').addClass('hidden');
+          $('.accounts-table').addClass('hidden');
+          $noCipherError.appendTo('#no-key-container');
         } else {
+          $('.accounts-title').removeClass('hidden');
+          $('.accounts-table').removeClass('hidden');
             const $emptyAccountsTable = $(`
             <div class="no-accounts-alert flex flex mb-3 bg-alertRed rounded-lg items-center">
             <?xml version="1.0" encoding="utf-8"?>
