@@ -51,7 +51,7 @@ $(() => {
           </thead>
           <tbody id="all-accounts-body" class="bg-white"></tbody>
           `);
-          $accountsTableHeader.appendTo('.all-accounts-table')
+          $accountsTableHeader.appendTo('.all-accounts-table');
           for (const account of accountsArr) {
             const $accountRow = $(`
            <tr class="border-t border-gray-400 p-2">
@@ -86,7 +86,7 @@ $(() => {
             $accountRow.appendTo('#all-accounts-body');
           }
         }
-      })
+      });
   };
 
   window.addAccountToTable = addAccountToTable;
