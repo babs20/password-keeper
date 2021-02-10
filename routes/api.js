@@ -8,6 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const aes256 = require('aes256');
+const bcrypt = require('bcrypt');
 
 module.exports = (database) => {
 
@@ -134,10 +135,31 @@ module.exports = (database) => {
 
   router.put('/organization', (req, res) => {
     const orgId = req.session.orgId;
-    database.updateOrgInfo({...req.body, id: orgId})
-      .then(organization => {
-        res.send(organization);
-      });
+    const email = req.body.email;
+
+    database.getOrgWithEmail(email)
+      .then(org => {
+        if (!bcrypt.compareSync(req.body.current_master_password,org.master_password)) {
+          res.send({ incorrectMasterPassErr: "error" })
+        } else {
+          const oldCipher = req.session.cipher;
+          const newCipher = req.body.new_master_password;
+          req.session.cipher = req.body.new_master_password;
+          database.getAllAccounts({org_id: orgId})
+            .then(accounts => {
+              for (const account of accounts) {
+                const oldPassword = aes256.decrypt(oldCipher, account.password);
+                const newPassword = aes256.encrypt(newCipher, oldPassword);
+                database.updateAccountPassword({ id: account.id, password: newPassword })
+                  .then(() => console.log('update success'))
+              }
+              database.updateOrgInfo({...req.body, id: orgId})
+              .then(organization => {
+                res.send(organization);
+              });
+            })
+        }
+      })
   });
 
   router.delete('/organization', (req, res) => {
