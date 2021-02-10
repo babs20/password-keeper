@@ -50,8 +50,10 @@ $(() => {
               </div>
             </div>
 
-            <div class="checkbox-error hidden">
-              <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
+            <div class="checkbox-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg border-none">
+              <h2 class="checkbox-error-message text-white p-2 font-bold">
+              <i class="fas fa-times-circle px-2 text-lg"></i>
+              At Least One Option Must Be Checked</h2>
             </div>
 
             <div id="generate-account-edit-container" class="flex flex-col w-full mb-3 divide-y divide-gray-400 hidden">

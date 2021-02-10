@@ -21,12 +21,16 @@ $(() => {
           <h3 class="org-identifier-key font-bold rounded border-l-8 p-1 px-4 my-2 bg-white text-black border-gray-400 break-words w-max hover:shadow-md">Organization ID: ${org.key}</h3>
         </div>
 
-        <div class="password-match-error hidden">
-          <h2 class="password-match-message">Passwords do not match</h2>
+        <div class="password-match-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+          <h2 class="password-match-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          Passwords Do Not Match</h2>
         </div>
 
-        <div class="fields-blank-error hidden">
-          <h2 class="fields-blank-message">Please fill out all fields</h2>
+        <div class="fields-blank-error hidden flex flex-col mb-3 w-full bg-alertRed rounded-lg">
+          <h2 class="fields-blank-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          Please Fill Out All Fields</h2>
         </div>
 
         <div class="name-abbrev flex items-center justify-between mb-3 w-full">
@@ -57,9 +61,11 @@ $(() => {
           </div>
         </div>
 
-        <div class="checkbox-error hidden">
-          <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
-        </div>
+        <div class="checkbox-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg border-none">
+              <h2 class="checkbox-error-message text-white p-2 font-bold">
+              <i class="fas fa-times-circle px-2 text-lg"></i>
+              At Least One Option Must Be Checked</h2>
+            </div>
 
         <div id="generate-org-container" class="flex flex-col mb-3 divide-y divide-gray-400 hidden w-full">
           <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
