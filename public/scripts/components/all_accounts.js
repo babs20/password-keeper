@@ -55,7 +55,7 @@ $(() => {
           for (const account of accountsArr) {
             const $accountRow = $(`
            <tr class="border-t border-gray-400 p-2">
-              <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2">${account.website}</td>
+              <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2"><a href="${account.website}" target="_blank">${account.website}</a></td>
               <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2 hidden md:table-cell">${account.name}</td>
               <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-min">
                 <div class="account-password-cell flex justify-start w-min">
