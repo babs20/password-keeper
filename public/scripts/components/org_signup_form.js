@@ -44,7 +44,7 @@ $(() => {
 
     <div class="signup-form_field-wrapper flex flex-col w-full ml-3 mr-3 mb-3">
       <label for="master-password" class="label">Master Password</label>
-      <p class="master-password-description>This master password will be used by members of your organization to access stored account information</p>
+      <p class="master-password-description">This master password will be used by members of your organization to access stored account information</p>
       <input type="password" name="master_password" placeholder="Master Password" class="org-master-password input">
     </div>
 
