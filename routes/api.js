@@ -61,18 +61,23 @@ module.exports = (database) => {
   });
 
   router.get("/accounts", (req, res) => {
+    const cipher = req.session.cipher;
+
     if (req.query.organization) {
       req.session.orgId = req.query.organization;
     }
 
     const orgId = req.session.orgId // NEED TO GET orgId for the current user
     database.getAllAccounts({...req.query, org_id: orgId})
-      .then((account) => {
-        if (!account) {
+      .then((accounts) => {
+        if (!accounts) {
           res.send({error: 'There was an error!'});
           return;
         }
-        res.send(account);
+        for (const account of accounts) {
+          account.password = cipher.decrypt(account.password);
+        }
+        res.send(accounts);
       })
       .catch((err) => console.log(err));
   });
