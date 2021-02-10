@@ -100,7 +100,7 @@ $(() => {
   $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
 
-    if ($('#email-username').val().length < 1 || $('#account-password-field').val().legnth < 1) {
+    if ($('#email-username').val().length < 1 || $('#account-password-field').val().legnth < 1 || $('#website').val().length < 1) {
       $('.empty-fields-error').slideDown(150);
       return;
     }

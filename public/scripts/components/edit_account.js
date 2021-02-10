@@ -179,11 +179,12 @@ $(() => {
   $('main').on('submit', '#edit-account-form', function(event) {
     event.preventDefault();
 
-    const $emailUsername = $('#email-username').val();
-    const $password = $('#edit-account-password').val();
-    const $confirmPassword = $('#confirm-edit-password').val();
+    const $emailUsername = $('#email-username').val().length;
+    const $password = $('#edit-account-password').val().length;
+    const $confirmPassword = $('#confirm-edit-password').val().length;
+    const $website = $('#website').val().length;
 
-    if ($emailUsername < 1 || $password < 1 || $confirmPassword < 1) {
+    if ($emailUsername < 1 || $password < 1 || $confirmPassword < 1 || $website < 1) {
       $('.password-match-error').slideUp(10);
       $('.empty-fields-error').slideDown(150);
       return;
