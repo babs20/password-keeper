@@ -13,6 +13,10 @@ $(() => {
             <h2 class="org-key-message">Organization Does Not Exist</h2>
           </div>
 
+          <div class="org-joined-error hidden">
+            <h2 class="org-joined-message">You Are Already Apart of This Organization</h2>
+          </div>
+
           <div class="join-org_field-wrapper>
             <label for="org-key" class="label">Organization ID</label>
             <input type="text" id="org-key" name="identifier_key" placeholder="Org ID" class="input">
@@ -30,6 +34,7 @@ $(() => {
 
     if ($('#org-key').val().length < 1) {
       $('.org-key-error').slideUp(10);
+      $('.org-joined-error').slideUp(10);
       $('.empty-fields-error').slideDown(150);
       return;
     }
@@ -39,10 +44,16 @@ $(() => {
       .then(json => {
         if (json.orgKeyErr) {
           $('.empty-fields-error').slideUp(10);
+          $('.org-joined-error').slideUp(10);
           $('.org-key-error').slideDown(150);
+        } else if (json.orgJoinedErr) {
+          $('.org-key-error').slideUp(10);
+          $('.empty-fields-error').slideUp(10);
+          $('.org-joined-error').slideDown(150);
         } else {
           $('.org-key-error').slideUp(10);
           $('.empty-fields-error').slideUp(10);
+          $('.org-joined-error').slideUp(10);
           views_manager.show('allAccounts');
           $('#organizations-dropdown').val(json.org_id);
         }
