@@ -13,8 +13,9 @@ module.exports = (database) => {
   router.post('/register', (req, res) => {
     const organization = req.body;
     const email = req.body.email;
-    const cipher = createCipher(organization.password);
+    const cipher = createCipher(organization.master_password);
 
+    organization.master_password = bcrypt.hashSync(organization.master_password, 12);
     organization.password = bcrypt.hashSync(organization.password, 12);
 
     database.getOrgWithEmail(email)
@@ -38,10 +39,10 @@ module.exports = (database) => {
       })
   });
 
-  const orgLogin = function(email, password) {
+  const orgLogin = function(email, password, masterPassword) {
     return database.getOrgWithEmail(email)
       .then(org => {
-        if (bcrypt.compareSync(password, org.password)) {
+        if (bcrypt.compareSync(password, org.password) && bcrypt.compareSync(masterPassword, org.master_password)) {
           return org;
         }
         return null;
@@ -50,9 +51,9 @@ module.exports = (database) => {
   exports.orgLogin = orgLogin;
 
   router.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    const cipher = createCipher(req.body.password);
-    orgLogin(email, password)
+    const { email, password, master_password } = req.body;
+    const cipher = createCipher(req.body.master_password);
+    orgLogin(email, password, master_password)
       .then(org => {
         if (!org) {
           res.send({ error: "error" });
