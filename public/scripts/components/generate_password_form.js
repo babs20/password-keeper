@@ -10,8 +10,11 @@ $(() => {
               Generate a new password</h2>
 
             <div class="flex flex-col justify-between items-center w-full py-4">
-              <label for="length " class="label w-full mb-2 text-xl">Length</label>
-              <p id="password-length-value" class="mb-6 bg-button rounded-full text-white font-bold px-2 py-1">12</p>
+              <div class="flex justify-start items-center mb-4 w-full">
+                <label for="length " class="label text-xl mr-4">Length</label>
+                <input id="password-length-value" class="border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button text-center font-bold w-min appearance-none" value="12" type="number" min="6" max="30">
+              </div>
+
               <input type="range" min="6" max="30" increment="1" name="length"
                 class="rounded-lg appearance-none w-full h-4 border-2  border-gray-400 shadow-md" placeholder="length"
                 id="password-option0" value="12">
@@ -64,7 +67,7 @@ $(() => {
           <button type="button"
             id="copy-password" class="copy-password rounded-full p-1 w-12 l-10 bg-button text-white hover:bg-hoverBlue self-end mb-1"><i
               class="far fa-clipboard"></i></button>
-          <div class="flex justify-center items-center pl-4 pt-3">
+          <div class="flex justify-center items-center pl-4 pt-3 mt-2">
             <span id="custom-tooltip" class="hidden font-bold pt-3 pr-4">Copied!</span>
           </div>
         </div>
@@ -97,7 +100,12 @@ $(() => {
 
   $('main').on('input', '#password-option0', () => {
     const passwordLength = $('#password-option0').val();
-    $('#password-length-value').text(passwordLength);
+    $('#password-length-value').val(passwordLength);
+  })
+
+  $('main').on('input', '#password-length-value', () => {
+    const passwordLength = $('#password-length-value').val();
+    $('#password-option0').val(passwordLength);
   })
 
 });
