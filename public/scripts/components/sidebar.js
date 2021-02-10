@@ -115,6 +115,13 @@ $(() => {
             </div>
           </div>
 
+          <div class="manage-org  py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start items-center">
+            <div class="sm:hidden lg:inline">
+              <i class="fas fa-tasks mr-3 text-xl md:hidden lg:inline"></i>
+            </div>
+            <button type="button" id="manage-org" class="font-bold text-left text-xl">Manage Organization</button>
+          </div>
+
           <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start items-center">
             <div class="sm:hidden lg:inline">
               <i class="fas fa-folder-plus mr-3 text-xl md:hidden lg:inline"></i>
