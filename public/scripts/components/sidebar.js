@@ -29,12 +29,12 @@ $(() => {
                 </select>
               </div>
 
-              <div class="edit-user-wrapper h-full w-1/4 flex justify-end">
-                <button id="edit-user" class="pr-2">
+              <div class="edit-user-wrapper flex flex-col h-full justify-end ml-4 w-1/4">
+                <button id="edit-user" class="pb-2">
                   <i class="fas fa-cog hover:animate-spin text-center text-xl" title="Edit User Information"></i>
                 </button>
-                <button id="join-org" class="pr-2">
-                  <i class="fas fa-plus-square text-center text-xl" title="Join New Organization"></i>
+                <button id="join-org">
+                  <i class="fas fa-plus-square text-center text-xl hover:animate-spin" title="Join New Organization"></i>
                 </button>
               </div>
             </div>
