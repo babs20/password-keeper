@@ -42,6 +42,12 @@ $(() => {
       <input type="password" name="password" placeholder="Password" class="org-password input">
     </div>
 
+    <div class="signup-form_field-wrapper flex flex-col w-full ml-3 mr-3 mb-3">
+      <label for="master-password" class="label">Master Password</label>
+      <p class="master-password-description>This master password will be used by members of your organization to access stored account information</p>
+      <input type="password" name="master_password" placeholder="Master Password" class="org-master-password input">
+    </div>
+
     <div class="signup-form_field_wrapper w-full">
       <button id="org-register" class="button">Register</button>
     </div>
@@ -60,8 +66,9 @@ $(() => {
     const $orgAbbrev = $('.org-abbrev').val().length;
     const $orgEmail = $('.org-email').val().length;
     const $orgPassword = $('.org-password').val().length;
+    const $masterPassword = $('.org-master-password').val().length;
 
-    if ($orgName < 1 || $orgAbbrev < 1 || $orgEmail < 1 || $orgPassword < 1) {
+    if ($orgName < 1 || $orgAbbrev < 1 || $orgEmail < 1 || $orgPassword < 1 || $masterPassword < 1) {
       $('.sign-up-org-exists-error').slideUp(10);
       $('.sign-up-blank-error').slideDown(200);
       return;
@@ -81,6 +88,7 @@ $(() => {
           $('.org-abbrev').val('');
           $('.org-email').val('');
           $('.org-password').val('');
+          $('.org-master-password').val('');
           getOrgInfo()
             .then(json => {
               header.update(json.org);
