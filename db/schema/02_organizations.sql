@@ -7,5 +7,6 @@ CREATE TABLE organizations (
   email VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,
   identifier_key VARCHAR(255) NOT NULL,
+  master_password VARCHAR(255) NOT NULL,
   is_deleted BOOLEAN DEFAULT FALSE
 );
