@@ -65,19 +65,19 @@ $(() => {
               </div>
 
               <div class="category-submenu hidden flex flex-col pb-2 justify-center items-start">
-                <form id="account-type-work" class=" mx-8 hover:bg-button hover:text-white rounded">
+                <form id="account-type-work" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                   <input id="work" class="hidden" name="account_type_id" value="1">
                   <button id="work-category" class="text-lg font-semibold w-full text-left px-3 py-2">Work</button>
                 </form>
-                <form id="account-type-entertainment" class=" mx-8 hover:bg-button hover:text-white rounded">
+                <form id="account-type-entertainment" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                   <input id="entertainment" class="hidden" name="account_type_id" value="2">
                   <button id="entertainment-category" class="text-lg font-semibold w-full text-left px-3 py-2">Entertainment</button>
                 </form>
-                <form id="account-type-social" class=" mx-8 hover:bg-button hover:text-white rounded">
+                <form id="account-type-social" class=" my-1 mx-8 hover:bg-button hover:text-white rounded">
                   <input id="social" class="hidden" name="account_type_id" value="3">
                   <button id="social-category" class="text-lg font-semibold w-full text-left px-3 py-2">Social</button>
                 </form>
-                <form id="account-type-other" class=" mx-8 hover:bg-button hover:text-white rounded">
+                <form id="account-type-other" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                   <input id="other" class="hidden" name="account_type_id" value="4">
                   <button id="other-category" class="text-lg font-semibold w-full text-left px-3 py-2">Other</button>
                 </form>
@@ -150,20 +150,20 @@ $(() => {
             </div>
 
             <div class="category-submenu hidden flex flex-col pb-2 justify-center items-start">
-              <form id="account-type-work" class="mx-8 hover:bg-button hover:text-white rounded">
+              <form id="account-type-work" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                 <input id="work" class="hidden" name="account_type_id" value="1">
                 <button id="work-category" class="text-lg font-semibold w-full text-left px-3 py-2">Work</button>
               </form>
-              <form id="account-type-entertainment" class="mx-8 hover:bg-button hover:text-white rounded">
+              <form id="account-type-entertainment" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                 <input id="entertainment" class="hidden" name="account_type_id" value="2">
                 <button id="entertainment-category"
                   class="text-lg font-semibold w-full text-left px-3 py-2">Entertainment</button>
               </form>
-              <form id="account-type-social" class="mx-8 hover:bg-button hover:text-white rounded">
+              <form id="account-type-social" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                 <input id="social" class="hidden" name="account_type_id" value="3">
                 <button id="social-category" class="text-lg font-semibold w-full text-left px-3 py-2">Social</button>
               </form>
-              <form id="account-type-other" class="mx-8 hover:bg-button hover:text-white rounded">
+              <form id="account-type-other" class="my-1 mx-8 hover:bg-button hover:text-white rounded">
                 <input id="other" class="hidden" name="account_type_id" value="4">
                 <button id="other-category" class="text-lg font-semibold w-full text-left px-3 py-2">Other</button>
               </form>
