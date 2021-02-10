@@ -5,7 +5,7 @@ $(() => {
     <div class="all-accounts mx-5 mt-10 w-11/12 flex flex-col items-center pb-8">
       <h1 class="accounts-title font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min self-start whitespace-nowrap">Your Organization's Accounts</h1>
       <div id="no-accounts-container" class="w-full"></div>
-        <div class="accounts-table w-full overflow-y-auto border-b-2 border-t-2 border-gray-400" id="accounts-table">
+        <div class="accounts-table w-full overflow-y-auto border-b-2 border-t-2 border-gray-400 relative" id="accounts-table">
           <table class="all-accounts-table table-auto p-2 border-collapse border-r-2 border-l-2 border-gray-400 w-full"></table>
         </div>
     </div>
