@@ -57,10 +57,10 @@ $(() => {
               <input type="password" name="password" placeholder="Password" class="org-password-field mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1">
 
               <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
-                <button type="button" id="account-view-password"
+                <button type="button" id="org-view-password"
                 class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Show or Hide Password"
                   class="fas fa-eye px-2"></i></button>
-                <button type="button" id="account-copy-password"
+                <button type="button" id="org-copy-password"
                 class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Copy Password"
                   class="far fa-clipboard px-2"></i></button>
                 </div>
