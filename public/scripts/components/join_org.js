@@ -41,6 +41,8 @@ $(() => {
           $('.empty-fields-error').slideUp(10);
           $('.org-key-error').slideDown(150);
         } else {
+          $('.org-key-error').slideUp(10);
+          $('.empty-fields-error').slideUp(10);
           views_manager.show('allAccounts');
           $('#organizations-dropdown').val(json.org_id);
         }
