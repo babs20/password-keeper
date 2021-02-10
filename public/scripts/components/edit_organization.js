@@ -33,6 +33,18 @@ $(() => {
           Please Fill Out All Fields</h2>
         </div>
 
+        <div class="master-password-incorrect-error hidden flex flex-col mb-3 w-full bg-alertRed rounded-lg">
+          <h2 class="master-password-incorrect-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          Current Master Password is Incorrect</h2>
+        </div>
+
+        <div class="master-password-match-error hidden flex flex-col mb-3 w-full bg-alertRed rounded-lg">
+          <h2 class="master-password-match-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          New Master Passwords Do Not Match</h2>
+        </div>
+
         <div class="name-abbrev flex items-center justify-between mb-3 w-full">
           <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
             <label for="name" class="label">Name</label>
@@ -120,6 +132,21 @@ $(() => {
         </div>
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+          <label for="current-master-password" class="label">Current Master Password</label>
+          <input type="password" name="current_master_password" placeholder="Master Password" class="current-master-password input">
+        </div>
+
+        <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+          <label for="new-master-password" class="label">New Master Password</label>
+          <input type="password" name="new_master_password" placeholder="New Master Password" class="new-master-password input">
+        </div>
+
+        <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+          <label for="confirm-master-password" class="label">Confirm Master Password</label>
+          <input type="password" name="confirm-master-password" placeholder="Confirm Master Password" class="confirm-master-password input">
+        </div>
+
+        <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
           <button type="submit" class="save-org-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">Save</button>
         </div>
         <div class="edit-org-form_field-wrapper flex justify-between w-full">
@@ -197,6 +224,21 @@ $(() => {
     }
   });
 
+// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+// <label for="current-master-password" class="label">Current Master Password</label>
+// <input type="password" name="current-master-password" placeholder="Master Password" class="current-master-password input">
+// </div>
+
+// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+// <label for="new-master-password" class="label">New Master Password</label>
+// <input type="password" name="new-master-password" placeholder="New Master Password" class="new-master-password input">
+// </div>
+
+// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
+// <label for="confirm-master-password" class="label">Confirm Master Password</label>
+// <input type="password" name="confirm-master-password" placeholder="Confirm Master Password" class="confirm-master-password input">
+// </div>
+
   $('main').on('submit', '#edit-org-form', function(event) {
     event.preventDefault();
 
@@ -205,31 +247,52 @@ $(() => {
     const $orgEmail = $('.org-email').val();
     const $orgPassword = $('.org-password-field').val();
     const $confirmOrgPass = $('.confirm-org-password').val();
+    const $currentMasterPass = $('.current-master-password').val();
+    const $newMasterPass = $('.new-master-password').val();
+    const $confirmMasterPass = $('.confirm-master-password').val();
 
-    if ($orgName.length < 1 || $orgAbbrev.length < 1 || $orgEmail.length < 1 || $orgPassword.length < 1 || $confirmOrgPass.length < 1) {
+    if ($orgName.length < 1 || $orgAbbrev.length < 1 || $orgEmail.length < 1 || $orgPassword.length < 1 || $confirmOrgPass.length < 1 || $currentMasterPass < 1 || $newMasterPass < 1 || $confirmMasterPass < 1) {
       $('.password-match-error').slideUp(10);
+      $('.master-password-incorrect-error').slideUp(10);
+      $('.master-password-match-error').slideUp(10);
       $('.fields-blank-error').slideDown(150);
       return;
     }
 
     if ($orgPassword !== $confirmOrgPass) {
       $('.fields-blank-error').slideUp(10);
+      $('.master-password-incorrect-error').slideUp(10);
+      $('.master-password-match-error').slideUp(10);
       $('.password-match-error').slideDown(150);
       return;
     }
 
+    if ($newMasterPass !== $confirmMasterPass) {
+      $('.fields-blank-error').slideUp(10);
+      $('.master-password-incorrect-error').slideUp(10);
+      $('.password-match-error').slideUp(10);
+      $('.master-password-match-error').slideDown(150);
+    }
+
     const data = $(this).serialize();
     editOrgInfo(data)
-      .then(() => {
-        $('.password-match-error').slideUp(10);
-        $('.fields-blank-error').slideUp(10);
-        $('.sidebar-org-name').text($orgName);
-        views_manager.show('allAccounts');
+      .then(json => {
+        if (json.incorrectMasterPassErr) {
+          $('.fields-blank-error').slideUp(10);
+          $('.password-match-error').slideUp(10);
+          $('.master-password-match-error').slideUp(10);
+          $('.master-password-incorrect-error').slideDown(150);
+        } else {
+          $('.password-match-error').slideUp(10);
+          $('.fields-blank-error').slideUp(10);
+          $('.master-password-incorrect-error').slideUp(10);
+          $('.master-password-match-error').slideUp(10);
+          $('.sidebar-org-name').text($orgName);
+          views_manager.show('allAccounts');
+        }
       })
       .catch(e => console.log(e));
-
   });
-
 
   $('main').on('click', '.delete-org', function(event) {
     deleteOrg()
