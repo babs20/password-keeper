@@ -213,15 +213,17 @@ exports.updateAccountInfo = updateAccountInfo;
 
 const updateOrgInfo = function(organization) {
   const hashedPassword = bcrypt.hashSync(organization.password, 12);
+  const hashedMaster = bcrypt.hashSync(organization.new_master_password, 12);
   const query = `
     UPDATE organizations
     SET name = $1,
         abbreviation = $2,
         email = $3,
-        password = $4
+        password = $4,
+        master_password = $6
     WHERE id = $5;
   `;
-  const queryParams = [organization.name, organization.abbreviation, organization.email, hashedPassword, organization.id];
+  const queryParams = [organization.name, organization.abbreviation, organization.email, hashedPassword, organization.id, hashedMaster];
   return db.query(query, queryParams)
     .then(res => res.rows[0])
     .catch(err => console.log(err));
