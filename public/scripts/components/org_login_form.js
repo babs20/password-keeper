@@ -31,7 +31,7 @@ $(() => {
         </div>
 
         <div class="login-form_field_wrapper flex flex-col w-full ml-3 mr-3 mb-3">
-          <label for="master-password" class="font-bold">Password</label>
+          <label for="master-password" class="font-bold">Master Password</label>
           <input type="password" name="master_password" placeholder="Master Password" class="input org-login-master-password">
         </div>
 
