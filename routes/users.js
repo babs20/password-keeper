@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
-const { addUserToOrg } = require('../server/database');
+const aes256 = require('aes256');
 
 module.exports = (database) => {
   // user route - send user obj
@@ -16,6 +16,7 @@ module.exports = (database) => {
   router.post('/register', (req, res) => {
     const user = req.body;
     const key = req.body.org_key;
+    const cipher = aes256.createCipher(user.password);
 
     let options = {};
     user.password = bcrypt.hashSync(user.password, 12);
@@ -39,6 +40,7 @@ module.exports = (database) => {
                   return;
                 }
                 req.session.userId = user.id;
+                req.session.cipher = cipher;
                 options.userId = user.id;
                 return key;
               })
@@ -73,6 +75,7 @@ module.exports = (database) => {
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
+    const cipher = aes256.createCipher(req.body.password);
     login(email, password)
       .then(user => {
         if (!user) {
@@ -81,6 +84,7 @@ module.exports = (database) => {
         }
         req.session.userId = user.id;
         req.session.orgId = user.org_id;
+        req.session.cipher = cipher;
         res.send({ user: { firstName: user.first_name, lastName: user.last_name, email: user.email, id: user.id, org: user.org_id }});
       })
       .catch(e => res.send(e));
@@ -89,6 +93,7 @@ module.exports = (database) => {
   router.post('/logout', (req, res) => {
     req.session.userId = null;
     req.session.orgId = null;
+    req.session.cipher = null;
     res.send({});
   });
 
