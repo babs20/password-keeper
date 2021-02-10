@@ -225,7 +225,14 @@ $(() => {
 
   // add account listener
   $('main').on('click', '.add-account', () => {
-    views_manager.show('addAccount');
+    authenticateUser()
+      .then(json => {
+        if (json.authenticated) {
+          views_manager.show('addAccount');
+        } else {
+          views_manager.show('allAccounts');
+        }
+      })
   });
 
   // generate password listener
