@@ -42,18 +42,23 @@ $(() => {
               <div class="edit-account_field-wrapper flex flex-col w-full">
                 <label for="password" class="label">Password</label>
                 <div class="flex justify-between w-full">
-                  <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
+                  <input type="password" name="password" placeholder="Password" class="mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1"
                     id="edit-account-password" value=${account.password}>
-                  <button
-                    type="button" class="generate-account-edit-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm">Generate</button>
+                    <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
+                <button type="button" id="account-view-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Show or Hide Password"
+                  class="fas fa-eye px-2"></i></button>
+                <button type="button" id="account-copy-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Copy Password"
+                  class="far fa-clipboard px-2"></i></button>
+                </div>
+                  <button type="button" class="generate-account-edit-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm ml-4">Generate</button>
                 </div>
               </div>
             </div>
 
-            <div class="checkbox-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg border-none">
-              <h2 class="checkbox-error-message text-white p-2 font-bold">
-              <i class="fas fa-times-circle px-2 text-lg"></i>
-              At Least One Option Must Be Checked</h2>
+            <div class="checkbox-error hidden">
+              <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
             </div>
 
             <div id="generate-account-edit-container" class="flex flex-col w-full mb-3 divide-y divide-gray-400 hidden">
@@ -121,7 +126,7 @@ $(() => {
             </div>
     `);
 
-      const $editAccountButtons = $(`
+        const $editAccountButtons = $(`
       <div class="edit-account_field-wrapper flex mx-3 mb-3 w-full">
       <button type="button"
         class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
@@ -132,17 +137,17 @@ $(() => {
       </div>
       `);
 
-      const accountType = account.account_type_id;
-      let $options;
+        const accountType = account.account_type_id;
+        let $options;
 
-      switch (true) {
+        switch (true) {
         case Number(accountType) === 1:
           $options = $(`
           <option value="1" selected>Work</option>
           <option value="2">Entertainment</option>
           <option value="3">Social</option>
           <option value="4">Other</option>
-          `)
+          `);
           break;
         case Number(accountType) === 2:
           $options = $(`
@@ -150,7 +155,7 @@ $(() => {
           <option value="2" selected>Entertainment</option>
           <option value="3">Social</option>
           <option value="4">Other</option>
-          `)
+          `);
           break;
         case Number(accountType) === 3:
           $options = $(`
@@ -158,7 +163,7 @@ $(() => {
           <option value="2">Entertainment</option>
           <option value="3" selected>Social</option>
           <option value="4">Other</option>
-          `)
+          `);
           break;
         case Number(accountType) === 4:
           $options = $(`
@@ -166,14 +171,14 @@ $(() => {
           <option value="2">Entertainment</option>
           <option value="3">Social</option>
           <option value="4" selected>Other</option>
-          `)
+          `);
           break;
-      }
+        }
 
-      $specificAccountForm.appendTo('#edit-account-form');
-      $editAccountButtons.appendTo('.edit-account-buttons');
-      $options.appendTo('#account-type-dropdown');
-    });
+        $specificAccountForm.appendTo('#edit-account-form');
+        $editAccountButtons.appendTo('.edit-account-buttons');
+        $options.appendTo('#account-type-dropdown');
+      });
   };
 
   window.createEditAccountForm = createEditAccountForm;
@@ -215,7 +220,7 @@ $(() => {
     deleteAccount(data)
       .then(() => {
         views_manager.show('allAccounts');
-      })
+      });
   });
 
   $('main').on('click', '.generate-account-edit-password', function(event) {

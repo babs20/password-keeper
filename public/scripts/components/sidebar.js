@@ -141,10 +141,8 @@ $(() => {
           </div>
 
           <div class="account-search py-4 px-4 w-auto">
-            <form id="search-bar-form">
             <input type=text name="website" placeholder="Search" size="15" id="account-search-bar"
               class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full">
-            </form>
           </div>
         </nav>
           `);

@@ -51,27 +51,27 @@ $(() => {
           </thead>
           <tbody id="all-accounts-body" class="bg-white"></tbody>
           `);
-          $accountsTableHeader.appendTo('.all-accounts-table')
+          $accountsTableHeader.appendTo('.all-accounts-table');
           for (const account of accountsArr) {
             const $accountRow = $(`
            <tr class="border-t border-gray-400 p-2">
-              <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2">${account.website}</td>
+              <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2"><a href="${account.website}" target="_blank">${account.website}</a></td>
               <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2 hidden md:table-cell">${account.name}</td>
               <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-min">
                 <div class="account-password-cell flex justify-start w-min">
                   <input type="password"
-                  class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-max"
+                  class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-max pr-24"
                   value="${account.password}" readonly>
 
-                  <div class="password-buttons flex justify-between w-min ml-1">
+                  <div class="password-buttons flex justify-between w-min ml-1 -ml-24 mr-1">
                     <button type="button"
-                    class="view-password flex justify-center items-center hover:text-button"><i title="Show or Hide Password"
+                    class="view-password flex justify-center items-center hover:opacity-100 opacity-50"><i title="Show or Hide Password"
                       class="fas fa-eye px-2"></i></button>
                     <button type="button"
-                    class="copy-password flex justify-center items-center hover:text-button"><i title="Copy Password"
+                    class="copy-password flex justify-center items-center hover:opacity-100 opacity-50"><i title="Copy Password"
                       class="far fa-clipboard px-2"></i></button>
                     <form
-                    class="button-to-edit-account flex justify-center items-center hover:text-button">
+                    class="button-to-edit-account flex justify-center items-center hover:opacity-100 opacity-50">
                     <input type="number" class="edit-account-id hidden" name="id" value="${account.id}">
                       <button
                       class="edit-account flex justify-center items-center"><i title="Edit Account"
@@ -86,7 +86,7 @@ $(() => {
             $accountRow.appendTo('#all-accounts-body');
           }
         }
-      })
+      });
   };
 
   window.addAccountToTable = addAccountToTable;

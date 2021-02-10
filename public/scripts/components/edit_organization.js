@@ -54,9 +54,19 @@ $(() => {
           <div class="edit-org-form_field-wrapper flex flex-col w-full">
             <label for="password" class="label">Password</label>
             <div id="generator" class="flex justify-between w-full">
-              <input type="password" name="password" placeholder="Password" class="org-password-field input w-3/4 mr-3">
+              <input type="password" name="password" placeholder="Password" class="org-password-field mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1">
+
+              <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
+                <button type="button" id="org-view-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Show or Hide Password"
+                  class="fas fa-eye px-2"></i></button>
+                <button type="button" id="org-copy-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Copy Password"
+                  class="far fa-clipboard px-2"></i></button>
+                </div>
+
               <button type="button"
-                class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
+                class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 ml-4">Generate</button>
             </div>
           </div>
         </div>
@@ -121,10 +131,32 @@ $(() => {
         `);
 
         $orgSpecificForm.appendTo('#edit-org-form');
-      })
-  }
+      });
+  };
 
   window.createEditOrgForm = createEditOrgForm;
+
+  $('main').on('click', '#org-view-password', function() {
+    const $passwordField = $('.org-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+    } else {
+      $passwordField.attr('type', 'password');
+    }
+  });
+
+  $('main').on('click', '#org-copy-password', function() {
+    const $passwordField = $('.org-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+      $passwordField.select();
+      document.execCommand('copy');
+      $passwordField.attr('type', 'password');
+    } else {
+      $passwordField.select();
+      document.execCommand('copy');
+    }
+  });
 
   $('main').on('click', '.generate-org-password', function(event) {
     $('#generate-org-container').slideToggle(300, () => {

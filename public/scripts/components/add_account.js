@@ -23,10 +23,20 @@ $(() => {
           <div class="add-account_field-wrapper flex flex-col w-full">
             <label for="password" class="label">Password</label>
             <div class="flex justify-between w-full">
-              <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
+              <input type="password" name="password" placeholder="Password" class="mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1"
                 id="account-password-field">
+
+                <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
+                <button type="button" id="account-view-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Show or Hide Password"
+                  class="fas fa-eye px-2"></i></button>
+                <button type="button" id="account-copy-password"
+                class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Copy Password"
+                  class="far fa-clipboard px-2"></i></button>
+                </div>
+
               <button
-                class="generate-account-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center" type="button">Generate</button>
+                class="generate-account-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center ml-4" type="button">Generate</button>
             </div>
           </div>
         </div>
@@ -98,6 +108,28 @@ $(() => {
   `);
 
   window.$addAccountForm = $addAccountForm;
+
+  $('main').on('click', '#account-view-password', function() {
+    const $passwordField = $('#account-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+    } else {
+      $passwordField.attr('type', 'password');
+    }
+  });
+
+  $('main').on('click', '#account-copy-password', function() {
+    const $passwordField = $('#account-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+      $passwordField.select();
+      document.execCommand('copy');
+      $passwordField.attr('type', 'password');
+    } else {
+      $passwordField.select();
+      document.execCommand('copy');
+    }
+  });
 
   $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
