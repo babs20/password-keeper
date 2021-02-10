@@ -64,18 +64,19 @@ $(() => {
       </div>
 
       <div class="new-password_field-wrapper flex justify-between">
-        <div class="form field w-2/3">
+        <div class="form field w-full">
           <label for="new-password" class="label text-xl">New Password</label>
-          <input type="text" id="new-password" class="input w-full" placeholder="Password" readonly>
+          <input type="text" id="new-password" class="input w-full border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button pr-24 mt-1" placeholder="Password" readonly>
         </div>
 
-        <div class="flex justify-start w-1/3 pl-4">
-          <button type="button"
-            id="copy-password" class="rounded-full p-1 w-12 l-10 bg-button text-white hover:bg-hoverBlue self-end mb-1"><i
-              class="far fa-clipboard"></i></button>
-          <div class="flex justify-center items-center pl-4 pt-3 mt-2">
-            <span id="custom-tooltip" class="hidden font-bold pt-3 pr-4">Copied!</span>
+        <div class="flex justify-end w-min -ml-36">
+          <div class="flex justify-center items-center w-min h-min mt-6">
+            <span id="custom-tooltip" class="hidden font-bold pt-3 mr-4">Copied!</span>
           </div>
+          <button type="button"
+            id="copy-password" class="rounded-full text-black opacity-50 hover:opacity-100 self-end mb-1.5 mr-3.5">
+            <i class="far fa-clipboard text-xl"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -98,25 +99,25 @@ $(() => {
     }
   });
 
-  $('main').on('click', '#copy-password', function(event) {
+  $('main').on('click', '#copy-password', function() {
     if ($('#new-password').val().length > 0) {
       $('#new-password').select();
       document.execCommand('copy');
       $('#custom-tooltip').fadeIn(150);
       setTimeout(() => {
         $('#custom-tooltip').fadeOut(150);
-      }, 3000)
+      }, 3000);
     }
   });
 
   $('main').on('input', '#password-option0', () => {
     const passwordLength = $('#password-option0').val();
     $('#password-length-value').val(passwordLength);
-  })
+  });
 
   $('main').on('input', '#password-length-value', () => {
     const passwordLength = $('#password-length-value').val();
     $('#password-option0').val(passwordLength);
-  })
+  });
 
 });
