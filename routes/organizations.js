@@ -8,12 +8,13 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
+const aes256 = require('aes256');
 
 module.exports = (database) => {
   router.post('/register', (req, res) => {
     const organization = req.body;
     const email = req.body.email;
-    const cipher = createCipher(organization.master_password);
+    const cipher = aes256.createCipher(organization.master_password);
 
     organization.master_password = bcrypt.hashSync(organization.master_password, 12);
     organization.password = bcrypt.hashSync(organization.password, 12);
@@ -52,7 +53,7 @@ module.exports = (database) => {
 
   router.post('/login', (req, res) => {
     const { email, password, master_password } = req.body;
-    const cipher = createCipher(req.body.master_password);
+    const cipher = aes256.createCipher(req.body.master_password);
     orgLogin(email, password, master_password)
       .then(org => {
         if (!org) {
