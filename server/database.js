@@ -150,14 +150,16 @@ const getAllAccounts = (options) => {
   const queryParams = [options.org_id]
   const websiteParam = `%${options.website}%`
   let query = `
-  SELECT *
+  SELECT accounts.*
   FROM accounts
+  JOIN organizations ON org_id = organizations.id
   WHERE org_id = $1
-  AND is_deleted = FALSE`
+  AND accounts.is_deleted = FALSE
+  AND organizations.is_deleted = FALSE`
 
   if (options.id) {
     queryParams.push(options.id);
-    query += ` AND id = $${queryParams.length}`;
+    query += ` AND accounts.id = $${queryParams.length}`;
   }
 
   if (options.account_type_id) {
@@ -271,7 +273,8 @@ const getUserOfOrg = function(orgId) {
     FROM users_organizations
     JOIN users ON user_id = users.id
     WHERE org_id = $1
-    AND users_organizations.is_deleted = FALSE;
+    AND users_organizations.is_deleted = FALSE
+    AND users.is_deleted = FALSE;
   `;
   return db.query(query, [orgId])
     .then(res => res.rows)
@@ -351,7 +354,9 @@ const getOrgsForUser = function(userId) {
     SELECT organizations.abbreviation AS abbreviation, org_id
     FROM users_organizations
     JOIN organizations ON org_id = organizations.id
-    WHERE user_id = $1;
+    WHERE user_id = $1
+    AND organizations.is_deleted = FALSE
+    AND users_organizations.is_deleted = FALSE;
   `;
   return db.query(query, [userId])
     .then(res => res.rows);
@@ -367,7 +372,8 @@ const getOrgIdFromKey = function(orgKey) {
   const query = `
     SELECT id
     FROM organizations
-    WHERE identifier_key = $1;
+    WHERE identifier_key = $1
+    AND is_deleted = FALSE;
   `;
   return db.query(query, [orgKey])
     .then(res => res.rows[0]);
@@ -398,7 +404,8 @@ exports.addUserToOrg = addUserToOrg;
 const checkOrgExists = function(orgKey) {
   const query = `
     SELECT * FROM organizations
-    WHERE identifier_key = $1;
+    WHERE identifier_key = $1
+    AND is_deleted = FALSE;
   `;
   return db.query(query, [orgKey])
     .then(res => res.rows[0]);
