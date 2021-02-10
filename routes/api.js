@@ -25,7 +25,7 @@ module.exports = (database) => {
           return;
         }
 
-        res.send({user: {firstName: user.first_name, lastName: user.last_name, email: user.email, id: userId, org: user.org_id}});
+        res.send({user: {firstName: user.first_name, lastName: user.last_name, email: user.email, id: userId, org: req.session.orgId}});
       })
       .catch(e => res.send(e));
   });

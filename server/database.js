@@ -420,3 +420,21 @@ const deleteOrg = function(orgId) {
     .then(res => res.rows[0]);
 };
 exports.deleteOrg = deleteOrg;
+
+/**
+ * Checks if a user is already apart of an organization
+ * @param {Object} options
+ */
+
+const checkUserJoinedOrg = function(options) {
+  const query = `
+    SELECT *
+    FROM users_organizations
+    WHERE user_id = $1
+    AND org_id = $2
+    AND is_deleted = FALSE;
+  `;
+  return db.query(query, [options.userId, options.orgId])
+    .then(res => res.rows[0]);
+};
+exports.checkUserJoinedOrg = checkUserJoinedOrg;

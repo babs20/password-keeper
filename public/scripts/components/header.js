@@ -66,6 +66,7 @@ $(() => {
           .then($sidebar => {
             const $main = $('main');
             $sidebar.appendTo($main);
+            $('#organizations-dropdown').val(json.user.org);
             views_manager.show('allAccounts');
           })
       } else {

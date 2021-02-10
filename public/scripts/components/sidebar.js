@@ -33,6 +33,9 @@ $(() => {
                 <button id="edit-user" class="pr-2">
                   <i class="fas fa-cog hover:animate-spin text-center text-xl" title="Edit User Information"></i>
                 </button>
+                <button id="join-org" class="pr-2">
+                  <i class="fas fa-plus-square text-center text-xl" title="Join New Organization"></i>
+                </button>
               </div>
             </div>
 
@@ -180,6 +183,11 @@ $(() => {
   // edit org listener
   $('main').on('click', '#edit-org', () => {
     views_manager.show('editOrg');
+  });
+
+  // join new organization listener
+  $('main').on('click', '#join-org', () => {
+    views_manager.show('joinOrg');
   });
 
   // manage org listener
