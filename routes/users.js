@@ -126,5 +126,17 @@ module.exports = (database) => {
       });
   });
 
+  router.post('/authenticate', (req, res) => {
+    const orgId = req.session.orgId;
+    database.getMasterPassword(orgId)
+      .then(masterPassword => {
+        if (!bcrypt.compareSync(req.body.master_password, masterPassword)) {
+          res.send({ masterPassErr: "error" });
+        } else {
+          res.send('Success!');
+        }
+      })
+  });
+
   return router;
 };
