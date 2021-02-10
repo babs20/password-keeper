@@ -54,9 +54,9 @@ $(() => {
   $('main').on('submit', '#org-login-form', function(event) {
     event.preventDefault();
 
-    const $email = ('.org-login-email').val().length;
-    const $password = ('.org-login-password').val().length;
-    const $masterPassword = ('.org-login-master-password').val().length;
+    const $email = $('.org-login-email').val().length;
+    const $password = $('.org-login-password').val().length;
+    const $masterPassword = $('.org-login-master-password').val().length;
 
     if ($email < 1 || $password < 1 || $masterPassword < 1) {
       $('.login-error').slideUp(10);
