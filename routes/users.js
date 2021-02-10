@@ -133,6 +133,7 @@ module.exports = (database) => {
         if (!bcrypt.compareSync(req.body.master_password, masterPassword)) {
           res.send({ masterPassErr: "error" });
         } else {
+          req.session.cipher = req.body.master_password;
           res.send('Success!');
         }
       })
