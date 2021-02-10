@@ -100,5 +100,31 @@ module.exports = (database) => {
       });
   });
 
+  router.post('/join', (req, res) => {
+    const userId = req.session.userId;
+    database.getOrgIdFromKey(req.body.identifier_key)
+      .then(org => {
+        if (!org) {
+          res.send({orgKeyErr: "error"});
+          return;
+        } else {
+          const orgId = org.id;
+          database.checkUserJoinedOrg({ orgId, userId })
+            .then(relationship => {
+              if (relationship) {
+                console.log('joined')
+                res.send({orgJoinedErr: "error"});
+              } else {
+                database.addUserToOrg({ userId, orgId })
+                .then(userJoinOrg=> {
+                  req.session.orgId = userJoinOrg.org_id;
+                  res.send(userJoinOrg);
+                });
+              }
+            });
+        }
+      });
+  });
+
   return router;
 };
