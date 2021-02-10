@@ -49,6 +49,8 @@ module.exports = (database) => {
   // ACCOUNTS //
   router.post("/accounts", (req, res) => {
     const orgId = req.session.orgId;
+    const cipher = req.session.cipher;
+    req.body.password = cipher.encrypt(req.body.password);
     database.addAccountToOrg({...req.body, org_id: orgId})
       .then((account) => {
         if (!account) {
