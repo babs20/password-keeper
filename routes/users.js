@@ -131,7 +131,7 @@ module.exports = (database) => {
       res.send({authenticated: "authenticated"})
       return;
     } else if (!req.session.cipher) {
-      if (!req.body) {
+      if (!req.body.master_password) {
         res.send({ err: "error" });
         return;
       }
