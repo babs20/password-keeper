@@ -26,7 +26,7 @@ $(() => {
           <div class="no-cipher-error w-10/12 h-100 mx-auto flex flex-col items-center justify-start">
           <form id="master-password-form">
           <h2 class="no-cipher-error-message font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">
-            Please provide your organization's master key.
+            Please Provide Your Organization's Master Key
           </h2>
           <h2
             class="org-name font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min whitespace-nowrap">
