@@ -1,8 +1,8 @@
 $(() => {
   const $editAccountForm = $(`
   <form id="generate-password-form" class="hidden"></form>
-    <div class="w-screen h-100 flex flex-col items-center justify-center mb-10">
-      <form id="edit-account-form" class="w-7/12 h-full flex flex-col items-center justify-start">
+    <div class="w-10/12 mx-auto h-100 flex flex-col items-center justify-center">
+      <form id="edit-account-form" class="w-7/12 flex flex-col items-center justify-start mx-auto pt-5">
       </form>
       <div class="edit-account-buttons w-7/12 h-full flex flex-col items-center justify-start">
       </div>
@@ -19,22 +19,26 @@ $(() => {
         $('#account-type-dropdown').empty();
         const account = accountArr[0];
         const $specificAccountForm = $(`
-        <h4 class="edit-account font-sans text-2xl font-bold w-2/3 my-5">Edit Account</h4>
+        <h1 class="edit-account font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">Edit Account</h1>
 
-        <div class="empty-fields-error hidden">
-        <h2 class="empty-fields-message">Email/username and password fields cannot be empty</h2>
+        <div class="empty-fields-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+        <h2 class="empty-fields-message text-white p-2 font-bold">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        Please Fill Out All Fields</h2>
         </div>
 
-        <div class="password-match-error hidden">
-        <h2 class="password-match-message">Email/username and password fields cannot be empty</h2>
+        <div class="password-match-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+        <h2 class="password-match-message text-white p-2 font-bold">
+        <i class="fas fa-exclamation-triangle px-2"></i>
+        Passwords Do Not Match</h2>
         </div>
 
-        <div class="edit-account_field-wrapper form-field">
+        <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="email-username" class="label">Email/Username</label>
               <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${account.name}">
             </div>
 
-            <div class="password-with-generator flex items-center justify-between mb-3 w-2/3">
+            <div class="password-with-generator flex flex-col mx-3 mb-3 w-full">
               <div class="edit-account_field-wrapper flex flex-col w-full">
                 <label for="password" class="label">Password</label>
                 <div class="flex justify-between w-full">
@@ -50,7 +54,7 @@ $(() => {
               <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
             </div>
 
-            <div id="generate-account-edit-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
+            <div id="generate-account-edit-container" class="flex flex-col w-full mb-3 divide-y divide-gray-400 hidden">
               <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
                 <div class="flex justify-between items-center w-1/2 pr-3">
                   <label for="length " class="label">Length</label>
@@ -88,18 +92,18 @@ $(() => {
             </div>
 
 
-            <div class="edit-account_field-wrapper form-field">
+            <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="confirm-password" class="label">Confirm Password</label>
               <input type="password" name="confirm-password" placeholder="Confirm Password" class="input"
                 id="confirm-edit-password" value="${account.password}">
             </div>
 
-            <div class="edit-account_field-wrapper form-field">
+            <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="website" class="label">Website</label>
               <input type="url" id="website" name="website" placeholder="Website" class="input" value="${account.website}">
             </div>
 
-            <div class="edit-account_field-wrapper form-field">
+            <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="account-type" class="label">Account Type</label>
               <select name="account_type_id" id="account-type-dropdown"
               class="w-100 rounded border-gray-400 mt-2 border-2 p-1 outline-none focus:outline-none bg-white font-bold text-md text-black focus:text-black">
@@ -108,7 +112,7 @@ $(() => {
 
             <input type="number" class="account-id hidden" name="id" value="${account.id}">
 
-            <div class="edit-account_field-wrapper form-field">
+            <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <button type="submit"
                 class="save-account-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">
                 Save</button>
@@ -116,7 +120,7 @@ $(() => {
     `);
 
       const $editAccountButtons = $(`
-      <div class="edit-account_field-wrapper flex justify-between w-2/3">
+      <div class="edit-account_field-wrapper flex mx-3 mb-3 w-full">
       <button type="button"
         class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
         <form id="delete-account-form" class="w-1/3">

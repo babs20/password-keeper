@@ -16,14 +16,18 @@ $(() => {
         $('#edit-user-form').empty();
 
         const $customUserForm = $(`
-        <h4 class="edit-user font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">Edit User Information</h4>
+        <h1 class="edit-user font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">Edit User Information</h1>
 
-        <div class="password-match-error hidden">
-          <h2 class="password-match-message">Passwords do not match</h2>
+        <div class="password-match-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
+          <h2 class="password-match-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          Passwords Do Not Match</h2>
         </div>
 
-        <div class="fields-blank-error hidden">
-          <h2 class="fields-blank-message">Please fill out all fields</h2>
+        <div class="fields-blank-error hidden flex flex-col mb-3 w-full bg-alertRed rounded-lg">
+          <h2 class="fields-blank-message text-white p-2 font-bold">
+          <i class="fas fa-exclamation-triangle px-2"></i>
+          Please Fill Out All Fields</h2>
         </div>
 
         <div class="first-last-name flex items-center justify-between mx-3 mb-3 w-full">

@@ -1,9 +1,9 @@
 $(() => {
   const $manageOrg = $(`
-  <div class="manage-organization w-7/12 mx-auto mt-10 flex flex-col items-center">
-      <h1 class="manage-title font-bold shadow-md rounded border-l-8 p-1 pl-2 my-3 bg-white text-black text-lg border-gray-400 self-start">Manage Your Organization</h1>
-        <div class="users-table w-full">
-          <table class="all-users-table table-auto p-2 border-collapse border-2 border-gray-400 w-full"></table>
+  <div class="manage-organization w-10/12 mx-auto mt-10 flex flex-col items-center">
+    <div class="users-table w-11/12">
+        <h1 class="manage-title font-bold shadow-md rounded border-l-8 p-1 pl-2 my-3 bg-white text-black text-lg border-gray-400 self-start whitespace-nowrap w-min">Manage Your Organization</h1>
+        <table class="all-users-table table-auto p-2 border-collapse border-2 border-gray-400 w-full"></table>
       </div>
     </div>
   `);

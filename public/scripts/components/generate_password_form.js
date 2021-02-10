@@ -1,7 +1,7 @@
 $(() => {
   const $generatePasswordForm = $(`
-    <div class="h-100 flex flex-col items-center justify-start mb-10 mx-auto w-7/12">
-      <div class="mt-10 w-full">
+    <div class="h-100 flex flex-col items-center justify-start mb-10 mx-auto w-10/12">
+      <div class="mt-10 w-9/12">
         <form id="generate-password-form-full">
           <div class="w-full h-full divide-y divide-gray-400">
 
@@ -9,8 +9,10 @@ $(() => {
               class="generate-password-title font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4 self-start">
               Generate a new password</h2>
 
-            <div class="checkbox-error hidden">
-              <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
+            <div class="checkbox-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg border-none">
+              <h2 class="checkbox-error-message text-white p-2 font-bold">
+              <i class="fas fa-times-circle px-2 text-lg"></i>
+              At Least One Option Must Be Checked</h2>
             </div>
 
             <div class="flex flex-col justify-between items-center w-full py-4">
