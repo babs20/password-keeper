@@ -159,7 +159,7 @@ const getAllAccounts = (options) => {
 
   if (options.id) {
     queryParams.push(options.id);
-    query += ` AND id = $${queryParams.length}`;
+    query += ` AND accounts.id = $${queryParams.length}`;
   }
 
   if (options.account_type_id) {
