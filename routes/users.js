@@ -130,21 +130,21 @@ module.exports = (database) => {
     if (req.session.cipher) {
       res.send({authenticated: "authenticated"})
       return;
-    } else {
+    } else if (!req.session.cipher) {
       res.send({ err: "error" });
       return;
+    } else {
+      const orgId = req.session.orgId;
+      database.getMasterPassword(orgId)
+        .then(masterPassword => {
+          if (!bcrypt.compareSync(req.body.master_password, masterPassword.master_password)) {
+            res.send({ masterPassErr: "error" });
+          } else {
+            req.session.cipher = req.body.master_password;
+            res.send('Success!');
+          }
+        })
     }
-
-    const orgId = req.session.orgId;
-    database.getMasterPassword(orgId)
-      .then(masterPassword => {
-        if (!bcrypt.compareSync(req.body.master_password, masterPassword.master_password)) {
-          res.send({ masterPassErr: "error" });
-        } else {
-          req.session.cipher = req.body.master_password;
-          res.send('Success!');
-        }
-      })
   });
 
   return router;
