@@ -31,50 +31,62 @@ $(() => {
 
               <div class="edit-user-wrapper flex flex-col h-full justify-end ml-4 w-1/4">
                 <button id="edit-user" class="pb-2">
-                  <i class="fas fa-cog hover:animate-spin text-center text-xl" title="Edit User Information"></i>
+                <i class="fas fa-cog hover:animate-spin text-center text-lg" title="Edit User Information"></i>
                 </button>
                 <button id="join-org">
-                  <i class="fas fa-plus-square text-center text-xl hover:animate-spin" title="Join New Organization"></i>
+                  <i class="fas fa-plus-square text-center text-lg hover:animate-spin" title="Join New Organization"></i>
                 </button>
               </div>
             </div>
 
-            <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer">
-              <button id="add-account" class="font-bold text-left text-xl">Add Account</button>
+            <div class="add-account py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start items-center">
+              <div class="sm:hidden lg:inline">
+                <i class="fas fa-folder-plus mr-3 text-xl md:hidden lg:inline"></i>
+              </div>
+              <button id="add-account" class="font-bold text-left text-xl">
+                Add Account</button>
             </div>
 
-            <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start">
-              <button id="generate-pass" class="font-bold text-left text-xl">Generate Password</button>
+            <div class="generate-pass py-4 px-4 hover:bg-white hover:text-black cursor-pointer flex justify-start items-center">
+              <div class="sm:hidden lg:inline">
+                <i class="fas fa-random mr-3 text-xl md:hidden lg:inline"></i>
+              </div>
+              <button id="generate-pass" class="font-bold text-left text-xl">
+                Generate Password</button>
             </div>
 
-            <div class="account-categories hover:bg-white hover:text-black cursor-pointer py-4 px-4 ">
-              <div id="account-categories-button" class="">
-                <button id="account-categories" class="font-bold text-left text-xl">Categories</button>
+            <div class="account-categories hover:bg-white hover:text-black cursor-pointer flex flex-col justify-start items-center">
+              <div id="account-categories-button" class="px-4 py-4 w-full">
+                <div class="sm:hidden lg:inline">
+                  <i class="fas fa-layer-group mr-2 text-xl hidden"></i>
+                </div>
+                <button id="account-categories" class="font-bold text-left text-xl">
+                  Categories</button>
               </div>
 
               <div class="category-submenu hidden flex flex-col py-2 justify-center">
-                <form id="account-type-work" class="hover:bg-button hover:text-white rounded">
+                <form id="account-type-work" class=" mx-4 hover:bg-button hover:text-white rounded">
                   <input id="work" class="hidden" name="account_type_id" value="1">
-                  <button id="work-category" class="py-2 pl-4 text-lg">Work</button>
+                  <button id="work-category" class="text-lg font-semibold w-full text-left px-3 py-2">Work</button>
                 </form>
-                <form id="account-type-entertainment" class="hover:bg-button hover:text-white rounded">
+                <form id="account-type-entertainment" class=" mx-4 hover:bg-button hover:text-white rounded">
                   <input id="entertainment" class="hidden" name="account_type_id" value="2">
-                  <button id="entertainment-category" class="py-2 pl-4 text-lg">Entertainment</button>
+                  <button id="entertainment-category" class="text-lg font-semibold w-full text-left px-3 py-2">Entertainment</button>
                 </form>
-                <form id="account-type-social" class="hover:bg-button hover:text-white rounded">
+                <form id="account-type-social" class=" mx-4 hover:bg-button hover:text-white rounded">
                   <input id="social" class="hidden" name="account_type_id" value="3">
-                  <button id="social-category" class="py-2 pl-4 text-lg">Social</button>
+                  <button id="social-category" class="text-lg font-semibold w-full text-left px-3 py-2">Social</button>
                 </form>
-                <form id="account-type-other" class="hover:bg-button hover:text-white rounded">
+                <form id="account-type-other" class=" mx-4 hover:bg-button hover:text-white rounded">
                   <input id="other" class="hidden" name="account_type_id" value="4">
-                  <button id="other-category" class="py-2 pl-4 text-lg">Other</button>
+                  <button id="other-category" class="text-lg font-semibold w-full text-left px-3 py-2">Other</button>
                 </form>
               </div>
             </div>
 
-            <div class="account-search py-4 px-4 w-auto">
+            <div class="account-search py-4 px-4 w-auto flex items-center">
               <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
-                class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full">
+              class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full px-2">
             </div>
           </nav>
           `;
