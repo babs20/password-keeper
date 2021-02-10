@@ -67,6 +67,14 @@ module.exports = (database) => {
   router.get("/accounts", (req, res) => {
     const cipher = req.session.cipher;
 
+    if (!cipher) {
+      database.getOrgWithId(req.session.orgId)
+        .then(org => {
+          res.send({ noCipherErr: "error", org: org.name });
+          return;
+        })
+    }
+
     if (req.query.organization) {
       req.session.orgId = req.query.organization;
     }
