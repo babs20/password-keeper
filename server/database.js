@@ -172,12 +172,12 @@ const getAllAccounts = (options) => {
     query += ` AND website LIKE $${queryParams.length}`;
   }
 
-  if (options.creation_date) {
-    queryParams.push(options.creation_date);
-    query += ` ORDER BY creation_date = $${queryParams.length}`;
-  }
+  // if (options.creation_date) {
+  //   queryParams.push(options.creation_date);
+  //   query += ` ORDER BY creation_date = $${queryParams.length}`;
+  // }
 
-  query += ';';
+  query += ' ORDER BY creation_date DESC;';
 
   return db.query(query, queryParams)
     .then((res) => res.rows) // array of all the account objs
