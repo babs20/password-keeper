@@ -31,10 +31,10 @@ $(() => {
 
               <div class="edit-user-wrapper flex flex-col h-full justify-end ml-4 w-1/4">
                 <button id="edit-user" class="pb-2">
-                <i class="fas fa-cog hover:animate-spin text-center text-lg" title="Edit User Information"></i>
+                <i class="fas fa-cog hover:scale-125 animate-300 text-center text-lg" title="Edit User Information"></i>
                 </button>
                 <button id="join-org">
-                  <i class="fas fa-plus-square text-center text-lg hover:animate-spin" title="Join New Organization"></i>
+                  <i class="fas fa-plus-square text-center text-lg animate-300 hover:scale-125" title="Join New Organization"></i>
                 </button>
               </div>
             </div>
@@ -110,7 +110,7 @@ $(() => {
 
             <div class="edit-org-wrapper h-full w-1/4 flex justify-end">
               <button id="edit-org" class="pr-2">
-                <i class="fas fa-cog hover:animate-spin text-lg" title="Edit Organization Information"></i>
+                <i class="fas fa-cog hover:scale-125 animate-300 text-lg" title="Edit Organization Information"></i>
               </button>
             </div>
           </div>
