@@ -13,6 +13,7 @@ module.exports = (database) => {
   router.post('/register', (req, res) => {
     const organization = req.body;
     const email = req.body.email;
+    const cipher = createCipher(organization.password);
 
     organization.password = bcrypt.hashSync(organization.password, 12);
 
@@ -29,6 +30,7 @@ module.exports = (database) => {
               return;
             }
             req.session.orgId = organization.id;
+            req.session.cipher = cipher;
             res.send('Worked');
           })
           .catch(e => res.send(e));
@@ -49,6 +51,7 @@ module.exports = (database) => {
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
+    const cipher = createCipher(req.body.password);
     orgLogin(email, password)
       .then(org => {
         if (!org) {
@@ -56,6 +59,7 @@ module.exports = (database) => {
           return;
         }
         req.session.orgId = org.id;
+        req.session.cipher = cipher;
         res.send({ org: { name: org.name, abbreviation: org.abbreviation, email: org.email, id: org.id }});
       })
       .catch(e => res.send(e));
