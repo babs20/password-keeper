@@ -13,6 +13,13 @@ $(() => {
           </h4>
         </div>
 
+        <div class="login-blank-error flex flex-col mt-3 w-full hidden bg-alertRed rounded-lg">
+          <h4 class="login-blank-message  text-white p-2 font-bold text-sm">
+            <i class="fas fa-exclamation-triangle px-2"></i>
+            Please Fill In All Fields
+          </h4>
+        </div>
+
         <div class="login-form_field-wrapper flex flex-col my-3 w-full">
           <label for="email" class="font-bold">Email</label>
           <input type="email" name="email" placeholder="Email" class="input login-email">
@@ -43,15 +50,26 @@ $(() => {
   $('main').on('submit', '#user-login-form', function(event) {
     event.preventDefault();
 
+    const $email = $('.login-email').val().length;
+    const $password = $('.login-password').val().length;
+
+    if ($email < 1 || $password < 1) {
+      $('.login-error').slideUp(10);
+      $('.login-blank-error').slideDown(200);
+      return;
+    }
+
     const data = $(this).serialize();
     userLogin(data)
       .then(json => {
         header.update(json.user);
 
         if (!json.user) {
+          $('.login-blank-error').slideUp(10);
           $('.login-error').slideDown(200);
         } else {
           $('.login-error').slideUp(10);
+          $('.login-blank-error').slideUp(10);
           $('.login-email').val('');
           $('.login-password').val('');
           sidenav.showSidebar(json.user.org, json.user.id)
