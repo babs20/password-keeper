@@ -41,6 +41,14 @@ const joinOrg = function(data) {
   });
 };
 
+const authenticateUser = function(data) {
+  return $.ajax({
+    method: 'POST',
+    url: '/users/authenticate',
+    data
+  });
+};
+
 const orgLogin = function(data) {
   return $.ajax({
     method: 'POST',
