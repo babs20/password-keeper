@@ -127,6 +127,14 @@ module.exports = (database) => {
   });
 
   router.post('/authenticate', (req, res) => {
+    if (req.session.cipher) {
+      res.send({authenticated: "authenticated"})
+      return;
+    } else {
+      res.send({ err: "error" });
+      return;
+    }
+
     const orgId = req.session.orgId;
     database.getMasterPassword(orgId)
       .then(masterPassword => {
