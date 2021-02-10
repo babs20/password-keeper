@@ -130,7 +130,7 @@ module.exports = (database) => {
     const orgId = req.session.orgId;
     database.getMasterPassword(orgId)
       .then(masterPassword => {
-        if (!bcrypt.compareSync(req.body.master_password, masterPassword)) {
+        if (!bcrypt.compareSync(req.body.master_password, masterPassword.master_password)) {
           res.send({ masterPassErr: "error" });
         } else {
           req.session.cipher = req.body.master_password;
