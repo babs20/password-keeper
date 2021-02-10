@@ -445,3 +445,20 @@ const checkUserJoinedOrg = function(options) {
     .then(res => res.rows[0]);
 };
 exports.checkUserJoinedOrg = checkUserJoinedOrg;
+
+/**
+ * Updates a single account password given acc id
+ * @param {Object} params
+ */
+
+const updateAccountPassword = function(params) {
+  const query = `
+  UPDATE accounts
+  SET password = $1
+  WHERE id = $2
+  RETURNING *;
+  `;
+  return db.query(query, [params.password, params.id])
+    .then(res => res.rows[0]);
+};
+exports.updateAccountPassword = updateAccountPassword;
