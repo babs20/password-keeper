@@ -352,7 +352,9 @@ const getOrgsForUser = function(userId) {
     SELECT organizations.abbreviation AS abbreviation, org_id
     FROM users_organizations
     JOIN organizations ON org_id = organizations.id
-    WHERE user_id = $1;
+    WHERE user_id = $1
+    AND organizations.is_deleted = FALSE
+    AND users_organizations.is_deleted = FALSE;
   `;
   return db.query(query, [userId])
     .then(res => res.rows);
