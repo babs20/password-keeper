@@ -464,3 +464,19 @@ const updateAccountPassword = function(params) {
     .then(res => res.rows[0]);
 };
 exports.updateAccountPassword = updateAccountPassword;
+
+/**
+ * Returns the master password of an organization
+ * @param {Number} orgId
+ */
+
+const getMasterPassword = function(orgId) {
+  const query = `
+  SELECT master_password
+  FROM organizations
+  WHERE id = $1;
+  `;
+  return db.query(query, [orgId])
+    .then(res => res.rows[0]);
+};
+exports.getMasterPassword = getMasterPassword;
