@@ -33,6 +33,14 @@ const getUserOrgs = function() {
   });
 };
 
+const joinOrg = function(data) {
+  return $.ajax({
+    method: 'POST',
+    url: '/users/join',
+    data
+  });
+};
+
 const orgLogin = function(data) {
   return $.ajax({
     method: 'POST',
