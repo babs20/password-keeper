@@ -46,6 +46,10 @@ $(() => {
               </div>
             </div>
 
+            <div class="checkbox-error hidden">
+              <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
+            </div>
+
             <div id="generate-account-edit-container" class="flex flex-col w-2/3 mb-3 divide-y divide-gray-400 hidden">
               <div class="flex justify-between items-center divide-x divide-gray-400 pb-2">
                 <div class="flex justify-between items-center w-1/2 pr-3">
@@ -232,13 +236,18 @@ $(() => {
   });
 
   $('main').on('change', '.password-option', function(event) {
-    const data = $('#generate-password-form').serialize();
-    generatePassword(data)
-      .then(password => {
-        $('#edit-account-password').val(password);
-        $('#confirm-edit-password').val(password);
-      })
-      .catch(e => console.log(e));
+    if ($('.password-option').is(':checked')) {
+      $('.checkbox-error').slideUp(10);
+      const data = $('#generate-password-form').serialize();
+      generatePassword(data)
+        .then(password => {
+          $('#edit-account-password').val(password);
+          $('#confirm-edit-password').val(password);
+        })
+        .catch(e => console.log(e));
+    } else {
+      $('.checkbox-error').slideDown(150);
+    }
   });
 
 });

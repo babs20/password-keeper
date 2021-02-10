@@ -9,6 +9,10 @@ $(() => {
               class="generate-password-title font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4 self-start">
               Generate a new password</h2>
 
+            <div class="checkbox-error hidden">
+              <h2 class="checkbox-error-message">At Least One Option Must Be Checked</h2>
+            </div>
+
             <div class="flex flex-col justify-between items-center w-full py-4">
               <label for="length " class="label w-full mb-2 text-xl">Length</label>
               <p id="password-length-value" class="mb-6 bg-button rounded-full text-white font-bold px-2 py-1">12</p>
@@ -22,13 +26,13 @@ $(() => {
               <div class="flex justify-between items-center w-1/2 pr-4 text-xl">
                 <label for="password-option1" class="label">Lower Case</label><br>
                 <input type="checkbox" id="password-option1" name="lc" value="true"
-                  class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" checked>
+                  class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3" checked>
               </div>
 
               <div class="flex justify-between items-center w-1/2 pl-4 text-xl">
                 <label for="password-option2" class="label"> Upper Case</label><br>
                 <input type="checkbox" id="password-option2" name="uc" value="true"
-                  class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+                  class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
               </div>
             </div>
 
@@ -37,13 +41,13 @@ $(() => {
               <div class="flex justify-between items-center w-1/2 pr-4 text-xl">
                 <label for="password-option3" class="label"> Numbers</label><br>
                 <input type="checkbox" id="password-option3" name="num" value="true"
-                  class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+                  class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
               </div>
 
               <div class="flex justify-between items-center w-1/2 pl-4 text-xl">
                 <label for="password-option4" class="label"> Symbols</label><br>
                 <input type="checkbox" id="password-option4" name="sym" value="true"
-                  class="form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
+                  class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3">
               </div>
             </div>
 
@@ -77,11 +81,16 @@ $(() => {
   $('main').on('submit', '#generate-password-form-full', function(event) {
     event.preventDefault();
 
-    const data = $(this).serialize();
-    generatePassword(data)
-      .then(password => {
-        $('#new-password').val(password);
-      });
+    if ($('.password-option').is(':checked')) {
+      $('.checkbox-error').slideUp(10);
+      const data = $(this).serialize();
+      generatePassword(data)
+        .then(password => {
+          $('#new-password').val(password);
+        });
+    } else {
+      $('.checkbox-error').slideDown(150);
+    }
   });
 
   $('main').on('click', '#copy-password', function(event) {
