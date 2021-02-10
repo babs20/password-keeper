@@ -55,6 +55,16 @@ $(() => {
             <label for="password" class="label">Password</label>
             <div id="generator" class="flex justify-between w-full">
               <input type="password" name="password" placeholder="Password" class="org-password-field input w-3/4 mr-3">
+
+              <div class="password-buttons flex justify-between w-min ml-1">
+              <button type="button" id="org-view-password"
+              class="flex justify-center items-center hover:text-button"><i title="Show or Hide Password"
+                class="fas fa-eye px-2"></i></button>
+              <button type="button" id="org-copy-password"
+              class="flex justify-center items-center hover:text-button"><i title="Copy Password"
+                class="far fa-clipboard px-2"></i></button>
+            </div>
+
               <button type="button"
                 class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5">Generate</button>
             </div>
@@ -125,6 +135,28 @@ $(() => {
   }
 
   window.createEditOrgForm = createEditOrgForm;
+
+  $('main').on('click', '#org-view-password', function() {
+    const $passwordField = $('.org-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+    } else {
+      $passwordField.attr('type', 'password');
+    }
+  });
+
+  $('main').on('click', '#org-copy-password', function() {
+    const $passwordField = $('.org-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+      $passwordField.select();
+      document.execCommand('copy');
+      $passwordField.attr('type', 'password');
+    } else {
+      $passwordField.select();
+      document.execCommand('copy');
+    }
+  })
 
   $('main').on('click', '.generate-org-password', function(event) {
     $('#generate-org-container').slideToggle(300, () => {

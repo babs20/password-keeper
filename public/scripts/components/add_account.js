@@ -25,6 +25,16 @@ $(() => {
             <div class="flex justify-between w-full">
               <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3"
                 id="account-password-field">
+
+                <div class="password-buttons flex justify-between w-min ml-1">
+                <button type="button" id="account-view-password"
+                class="flex justify-center items-center hover:text-button"><i title="Show or Hide Password"
+                  class="fas fa-eye px-2"></i></button>
+                <button type="button" id="account-copy-password"
+                class="flex justify-center items-center hover:text-button"><i title="Copy Password"
+                  class="far fa-clipboard px-2"></i></button>
+                </div>
+
               <button
                 class="generate-account-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center" type="button">Generate</button>
             </div>
@@ -98,6 +108,28 @@ $(() => {
   `);
 
   window.$addAccountForm = $addAccountForm;
+
+  $('main').on('click', '#account-view-password', function() {
+    const $passwordField = $('#account-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+    } else {
+      $passwordField.attr('type', 'password');
+    }
+  });
+
+  $('main').on('click', '#account-copy-password', function() {
+    const $passwordField = $('#account-password-field');
+    if ($passwordField.attr('type') === 'password') {
+      $passwordField.attr('type', 'text');
+      $passwordField.select();
+      document.execCommand('copy');
+      $passwordField.attr('type', 'password');
+    } else {
+      $passwordField.select();
+      document.execCommand('copy');
+    }
+  })
 
   $('main').on('submit', '#add-account-form', function(event) {
     event.preventDefault();
