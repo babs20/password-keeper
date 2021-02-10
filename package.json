@@ -13,6 +13,7 @@
   "author": "Lighthouse Labs",
   "license": "ISC",
   "dependencies": {
+    "aes256": "^1.1.0",
     "autoprefixer": "^10.2.4",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
