@@ -54,7 +54,7 @@ $(() => {
           <div class="edit-org-form_field-wrapper flex flex-col w-full">
             <label for="password" class="label">Password</label>
             <div id="generator" class="flex justify-between w-full">
-              <input type="password" name="password" placeholder="Password" class="org-password-field input w-3/4 mr-3 pr-24">
+              <input type="password" name="password" placeholder="Password" class="org-password-field mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1">
 
               <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
                 <button type="button" id="account-view-password"

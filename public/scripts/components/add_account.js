@@ -23,7 +23,7 @@ $(() => {
           <div class="add-account_field-wrapper flex flex-col w-full">
             <label for="password" class="label">Password</label>
             <div class="flex justify-between w-full">
-              <input type="password" name="password" placeholder="Password" class="input w-3/4 mr-3 pr-24"
+              <input type="password" name="password" placeholder="Password" class="mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1"
                 id="account-password-field">
 
                 <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
