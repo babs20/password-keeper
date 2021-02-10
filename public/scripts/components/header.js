@@ -12,8 +12,8 @@ $(() => {
       userLinks = `
         <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between">
           <div class="flex items-center justify-start">
-            <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
-            <span class="font-sans text-xl lg:text-2xl ml-6">Remember Passwords Better</span>
+            <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-6 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
+            <span class="font-sans text-xl lg:text-2xl ml-6 hidden sm:inline">Remember Passwords Better</span>
           </div>
           <div class="flex items-center justify-start">
             <button type="button" class="login-button font-sans text-xl lg:text-2xl mr-6  hover:underline hover:animate-pulse">Login</button>
@@ -25,8 +25,8 @@ $(() => {
       userLinks = `
       <nav id="page-header_user-links" class="page-header_user-links w-screen min-h-full bg-white flex items-center justify-between">
         <div class="flex items-center justify-start">
-          <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-10 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
-          <span class="font-sans text-xl lg:text-2xl ml-6">Remember Passwords Better</span>
+          <span id="logo" class="font-sans text-3xl lg:text-4xl font-bold ml-6 border-r-4 border-black pr-6 cursor-pointer">Keeper</span>
+          <span class="font-sans text-xl lg:text-2xl ml-6 hidden sm:inline">Remember Passwords Better</span>
         </div>
         <div class="flex items-center justify-start">
             <button type="button" class="font-sans text-xl lg:text-2xl mr-10 hover:underline hover:animate-pulse" id="logout-button">Logout</button>
