@@ -44,7 +44,12 @@ $(() => {
 
     <div class="signup-form_field-wrapper flex flex-col w-full ml-3 mr-3 mb-3">
       <label for="master-password" class="label">Master Password</label>
-      <p class="master-password-description">This master password will be used by members of your organization to access stored account information</p>
+      <div class="flex items-center my-3 w-full bg-button rounded-lg">
+      <i class="fas fa-flag pr-2 pl-6 py-4 text-white text-xl"></i>
+      <p class="master-password-description text-white p-3 font-bold ">
+      This master password will be used by members of your organization to access stored account information
+      </p>
+      </div>
       <input type="password" name="master_password" placeholder="Master Password" class="org-master-password input">
     </div>
 
