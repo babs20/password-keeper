@@ -5,7 +5,7 @@ $(() => {
     <div class="all-accounts mx-5 mt-10 w-11/12 flex flex-col items-center pb-8">
       <h1 class="accounts-title font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min self-start whitespace-nowrap">Your Organization's Accounts</h1>
       <div id="no-accounts-container" class="w-full"></div>
-        <div class="accounts-table w-full overflow-y-auto border-b-2 border-t-2 border-gray-400" id="accounts-table">
+        <div class="accounts-table w-full overflow-y-auto border-b-2 border-t-2 border-gray-400 relative" id="accounts-table">
           <table class="all-accounts-table table-auto p-2 border-collapse border-r-2 border-l-2 border-gray-400 w-full"></table>
         </div>
     </div>
@@ -60,18 +60,18 @@ $(() => {
               <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-min">
                 <div class="account-password-cell flex justify-start w-min">
                   <input type="password"
-                  class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-max"
+                  class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-max pr-24"
                   value="${account.password}" readonly>
 
-                  <div class="password-buttons flex justify-between w-min ml-1">
+                  <div class="password-buttons flex justify-between w-min ml-1 -ml-24 mr-1">
                     <button type="button"
-                    class="view-password flex justify-center items-center hover:text-button"><i title="Show or Hide Password"
+                    class="view-password flex justify-center items-center hover:opacity-100 opacity-50"><i title="Show or Hide Password"
                       class="fas fa-eye px-2"></i></button>
                     <button type="button"
-                    class="copy-password flex justify-center items-center hover:text-button"><i title="Copy Password"
+                    class="copy-password flex justify-center items-center hover:opacity-100 opacity-50"><i title="Copy Password"
                       class="far fa-clipboard px-2"></i></button>
                     <form
-                    class="button-to-edit-account flex justify-center items-center hover:text-button">
+                    class="button-to-edit-account flex justify-center items-center hover:opacity-100 opacity-50">
                     <input type="number" class="edit-account-id hidden" name="id" value="${account.id}">
                       <button
                       class="edit-account flex justify-center items-center"><i title="Edit Account"
