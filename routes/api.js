@@ -86,6 +86,8 @@ module.exports = (database) => {
 
   router.put('/accounts', (req, res) => {
     const orgId = req.session.orgId;
+    const cipher = req.session.cipher;
+    req.body.password = cipher.encrypt(req.body.password);
     // need to make sure that form has a hidden field/button that passes account id to this function
     database.updateAccountInfo({...req.body, org_id: orgId})
       .then(account => {
