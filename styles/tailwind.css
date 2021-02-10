@@ -26,3 +26,7 @@ button {
   @apply focus:outline-none;
 }
 
+.animate-300 {
+  @apply transform duration-300;
+}
+
