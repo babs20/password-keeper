@@ -92,11 +92,11 @@ const generateRandomString = function() {
 const addOrganization = function(organization) {
   const identifierKey = organization.abbreviation + generateRandomString();
   const query = `
-    INSERT INTO organizations (name, abbreviation, email, password, identifier_key)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO organizations (name, abbreviation, email, password, identifier_key, master_password)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
   `;
-  const queryParams = [organization.name, organization.abbreviation, organization.email, organization.password, identifierKey];
+  const queryParams = [organization.name, organization.abbreviation, organization.email, organization.password, identifierKey, organization.master_password];
   return db.query(query, queryParams)
     .then(res => res.rows[0]);
 };
