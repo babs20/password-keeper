@@ -87,13 +87,6 @@ $(() => {
           $('.sign-up-org-exists-error').slideDown(200);
           return;
         } else {
-          $('.sign-up-blank-error').slideUp(10);
-          $('.sign-up-org-exists-error').slideUp(10);
-          $('.org-name').val('');
-          $('.org-abbrev').val('');
-          $('.org-email').val('');
-          $('.org-password').val('');
-          $('.org-master-password').val('');
           getOrgInfo()
             .then(json => {
               header.update(json.org);
