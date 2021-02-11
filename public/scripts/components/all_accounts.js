@@ -64,7 +64,7 @@ $(() => {
         } else {
           $('.accounts-title').removeClass('hidden');
           $('.accounts-table').removeClass('hidden');
-            const $emptyAccountsTable = $(`
+          const $emptyAccountsTable = $(`
             <div class="no-accounts-alert flex flex mb-3 bg-alertRed rounded-lg items-center">
             <?xml version="1.0" encoding="utf-8"?>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -158,9 +158,9 @@ $(() => {
           $('.master-password-error').slideUp(10);
           views_manager.show('allAccounts');
         }
-      })
+      });
 
-  })
+  });
 
   $('main').on('click', '.view-password', function(event) {
     const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
