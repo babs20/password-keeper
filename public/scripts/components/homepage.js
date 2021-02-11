@@ -40,9 +40,10 @@ $(() => {
 
     <div class="flex items-center justify-start h-12">
       <span class="font-sans font-bold text-xl ml-6 text-white px-3 hidden md:inline">Follow Us!</span>
-      <i class="fab fa-twitter-square text-white px-3 fa-2x hover:text-blue-50 ml-6 md:ml-0 animate-300 hover:scale-125 cursor-pointer"></i>
-      <i class="fab fa-instagram-square text-white px-3 fa-2x animate-300 hover:scale-125 cursor-pointer"></i>
-      <i class="fab fa-github-square text-white px-3 fa-2x animate-300 hover:scale-125 cursor-pointer"></i>
+      <a href="https://twitter.com/lighthouse_labs" target="_blank"><i class="fab fa-twitter-square text-white px-3 fa-2x hover:text-blue-50 ml-6 md:ml-0 animate-300 hover:scale-125 cursor-pointer"></i></a>
+      <a href="https://www.instagram.com/lighthouselabs/" target="_blank"><i class="fab fa-instagram-square text-white px-3 fa-2x animate-300 hover:scale-125 cursor-pointer"></i></a>
+      <a href="https://github.com/rchen1996" target="_blank"><i class="fab fa-github-square text-white px-3 fa-2x animate-300 hover:scale-125 cursor-pointer"></i></a>
+      <a href="https://github.com/babs20" target="_blank"><i class="fab fa-github-square text-white px-3 fa-2x animate-300 hover:scale-125 cursor-pointer"></i></a>
     </div>
 
     <div class="flex items-center justify-end h-12">
