@@ -2,7 +2,7 @@ $(() => {
 
   const $orgSignupForm = $(`
   <div class=" w-9/12 h-auto flex flex-col items-center justify-start mx-auto mb-36">
-  <div class="w-9/12 flex flex-col items-center h-full pt-8">
+  <div class="w-9/12 flex flex-col items-center h-full pt-16">
   <form id="org-signup-form" class="org-signup-form h-100 w-100 xl:w-3/4 flex flex-col items-center justify-center">
     <p class="font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Sign up for a Free Organization Account</p>
 
