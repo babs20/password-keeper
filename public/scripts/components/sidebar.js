@@ -286,6 +286,7 @@ $(() => {
       const data = $(this).serialize();
       views_manager.show();
       addAccountToTable(data);
+      $('#account-search-bar').val('');
     }
   })
 
