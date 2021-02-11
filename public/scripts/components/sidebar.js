@@ -17,7 +17,8 @@ $(() => {
 
           let sidebar1 = `
             <nav id="sidebar_links"
-            class="sidebar_links sm:w-1/5 flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400">
+            class="sidebar_links sm:w-1/5 flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white">
+            <div class="sticky top-1.5 divide-y divide-gray-400">
             <div class="user-options py-4 flex items-center justify-between px-4 h-100">
               <div class="org-swap-wrapper flex flex-col w-3/4 ">
                 <label for="org-swap" class="pb-2 font-bold text-xl">Organization</label>
@@ -88,6 +89,7 @@ $(() => {
               <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
               class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full px-2">
             </div>
+            </div>
           </nav>
           `;
           const $userLinks = $(sidebar1);
@@ -102,6 +104,7 @@ $(() => {
           const $orgLinks = $(`
           <nav id="sidebar_links"
           class="sidebar_links flex flex-col justify-start border-r-2 border-gray-400 bg-button text-white divide-y divide-gray-400 sm:w-1/5">
+          <div class="sticky top-1.5 divide-y divide-gray-400">
           <div class="org-options py-4 flex items-center justify-between px-4 h-100">
             <div class="org-options flex flex-col w-3/4 ">
               <h1 class="org-name-label font-bold text-xl">Organization:</h1>
@@ -173,6 +176,7 @@ $(() => {
           <div class="account-search py-4 px-4 w-auto flex items-center">
             <input type=text name="website" placeholder="Search" size="12" id="account-search-bar"
               class="text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-full px-2">
+          </div>
           </div>
         </nav>
           `);
