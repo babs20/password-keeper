@@ -58,35 +58,35 @@ $(() => {
 
   $('header').on('click', '#logo', (event) => {
     getUserInfo()
-      .then(json => {
-        if (json.user) {
-          header.update(json.user);
-          sidenav.detachSidebar();
-          sidenav.showSidebar(json.user.org, json.user.id)
-            .then($sidebar => {
-              const $main = $('main');
-              $sidebar.appendTo($main);
-              $('#organizations-dropdown').val(json.user.org);
-              views_manager.show('allAccounts');
-            });
-        } else {
-          getOrgInfo()
-            .then(json => {
-              if (json.org) {
-                header.update(json.org);
-                sidenav.detachSidebar();
-                sidenav.showSidebar(json.org.orgId, json.org.user_id)
-                  .then($sidebar => {
-                    const $main = $('main');
-                    $sidebar.appendTo($main);
-                    views_manager.show('allAccounts');
-                  });
-              } else {
-                views_manager.show('homepage');
-              }
-            });
-        }
-      });
+    .then(json => {
+      if (json.user) {
+        header.update(json.user);
+        sidenav.detachSidebar();
+        sidenav.showSidebar(json.user.org, json.user.id)
+          .then($sidebar => {
+            const $main = $('main');
+            $sidebar.appendTo($main);
+            $('#organizations-dropdown').val(json.user.org);
+            views_manager.show('allAccounts');
+          })
+      } else {
+        getOrgInfo()
+          .then(json => {
+            if (json.org) {
+              header.update(json.org);
+              sidenav.showSidebar(json.org.orgId, json.org.user_id)
+                .then($sidebar => {
+                  const $main = $('main');
+                  sidenav.detachSidebar();
+                  $sidebar.appendTo($main);
+                  views_manager.show('allAccounts');
+                })
+            } else {
+              views_manager.show('homepage');
+            }
+          })
+      }
+    })
   });
 
   $('header').on('click', '#logout-button', (event) => {
