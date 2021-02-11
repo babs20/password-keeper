@@ -40,13 +40,59 @@
   <script type="text/javascript" src="/scripts/components/manage_organization.js"></script>
   <script type="text/javascript" src="/scripts/components/join_org.js"></script>
 </head>
+<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-14 h-14 mr-4"><style type="text/css">
+ .st0{display:none;enable-background:new    ;}
+ .st1{font-family:&#39;HelveticaNeue-BoldOutline&#39;;}
+ .st2{font-size:5px;}
+ </style><title>  05</title><path d="M77.4 14.6L40.6 51.4c-8.4-6.1-20.1-4.2-26.2 4.2s-4.2 20.1 4.2 26.2 20.1 4.2 26.2-4.2c4.7-6.6 4.7-15.4 0-22L61 39.6l10.5 10.5 17.6-17.6L78.6 21.9l3.1-3.1L77.4 14.6zM38.7 75.6c-5 5-13.1 5-18.1 0s-5-13.1 0-18.1c5-5 13.1-5 18.1 0C43.7 62.6 43.7 70.7 38.7 75.6L38.7 75.6zM80.6 32.4l-9.1 9.1 -6.3-6.3 9.1-9.1L80.6 32.4z"/><text transform="matrix(1 0 0 1 0 102.5226)" class="st0 st1 st2">  Created by Trendy</text><text transform="matrix(1 0 0 1 0 107.5226)" class="st0 st1 st2">  from the Noun Project</text>
+ </svg> -->
 
 <body class="bg-blue-50 overflow-x-hidden relative w-full h-full">
 
-  <header id="page-header" class="page-header w-screen h-auto bg-white py-9 border-b-2 border-gray-400"></header>
+  <header id="page-header" class="page-header w-screen h-auto bg-white py-9 border-b-2 border-gray-400 fixed z-10"></header>
 
-  <main id="main-content" class="bg-white-50 flex flex-col min-h-full justify-between sm:flex-row w-full">
+  <main id="main-content" class="bg-white-50 flex flex-col min-h-full justify-between sm:flex-row w-full pt-28">
+    <div class="min-h-full w-full flex flex-col items-start justify-start">
+
+      <div class="w-full flex justify-start">
+        <img src="/img/homepage-img.png" alt="Photo of a Phone and Laptop" class="object-cover w-full h-84 object-center shadow-md">
+      </div>
+
+      <div class="logo flex items-center justify-around w-full my-auto px-8 md:my-12">
+        <section class="h-full w-full md:w-1/2">
+          <h1 class="keeper-logo font-bold text-5xl mx-8 py-4 border-black border-b-2">What is Keeper?</h1>
+          <article class="">
+            <p class="keeper-description px-8 py-4 text-lg">
+              Keeper is a password storage system for organizations.
+              Generate and easily share passwords for use on any website for all users in your organization. <br> <br>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
+              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit. <br> <br>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
+              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit.
+            </p>
+          </article>
+        </section>
+        <div class="border border-black rounded-lg p-1 bg-gray-100 shadow-lg hidden md:flex">
+          <img src="/img/homepage-img-2.png" alt="Photo of a desk with laptops" class="rounded-lg transform -translate-x-3 -translate-y-3 shadow-xl">
+        </div>
+      </div>
+
+    </div>
   </main>
+  <footer class="page-header w-screen py-12 flex justify-between border-gray-400 border-t-2 bg-gray-600">
+
+    <div class="flex items-center justify-start h-12">
+      <span class="font-sans font-bold text-xl ml-6 text-white px-3 hidden md:inline">Follow Us!</span>
+      <i class="fab fa-twitter-square text-white px-3 fa-2x hover:text-blue-50 ml-6 md:ml-0"></i>
+      <i class="fab fa-instagram-square text-white px-3 fa-2x"></i>
+      <i class="fab fa-github-square text-white px-3 fa-2x"></i>
+    </div>
+
+    <div class="flex items-center justify-end h-12">
+      <span class="font-sans text-l font-bold text-white pr-2">Created By: </span>
+      <span class="font-sans text-l mr-6 text-white pr-3"> Rebecca Chen and Brady Blair</span>
+    </div>
+    </footer>
 
 </body>
 
