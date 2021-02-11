@@ -4,7 +4,7 @@ $(() => {
   <form id="generate-password-form" class="hidden"></form>
   <div class="w-10/12 mx-auto h-full flex justify-center">
     <div class="w-10/12 h-full flex flex-col items-center justify-center">
-      <form id="add-account-form" class="add-account-form w-7/12 min-h-full flex flex-col items-center justify-start pt-5 mx-auto">
+      <form id="add-account-form" class="add-account-form w-7/12 min-h-full flex flex-col items-center justify-start pt-10 mx-auto">
         <h4 class="add-account font-sans text-2xl font-bold w-full my-5 border-l-8 border-black pl-4">Add Account Login Information</h4>
 
         <div class="empty-fields-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
