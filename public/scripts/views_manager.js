@@ -26,6 +26,14 @@ $(() => {
         break;
       case 'signup':
         $signupForm.appendTo($main);
+        $('.sign-up-org-error').slideUp(10);
+        $('.sign-up-blank-error').slideUp(10);
+        $('.sign-up-exists-error').slideUp(10);
+        $('.first-name').val('');
+        $('.last-name').val('');
+        $('.signup-email').val('');
+        $('.signup-password').val('');
+        $('.org-key').val('');
         break;
       case 'login':
         $loginForm.appendTo($main);

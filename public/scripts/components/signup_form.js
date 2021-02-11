@@ -93,14 +93,6 @@ $(() => {
           $('.sign-up-blank-error').slideUp(10);
           $('.sign-up-exists-error').slideDown(200);
         } else {
-          $('.sign-up-org-error').slideUp(10);
-          $('.sign-up-blank-error').slideUp(10);
-          $('.sign-up-exists-error').slideUp(10);
-          $('.first-name').val('');
-          $('.last-name').val('');
-          $('.signup-email').val('');
-          $('.signup-password').val('');
-          $('.org-key').val('');
           getUserInfo()
             .then(json => {
               header.update(json.user);
