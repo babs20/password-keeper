@@ -7,11 +7,11 @@ $(() => {
         <img src="/img/homepage-img.png" alt="Photo of a Phone and Laptop" class="object-cover w-full h-84 object-center shadow-md">
       </div>
 
-      <div class="logo flex items-center justify-around w-full my-auto px-8 md:my-12">
+      <div class="logo flex items-center justify-around w-full my-12 px-8">
         <section class="h-full w-full md:w-1/2">
-          <h1 class="keeper-logo font-bold text-5xl mx-8 py-4 border-black border-b-2">What is Keeper?</h1>
+          <h1 class="keeper-logo font-bold text-5xl mx-8 pt-4 pb-8 border-black border-b-2 w-min whitespace-nowrap">What is Keeper?</h1>
           <article class="keeper-description">
-            <p class="px-8 py-4 text-lg">
+            <p class="px-8 pb-4 pt-8 text-lg">
               <b>Keeper</b> is a password management system for organizations of any size.
               <em>Generate</em> and easily <em>share</em> passwords for use on any website for all users in your organization.
            </p>
