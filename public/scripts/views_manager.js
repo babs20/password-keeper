@@ -35,7 +35,6 @@ $(() => {
         $orgSignupForm.appendTo($main);
         break;
       case 'allAccounts':
-        $getAllAccounts.appendTo($main);
         addAccountToTable();
         break;
       case 'editUser':
