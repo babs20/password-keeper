@@ -1,7 +1,7 @@
 $(() => {
   const $joinOrgForm = $(`
     <div class="w-10/12 h-100 mx-auto flex flex-col items-center justify-start">
-        <form id="join-org-form" class="w-7/12 h-100 flex flex-col items-center justify-start mx-auto pt-5">
+        <form id="join-org-form" class="w-7/12 h-100 flex flex-col items-center justify-start mx-auto pt-10">
           <h1 class="join-org-title font-sans text-2xl font-bold w-full h-full my-5 pl-4 border-l-8 border-black">Join Another Organization</h1>
 
           <div class="empty-fields-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
