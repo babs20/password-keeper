@@ -1,7 +1,7 @@
 $(() => {
   const $main = $('#main-content');
   const $homepage = $(`
-  <div class="h-100 w-1/2 flex flex-col items-center justify-start pt-44 mx-auto">
+  <div class="h-100 w-1/2 flex flex-col items-center justify-start mt-20 mx-auto">
   <div class="logo mb-8 pb-8 border-b-2 border-black w-full flex items-center justify-center">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-14 h-14 mr-4"><style type="text/css">
 	.st0{display:none;enable-background:new    ;}
@@ -17,7 +17,7 @@ $(() => {
 `);
 
   const $footer = $(`
-    <footer class="page-header w-screen bg-gray-600 py-12 border-t-2 border-gray-400 flex justify-between fixed bottom-0">
+    <footer class="page-header w-screen bg-gray-600 py-12 border-t-2 border-gray-400 flex justify-between">
 
     <div class="flex items-center justify-start h-12">
       <span class="font-sans font-bold text-xl ml-6 text-white px-3 hidden md:inline">Follow Us!</span>

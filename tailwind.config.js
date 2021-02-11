@@ -20,6 +20,9 @@ module.exports = {
       margin: {
         '-50': '-12.5rem',
       },
+      height: {
+        'screen70': '70vh',
+      },
     }
   },
   variants: {
