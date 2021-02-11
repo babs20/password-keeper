@@ -1,19 +1,32 @@
 $(() => {
   const $main = $('#main-content');
   const $homepage = $(`
-  <div class="h-100 w-1/2 flex flex-col items-center justify-start mt-20 mx-auto">
-  <div class="logo mb-8 pb-8 border-b-2 border-black w-full flex items-center justify-center">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-14 h-14 mr-4"><style type="text/css">
-	.st0{display:none;enable-background:new    ;}
-	.st1{font-family:&#39;HelveticaNeue-BoldOutline&#39;;}
-	.st2{font-size:5px;}
-  </style><title>  05</title><path d="M77.4 14.6L40.6 51.4c-8.4-6.1-20.1-4.2-26.2 4.2s-4.2 20.1 4.2 26.2 20.1 4.2 26.2-4.2c4.7-6.6 4.7-15.4 0-22L61 39.6l10.5 10.5 17.6-17.6L78.6 21.9l3.1-3.1L77.4 14.6zM38.7 75.6c-5 5-13.1 5-18.1 0s-5-13.1 0-18.1c5-5 13.1-5 18.1 0C43.7 62.6 43.7 70.7 38.7 75.6L38.7 75.6zM80.6 32.4l-9.1 9.1 -6.3-6.3 9.1-9.1L80.6 32.4z"/><text transform="matrix(1 0 0 1 0 102.5226)" class="st0 st1 st2">  Created by Trendy</text><text transform="matrix(1 0 0 1 0 107.5226)" class="st0 st1 st2">  from the Noun Project</text>
-  </svg>
-    <h1 class="keeper-logo font-bold text-4xl mr-4">Keeper</h1>
-  </div>
+  <div class="min-h-full w-full flex flex-col items-start justify-start">
 
-  <h3 class="keeper-description">Keeper is a password storage system for organizations.<br>Generate and easily share passwords for use on any website<br>for all users in your organization.</h3>
-</div>
+      <div class="w-full flex justify-start">
+        <img src="/img/homepage-img.png" alt="Photo of a Phone and Laptop" class="object-cover w-full h-84 object-center shadow-md">
+      </div>
+
+      <div class="logo flex items-center justify-around w-full my-auto px-8 md:my-12">
+        <section class="h-full w-full md:w-1/2">
+          <h1 class="keeper-logo font-bold text-5xl mx-8 py-4 border-black border-b-2">What is Keeper?</h1>
+          <article class="">
+            <p class="keeper-description px-8 py-4 text-lg">
+              Keeper is a password storage system for organizations.
+              Generate and easily share passwords for use on any website for all users in your organization. <br> <br>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
+              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit. <br> <br>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
+              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit.
+            </p>
+          </article>
+        </section>
+        <div class="border border-black rounded-lg p-1 bg-gray-100 shadow-lg hidden md:flex">
+          <img src="/img/homepage-img-2.png" alt="Photo of a desk with laptops" class="rounded-lg transform -translate-x-3 -translate-y-3 shadow-xl">
+        </div>
+      </div>
+
+    </div>
 `);
 
   const $footer = $(`
