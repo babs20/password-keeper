@@ -7,9 +7,9 @@ Keeper is a single-page AJAX-based password storage app for organizations. It us
 
 ## Final Product
 
-!["Homepage"](#)
-!["Dashboard"](#)
-!["Password Generator"](#)
+!["Homepage"](https://github.com/babs20/password-keeper/blob/readme/docs/homepage.png)
+!["Dashboard"](https://github.com/babs20/password-keeper/blob/readme/docs/dashboard.png)
+!["Password Generator"](https://github.com/babs20/password-keeper/blob/readme/docs/generate.png)
 
 ## Getting Started
 
