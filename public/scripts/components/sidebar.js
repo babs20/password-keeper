@@ -194,11 +194,9 @@ $(() => {
   // make sure to change org cookie upon changing org
   $('main').on('change', '#organizations-dropdown', function(event) {
     const data = $(this).serialize();
-    const $main = $('#main-content');
     views_manager.show();
     getAllAccounts(data)
       .then(() => {
-        $getAllAccounts.appendTo($main);
         addAccountToTable();
       })
   });
@@ -251,9 +249,7 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    const $main = $('#main-content');
     views_manager.show();
-    $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
 
@@ -262,9 +258,7 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    const $main = $('#main-content');
     views_manager.show();
-    $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
 
@@ -273,9 +267,7 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    const $main = $('#main-content');
     views_manager.show();
-    $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
 
@@ -284,9 +276,7 @@ $(() => {
     event.preventDefault();
 
     const data = $(this).serialize();
-    const $main = $('#main-content');
     views_manager.show();
-    $getAllAccounts.appendTo($main);
     addAccountToTable(data);
   });
 
@@ -294,9 +284,7 @@ $(() => {
   $('main').on('keydown', '#account-search-bar', function(event) {
     if (event.keyCode === 13) {
       const data = $(this).serialize();
-      const $main = $('#main-content');
       views_manager.show();
-      $getAllAccounts.appendTo($main);
       addAccountToTable(data);
     }
   })
