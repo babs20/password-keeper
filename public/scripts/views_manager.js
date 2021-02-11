@@ -58,6 +58,11 @@ $(() => {
         break;
       case 'generatePassword':
         $generatePasswordForm.appendTo($main);
+        $('#password-length-value').val('12');
+        $('#password-option0').val('12');
+        $('.password-option').prop('checked', false);
+        $('#password-option1').prop('checked', true);
+        $('#new-password').val('');
         break;
       case 'editAccount':
         $editAccountForm.appendTo($main);
