@@ -55,10 +55,6 @@ $(() => {
           $('.empty-fields-error').slideUp(10);
           $('.org-joined-error').slideDown(150);
         } else {
-          $('.org-key-error').slideUp(10);
-          $('.empty-fields-error').slideUp(10);
-          $('.org-joined-error').slideUp(10);
-          $('#org-key').val('');
           views_manager.show('allAccounts');
           sidenav.detachSidebar();
           sidenav.showSidebar(json.org_id, json.user_id)

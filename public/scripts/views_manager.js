@@ -77,6 +77,10 @@ $(() => {
         break;
       case 'joinOrg':
         $joinOrgForm.appendTo($main);
+        $('.org-key-error').slideUp(10);
+        $('.empty-fields-error').slideUp(10);
+        $('.org-joined-error').slideUp(10);
+        $('#org-key').val('');
         break;
     }
   };
