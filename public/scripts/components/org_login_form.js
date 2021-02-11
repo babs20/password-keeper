@@ -20,7 +20,7 @@ $(() => {
           </h4>
         </div>
 
-        <div class="login-form_field-wrapper flex flex-col mt-3 w-full">
+        <div class="login-form_field-wrapper flex flex-col my-3 w-full">
           <label for="email" class="font-bold">Email</label>
           <input type="email" name="email" placeholder="Email" class="input org-login-email">
         </div>
