@@ -68,7 +68,10 @@ module.exports = (database) => {
     const cipher = req.session.cipher;
 
     if (!cipher) {
-      return database.getOrgWithId(req.session.orgId)
+      if (req.query.organization) {
+        req.session.orgId = req.query.organization;
+      }
+      database.getOrgWithId(req.session.orgId)
         .then(org => {
           res.send({ noCipherErr: "error", org: org.name });
           return;
