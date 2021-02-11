@@ -45,6 +45,16 @@ $(() => {
         break;
       case 'addAccount':
         $addAccountForm.appendTo($main);
+        $('.empty-fields-error').slideUp();
+        $('#email-username').val('');
+        $('#account-password-field').val('');
+        $('#website').val('https://');
+        $('#account-type-dropdown').val('1');
+        $('.password-option0').val('12');
+        $('#generate-account-container').hide();
+        $('.password-option').prop('checked', false);
+        $('#password-option1').prop('checked', true);
+        $('#account-password-field').prop('type', 'password');
         break;
       case 'generatePassword':
         $generatePasswordForm.appendTo($main);
