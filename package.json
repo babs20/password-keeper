@@ -11,12 +11,14 @@
     "build": "postcss styles/tailwind.css -o public/styles/tailwind.css"
   },
   "author": "Teamwork",
-  "contributors":[
-    {"name": "Brady Blair",
-    "url": "https://github.com/babs20"
+  "contributors": [
+    {
+      "name": "Brady Blair",
+      "url": "https://github.com/babs20"
     },
-    {"name": "Rebecca Chen",
-    "url": "https://github.com/rchen1996"
+    {
+      "name": "Rebecca Chen",
+      "url": "https://github.com/rchen1996"
     }
   ],
   "license": "ISC",
