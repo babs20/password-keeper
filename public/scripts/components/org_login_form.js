@@ -72,11 +72,6 @@ $(() => {
           $('.login-blank-error').slideUp(10);
           $('.login-error').slideDown(200);
         } else {
-          $('.login-error').slideUp(10);
-          $('.login-blank-error').slideUp(10);
-          $('.org-login-email').val('');
-          $('.org-login-password').val('');
-          $('.org-login-master-password').val('');
           sidenav.showSidebar(json.org.id, json.org.user_id)
           .then($sidebar => {
             const $main = $('main');

@@ -36,6 +36,11 @@ $(() => {
         break;
       case 'orgLogin':
         $orgLoginForm.appendTo($main);
+        $('.login-error').slideUp(10);
+        $('.login-blank-error').slideUp(10);
+        $('.org-login-email').val('');
+        $('.org-login-password').val('');
+        $('.org-login-master-password').val('');
         break;
       case 'orgSignup':
         $orgSignupForm.appendTo($main);
