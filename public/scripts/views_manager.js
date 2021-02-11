@@ -29,6 +29,10 @@ $(() => {
         break;
       case 'login':
         $loginForm.appendTo($main);
+        $('.login-error').slideUp(10);
+        $('.login-blank-error').slideUp(10);
+        $('.login-email').val('');
+        $('.login-password').val('');
         break;
       case 'orgLogin':
         $orgLoginForm.appendTo($main);
