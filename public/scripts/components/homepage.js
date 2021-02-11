@@ -10,15 +10,21 @@ $(() => {
       <div class="logo flex items-center justify-around w-full my-auto px-8 md:my-12">
         <section class="h-full w-full md:w-1/2">
           <h1 class="keeper-logo font-bold text-5xl mx-8 py-4 border-black border-b-2">What is Keeper?</h1>
-          <article class="">
-            <p class="keeper-description px-8 py-4 text-lg">
-              Keeper is a password storage system for organizations.
-              Generate and easily share passwords for use on any website for all users in your organization. <br> <br>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
-              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit. <br> <br>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit esse iste quia autem eaque dolore fugiat ipsum minima nulla.
-              Nesciunt, ea facere aut totam natus ipsum dicta laudantium commodi suscipit.
-            </p>
+          <article class="keeper-description">
+            <p class="px-8 py-4 text-lg">
+              <b>Keeper</b> is a password management system for organizations of any size.
+              <em>Generate</em> and easily <em>share</em> passwords for use on any website for all users in your organization.
+           </p>
+           <p class="px-8 py-4 text-lg">
+              Organizations are able to add as many members as they like to their team.
+              Each member has access to all the organizations accounts using a <b>master password</b>,
+              making sharing accounts across large teams a breeze and secure when changing members.
+           </p>
+           <p class="px-8 py-4 text-lg">
+           Are you tired of using the same password for every site or you just can't think of a secure password?
+           <em>No worries!</em>
+           Keeper has a built in <b>password generator</b> which makes creating secure passwords <em>simple and streamlined</em>.
+           </p>
           </article>
         </section>
         <div class="border border-black rounded-lg p-1 bg-gray-100 shadow-lg hidden md:flex">
