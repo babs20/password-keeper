@@ -21,7 +21,7 @@ $(() => {
             Information</h2>
           <h3
             class="org-identifier-key font-bold rounded border-l-8 p-1 px-4 my-2 bg-white text-black border-gray-400 break-words w-max hover:shadow-md">
-            Organization ID: ${org.key}</h3>
+            Organization ID: ${escape(org.key)}</h3>
         </div>
 
         <div class="password-match-error flex flex-col mb-3 w-full hidden bg-alertRed rounded-lg">
@@ -57,19 +57,19 @@ $(() => {
         <div class="name-abbrev flex items-center justify-between mb-3 w-full">
           <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
             <label for="name" class="label">Name</label>
-            <input type="text" id="org-name" name="name" placeholder="Name" class="org-name input" value="${org.name}">
+            <input type="text" id="org-name" name="name" placeholder="Name" class="org-name input" value="${escape(org.name)}">
           </div>
 
           <div class="edit-org-form_field-wrapper flex flex-col w-9/20">
             <label for="abbreviation" class="label">Abbreviation</label>
             <input type="text" name="abbreviation" placeholder="Abbreviation" class="org-abbrev input"
-              value="${org.abbreviation}">
+              value="${escape(org.abbreviation)}">
           </div>
         </div>
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
           <label for="email" class="label">Email</label>
-          <input type="email" name="email" placeholder="Email" class="org-email input" value="${org.email}">
+          <input type="email" name="email" placeholder="Email" class="org-email input" value="${escape(org.email)}">
         </div>
 
         <div class="password-with-generator flex items-center justify-between mb-3 pt-2 w-full border-t-2 border-gray-600">

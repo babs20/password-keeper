@@ -109,4 +109,12 @@ $(() => {
     }
   };
 
+  const escape = function(content) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(content));
+    return div.innerHTML;
+  };
+
+
+  window.escape = escape;
 });

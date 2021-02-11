@@ -28,7 +28,7 @@ $(() => {
           </h2>
           <h2
             class="org-name font-bold shadow-md rounded border-l-8 p-2 my-3 bg-white text-black text-lg border-gray-400 w-min whitespace-nowrap">
-            Organization: ${accountsArr.org}</h2>
+            Organization: ${escape(accountsArr.org)}</h2>
 
           <div class="blank-field-error flex mb-3 bg-alertRed rounded-lg items-center hidden">
             <h2 class="blank-error-message text-white p-2 font-bold text-base">
@@ -105,13 +105,13 @@ $(() => {
             for (const account of accountsArr) {
               const $accountRow = $(`
             <tr class="border-t border-gray-400 p-2">
-                <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2"><a href="${account.website}" target="_blank">${account.website}</a></td>
-                <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2 hidden md:table-cell">${account.name}</td>
+                <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2"><a href="${escape(account.website)}" target="_blank">${escape(account.website)}</a></td>
+                <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-1/2 hidden md:table-cell">${escape(account.name)}</td>
                 <td class="p-2 border-r border-l border-gray-400 font-semibold text-sm w-min">
                   <div class="account-password-cell flex justify-start w-min">
                     <input type="password"
                     class="account-password-field text-sm text-black font-bold border-2 rounded border-gray-400 p-1 focus:outline-none focus:ring-1 focus:border-button w-max pr-24"
-                    value="${account.password}" readonly>
+                    value="${escape(account.password)}" readonly>
 
                     <div class="password-buttons flex justify-between w-min ml-1 -ml-24 mr-1">
                       <button type="button"

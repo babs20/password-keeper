@@ -35,7 +35,7 @@ $(() => {
 
         <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="email-username" class="label">Email/Username</label>
-              <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${account.name}">
+              <input type="text" id="email-username" name="name" placeholder="Login" class="input" value="${escape(account.name)}">
             </div>
 
             <div class="password-with-generator flex flex-col mx-3 mb-3 w-full">
@@ -43,7 +43,7 @@ $(() => {
                 <label for="password" class="label">Password</label>
                 <div class="flex justify-between w-full">
                   <input type="password" name="password" placeholder="Password" class="mt-2 border-2 rounded border-gray-400 focus:outline-none focus:ring-1 focus:border-button w-3/4 mr-3 pr-16 pl-1 py-1"
-                    id="edit-account-password" value=${account.password}>
+                    id="edit-account-password" value=${escape(account.password)}>
                     <div class="password-buttons flex justify-between items-center w-min ml-2 -ml-20 mr-1 mt-2">
                 <button type="button" id="edit-account-view-password"
                 class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Show or Hide Password"
@@ -102,12 +102,12 @@ $(() => {
             <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="confirm-password" class="label">Confirm Password</label>
               <input type="password" name="confirm-password" placeholder="Confirm Password" class="input"
-                id="confirm-edit-password" value="${account.password}">
+                id="confirm-edit-password" value="${escape(account.password)}">
             </div>
 
             <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">
               <label for="website" class="label">Website</label>
-              <input type="url" id="website" name="website" placeholder="Website" class="input" value="${account.website}">
+              <input type="url" id="website" name="website" placeholder="Website" class="input" value="${escape(account.website)}">
             </div>
 
             <div class="edit-account_field-wrapper flex flex-col mx-3 mb-3 w-full">

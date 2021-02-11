@@ -10,7 +10,7 @@ $(() => {
           let userOrgs = '';
           for (const org of orgsArr) {
             const $orgSelect = `
-              <option name="org_id" value="${org.org_id}">${org.abbreviation}</option>
+              <option name="org_id" value="${org.org_id}">${escape(org.abbreviation)}</option>
             `;
             userOrgs += $orgSelect;
           }
@@ -108,7 +108,7 @@ $(() => {
           <div class="org-options py-4 flex items-center justify-between px-4 h-100">
             <div class="org-options flex flex-col w-3/4 ">
               <h1 class="org-name-label font-bold text-xl">Organization:</h1>
-              <h3 class="sidebar-org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400 break-words">${orgName}</h3>
+              <h3 class="sidebar-org-name font-bold rounded border-l-8 p-1 pl-2 mt-2 bg-white text-black border-gray-400 break-words">${escape(orgName)}</h3>
             </div>
 
             <div class="edit-org-wrapper h-full w-1/4 flex justify-end">

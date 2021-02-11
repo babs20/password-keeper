@@ -28,8 +28,8 @@ $(() => {
         for (const user of usersArr) {
           const $userRow = $(`
           <tr class="border-t-2 border-b-2 border-gray-400 p-2">
-            <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${user.first_name} ${user.last_name}</td>
-            <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${user.email}</td>
+            <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${escape(user.first_name)} ${escape(user.last_name)}</td>
+            <td class="p-2 border-2 border-gray-400 font-semibold text-sm">${escape(user.email)}</td>
             <td class="p-2 border-2 border-gray-400 font-semibold text-sm">
               <form class="remove-user-from-org">
                 <input type="number" name="user_id" value="${user.userid}" class="hidden">

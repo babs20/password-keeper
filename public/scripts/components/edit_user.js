@@ -33,18 +33,18 @@ $(() => {
         <div class="first-last-name flex items-center justify-between mx-3 mb-3 w-full">
           <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
             <label for="first_name" class="label">First Name</label>
-            <input type="text" name="first_name" placeholder="First Name" class="user-first-name input" value="${json.user.firstName}">
+            <input type="text" name="first_name" placeholder="First Name" class="user-first-name input" value="${escape(json.user.firstName)}">
           </div>
 
           <div class="edit-user-form_field-wrapper flex flex-col w-9/20">
             <label for="last_name" class="label">Last Name</label>
-            <input type="text" name="last_name" placeholder="Last Name" class="user-last-name input" value="${json.user.lastName}">
+            <input type="text" name="last_name" placeholder="Last Name" class="user-last-name input" value="${escape(json.user.lastName)}">
           </div>
         </div>
 
         <div class="edit-user-form_field-wrapper flex flex-col mx-3 mb-3 w-full">
           <label for="email" class="label">Email</label>
-          <input type="email" name="email" placeholder="Email" class="user-email input" value="${json.user.email}">
+          <input type="email" name="email" placeholder="Email" class="user-email input" value="${escape(json.user.email)}">
         </div>
 
         <div class="password-with-generator flex flex-col mx-3 mb-3 w-full">
