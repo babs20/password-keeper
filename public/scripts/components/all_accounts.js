@@ -16,10 +16,7 @@ $(() => {
   window.$getAllAccounts = $getAllAccounts;
 
   const addAccountToTable = function(data) {
-    $('footer').detach();
-    $('.all-accounts-table').empty();
-    $('#no-accounts-container').empty();
-    $('#no-key-container').empty();
+    const $main = $('main');
     getAllAccounts(data)
       .then(accountsArr => {
         if (accountsArr.noCipherErr) {
@@ -59,12 +56,14 @@ $(() => {
           </form>
         </div>
           `);
+          $getAllAccounts.appendTo($main);
+          $('.all-accounts-table').empty();
+          $('#no-accounts-container').empty();
+          $('#no-key-container').empty();
           $('.accounts-title').addClass('hidden');
           $('.accounts-table').addClass('hidden');
           $noCipherError.appendTo('#no-key-container');
         } else {
-          $('.accounts-title').removeClass('hidden');
-          $('.accounts-table').removeClass('hidden');
             const $emptyAccountsTable = $(`
             <div class="no-accounts-alert flex flex mb-3 bg-alertRed rounded-lg items-center">
             <?xml version="1.0" encoding="utf-8"?>
@@ -83,6 +82,11 @@ $(() => {
             </div>
           `);
           if (accountsArr.length < 1) {
+            $getAllAccounts.appendTo($main);
+            $('.all-accounts-table').empty();
+            $('#no-accounts-container').empty();
+            $('#no-key-container').empty();
+            $('.accounts-title').removeClass('hidden');
             $('#accounts-table').addClass('hidden');
             $emptyAccountsTable.appendTo('#no-accounts-container');
           } else {
@@ -97,7 +101,7 @@ $(() => {
             </thead>
             <tbody id="all-accounts-body" class="bg-white"></tbody>
             `);
-            $accountsTableHeader.appendTo('.all-accounts-table');
+
             for (const account of accountsArr) {
               const $accountRow = $(`
             <tr class="border-t border-gray-400 p-2">
@@ -129,6 +133,13 @@ $(() => {
             </tr>
               `);
 
+              $getAllAccounts.appendTo($main);
+              $('.all-accounts-table').empty();
+              $('#no-accounts-container').empty();
+              $('#no-key-container').empty();
+              $('.accounts-title').removeClass('hidden');
+              $('.accounts-table').removeClass('hidden');
+              $accountsTableHeader.appendTo('.all-accounts-table');
               $accountRow.appendTo('#all-accounts-body');
             }
           }
@@ -159,9 +170,9 @@ $(() => {
           $('.master-password-error').slideUp(10);
           views_manager.show('allAccounts');
         }
-      })
+      });
 
-  })
+  });
 
   $('main').on('click', '.view-password', function(event) {
     const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
