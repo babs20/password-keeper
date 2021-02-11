@@ -22,6 +22,7 @@ $(() => {
     switch (item) {
       case 'homepage':
         $homepage.appendTo($main);
+        $footer.insertAfter($main);
         break;
       case 'signup':
         $signupForm.appendTo($main);
