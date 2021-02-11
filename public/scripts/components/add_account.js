@@ -59,7 +59,7 @@ $(() => {
               <label for="password-option1" class="label ml-4"> Lower Case</label><br>
               <input type="checkbox" name="lc" value="true"
                 class="password-option form-checkbox h-3.5 w-3.5 rounded text-button border-gray-400 border ml-3"
-                form="generate-password-form" checked>
+                form="generate-password-form" id="password-option1" checked>
             </div>
           </div>
           <div class="flex justify-between items-center pt-2 divide-x divide-gray-400">
