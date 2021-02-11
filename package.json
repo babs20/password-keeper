@@ -10,7 +10,15 @@
     "db:reset": "node bin/resetdb.js",
     "build": "postcss styles/tailwind.css -o public/styles/tailwind.css"
   },
-  "author": "Lighthouse Labs",
+  "author": "Teamwork",
+  "contributors":[
+    {"name": "Brady Blair",
+    "url": "https://github.com/babs20"
+    },
+    {"name": "Rebecca Chen",
+    "url": "https://github.com/rchen1996"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "aes256": "^1.1.0",
