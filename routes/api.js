@@ -73,25 +73,38 @@ module.exports = (database) => {
           res.send({ noCipherErr: "error", org: org.name });
           return;
         })
-    }
+    } else {
 
-    if (req.query.organization) {
-      req.session.orgId = req.query.organization;
-    }
+      database.getMasterPassword(req.session.orgId)
+        .then(masterPassword => {
+          if (req.query.organization) {
+            req.session.orgId = req.query.organization;
+          }
 
-    const orgId = req.session.orgId // NEED TO GET orgId for the current user
-    database.getAllAccounts({...req.query, org_id: orgId})
-      .then((accounts) => {
-        if (!accounts) {
-          res.send({error: 'There was an error!'});
-          return;
-        }
-        for (const account of accounts) {
-          account.password = aes256.decrypt(cipher, account.password);
-        }
-        res.send(accounts);
-      })
-      .catch((err) => console.log(err));
+          const orgId = req.session.orgId // NEED TO GET orgId for the current user
+          if (!bcrypt.compareSync(cipher, masterPassword.master_password)) {
+            req.session.cipher = null;
+            return database.getOrgWithId(req.session.orgId)
+            .then(org => {
+              res.send({ noCipherErr: "error", org: org.name });
+              return;
+            })
+          } else {
+            database.getAllAccounts({...req.query, org_id: orgId})
+              .then((accounts) => {
+                if (!accounts) {
+                  res.send({error: 'There was an error!'});
+                  return;
+                }
+                for (const account of accounts) {
+                  account.password = aes256.decrypt(cipher, account.password);
+                }
+                res.send(accounts);
+              })
+              .catch((err) => console.log(err));
+          }
+        })
+    }
   });
 
   router.put('/accounts', (req, res) => {
