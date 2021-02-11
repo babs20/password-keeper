@@ -8,7 +8,6 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
-const aes256 = require('aes256');
 
 module.exports = (database) => {
   router.post('/register', (req, res) => {
@@ -26,18 +25,18 @@ module.exports = (database) => {
           return;
         } else {
           database.addOrganization(organization)
-          .then(organization => {
-            if (!organization) {
-              res.send({ error: "error" });
-              return;
-            }
-            req.session.orgId = organization.id;
-            req.session.cipher = cipher;
-            res.send('Worked');
-          })
-          .catch(e => res.send(e));
+            .then(organization => {
+              if (!organization) {
+                res.send({ error: "error" });
+                return;
+              }
+              req.session.orgId = organization.id;
+              req.session.cipher = cipher;
+              res.send('Worked');
+            })
+            .catch(e => res.send(e));
         }
-      })
+      });
   });
 
   const orgLogin = function(email, password, masterPassword) {
@@ -66,11 +65,6 @@ module.exports = (database) => {
       })
       .catch(e => res.send(e));
   });
-
-  // router.post('/logout', (req, res) => {
-  //   req.session.orgId = null;
-  //   res.send({});
-  // });
 
   return router;
 };

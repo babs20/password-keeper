@@ -75,7 +75,7 @@ module.exports = (database) => {
         .then(org => {
           res.send({ noCipherErr: "error", org: org.name });
           return;
-        })
+        });
     } else {
 
       database.getMasterPassword(req.session.orgId)
@@ -84,14 +84,14 @@ module.exports = (database) => {
             req.session.orgId = req.query.organization;
           }
 
-          const orgId = req.session.orgId // NEED TO GET orgId for the current user
+          const orgId = req.session.orgId; // NEED TO GET orgId for the current user
           if (!bcrypt.compareSync(cipher, masterPassword.master_password)) {
             req.session.cipher = null;
             return database.getOrgWithId(req.session.orgId)
-            .then(org => {
-              res.send({ noCipherErr: "error", org: org.name });
-              return;
-            })
+              .then(org => {
+                res.send({ noCipherErr: "error", org: org.name });
+                return;
+              });
           } else {
             database.getAllAccounts({...req.query, org_id: orgId})
               .then((accounts) => {
@@ -106,7 +106,7 @@ module.exports = (database) => {
               })
               .catch((err) => console.log(err));
           }
-        })
+        });
     }
   });
 
@@ -164,12 +164,12 @@ module.exports = (database) => {
     database.getOrgWithEmail(email)
       .then(org => {
         if (!bcrypt.compareSync(req.body.current_master_password,org.master_password)) {
-          res.send({ incorrectMasterPassErr: "error" })
+          res.send({ incorrectMasterPassErr: "error" });
         } else if (req.body.current_master_password === req.body.new_master_password) {
           database.updateOrgInfo({...req.body, id: orgId})
-          .then(organization => {
-            res.send(organization);
-          });
+            .then(organization => {
+              res.send(organization);
+            });
         } else {
           const oldCipher = req.session.cipher;
           const newCipher = req.body.new_master_password;
@@ -180,15 +180,15 @@ module.exports = (database) => {
                 const oldPassword = aes256.decrypt(oldCipher, account.password);
                 const newPassword = aes256.encrypt(newCipher, oldPassword);
                 database.updateAccountPassword({ id: account.id, password: newPassword })
-                  .then(() => console.log('update success'))
+                  .then(() => console.log('update success'));
               }
               database.updateOrgInfo({...req.body, id: orgId})
-              .then(organization => {
-                res.send(organization);
-              });
-            })
+                .then(organization => {
+                  res.send(organization);
+                });
+            });
         }
-      })
+      });
   });
 
   router.delete('/organization', (req, res) => {
@@ -196,7 +196,7 @@ module.exports = (database) => {
     database.deleteOrg(orgId)
       .then(() => {
         res.send('Deleted');
-      })
+      });
   });
 
   // MANAGE

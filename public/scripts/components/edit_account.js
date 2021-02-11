@@ -141,38 +141,38 @@ $(() => {
         let $options;
 
         switch (true) {
-        case Number(accountType) === 1:
-          $options = $(`
-          <option value="1" selected>Work</option>
-          <option value="2">Entertainment</option>
-          <option value="3">Social</option>
-          <option value="4">Other</option>
-          `);
-          break;
-        case Number(accountType) === 2:
-          $options = $(`
-          <option value="1">Work</option>
-          <option value="2" selected>Entertainment</option>
-          <option value="3">Social</option>
-          <option value="4">Other</option>
-          `);
-          break;
-        case Number(accountType) === 3:
-          $options = $(`
-          <option value="1">Work</option>
-          <option value="2">Entertainment</option>
-          <option value="3" selected>Social</option>
-          <option value="4">Other</option>
-          `);
-          break;
-        case Number(accountType) === 4:
-          $options = $(`
-          <option value="1">Work</option>
-          <option value="2">Entertainment</option>
-          <option value="3">Social</option>
-          <option value="4" selected>Other</option>
-          `);
-          break;
+          case Number(accountType) === 1:
+            $options = $(`
+            <option value="1" selected>Work</option>
+            <option value="2">Entertainment</option>
+            <option value="3">Social</option>
+            <option value="4">Other</option>
+            `);
+            break;
+          case Number(accountType) === 2:
+            $options = $(`
+            <option value="1">Work</option>
+            <option value="2" selected>Entertainment</option>
+            <option value="3">Social</option>
+            <option value="4">Other</option>
+            `);
+            break;
+          case Number(accountType) === 3:
+            $options = $(`
+            <option value="1">Work</option>
+            <option value="2">Entertainment</option>
+            <option value="3" selected>Social</option>
+            <option value="4">Other</option>
+            `);
+            break;
+          case Number(accountType) === 4:
+            $options = $(`
+            <option value="1">Work</option>
+            <option value="2">Entertainment</option>
+            <option value="3">Social</option>
+            <option value="4" selected>Other</option>
+            `);
+            break;
         }
 
         $specificAccountForm.appendTo('#edit-account-form');
@@ -245,7 +245,7 @@ $(() => {
       });
   });
 
-  $('main').on('click', '.generate-account-edit-password', function(event) {
+  $('main').on('click', '.generate-account-edit-password', function() {
     $('#generate-account-edit-container').slideToggle(300, () => {
       if (!$('#generate-account-edit-container').is(':hidden')) {
         const data = $('#generate-password-form').serialize();
@@ -259,7 +259,7 @@ $(() => {
     });
   });
 
-  $('main').on('input', '.password-option0', function(event) {
+  $('main').on('input', '.password-option0', function() {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
       .then(password => {
@@ -269,7 +269,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('change', '.password-option', function(event) {
+  $('main').on('change', '.password-option', function() {
     if ($('.password-option').is(':checked')) {
       $('.checkbox-error').slideUp(10);
       const data = $('#generate-password-form').serialize();

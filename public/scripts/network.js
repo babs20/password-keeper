@@ -1,9 +1,3 @@
-// const getHomepage = function() {
-//   return $.ajax({
-//     url: '/',
-//   });
-// };
-
 const userLogin = function(data) {
   return $.ajax({
     method: 'POST',
@@ -56,13 +50,6 @@ const orgLogin = function(data) {
     data
   });
 };
-
-// const orgLogout = function() {
-//   return $.ajax({
-//     method: 'POST',
-//     url: '/organizations/logout'
-//   });
-// };
 
 const orgRegistration = function(data) {
   return $.ajax({
@@ -126,12 +113,6 @@ const deleteAccount = function(data) {
     data
   });
 };
-
-// const getGeneratePassword = function() {
-//   return $.ajax({
-//     url: '/api/generate-password'
-//   });
-// };
 
 const generatePassword = function(data) {
   return $.ajax({

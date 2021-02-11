@@ -64,7 +64,7 @@ $(() => {
           $('.accounts-table').addClass('hidden');
           $noCipherError.appendTo('#no-key-container');
         } else {
-            const $emptyAccountsTable = $(`
+          const $emptyAccountsTable = $(`
             <div class="no-accounts-alert flex flex mb-3 bg-alertRed rounded-lg items-center">
             <?xml version="1.0" encoding="utf-8"?>
             <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -174,7 +174,7 @@ $(() => {
 
   });
 
-  $('main').on('click', '.view-password', function(event) {
+  $('main').on('click', '.view-password', function() {
     const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
     if ($passwordField.attr('type') === 'password') {
       $passwordField.attr('type', 'text');
@@ -183,7 +183,7 @@ $(() => {
     }
   });
 
-  $('main').on('click', '.copy-password', function(event) {
+  $('main').on('click', '.copy-password', function() {
     const $passwordField = $(this).closest('.account-password-cell').find('.account-password-field');
     if ($passwordField.attr('type') === 'password') {
       $passwordField.attr('type', 'text');

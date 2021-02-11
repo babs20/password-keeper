@@ -73,21 +73,21 @@ $(() => {
           $('.login-error').slideDown(200);
         } else {
           sidenav.showSidebar(json.org.id, json.org.user_id)
-          .then($sidebar => {
-            const $main = $('main');
-            sidenav.detachSidebar();
-            $sidebar.appendTo($main);
-            views_manager.show('allAccounts');
-          })
+            .then($sidebar => {
+              const $main = $('main');
+              sidenav.detachSidebar();
+              $sidebar.appendTo($main);
+              views_manager.show('allAccounts');
+            });
         }
       });
   });
 
-  $('main').on('click', '#user-login-link', (event) => {
+  $('main').on('click', '#user-login-link', () => {
     views_manager.show('login');
   });
 
-  $('main').on('click', '#org-sign-up-link', (event) => {
+  $('main').on('click', '#org-sign-up-link', () => {
     views_manager.show('orgSignup');
   });
 

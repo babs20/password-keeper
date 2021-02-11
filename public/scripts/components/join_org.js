@@ -63,7 +63,7 @@ $(() => {
               $sidebar.appendTo($main);
               $('#organizations-dropdown').val(json.org_id);
               views_manager.show('allAccounts');
-            })
+            });
         }
       });
   });

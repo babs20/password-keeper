@@ -146,7 +146,7 @@ $(() => {
       });
   });
 
-  $('main').on('click', '.generate-account-password', function(event) {
+  $('main').on('click', '.generate-account-password', function() {
     $('#generate-account-container').slideToggle(300, () => {
       if (!$('#generate-account-container').is(':hidden')) {
         const data = $('#generate-password-form').serialize();
@@ -159,7 +159,7 @@ $(() => {
     });
   });
 
-  $('main').on('input', '.password-option0', function(event) {
+  $('main').on('input', '.password-option0', function() {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
       .then(password => {
@@ -168,7 +168,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('change', '.password-option', function(event) {
+  $('main').on('change', '.password-option', function() {
     if ($('.password-option').is(':checked')) {
       $('.checkbox-error').slideUp(10);
       const data = $('#generate-password-form').serialize();

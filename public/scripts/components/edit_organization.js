@@ -202,7 +202,7 @@ $(() => {
     }
   });
 
-  $('main').on('click', '.generate-org-password', function(event) {
+  $('main').on('click', '.generate-org-password', function() {
     $('#generate-org-container').slideToggle(300, () => {
       if (!$('#generate-org-container').is(':hidden')) {
         const data = $('#generate-password-form').serialize();
@@ -216,7 +216,7 @@ $(() => {
     });
   });
 
-  $('main').on('input', '.password-option0', function(event) {
+  $('main').on('input', '.password-option0', function() {
     const data = $('#generate-password-form').serialize();
     generatePassword(data)
       .then(password => {
@@ -226,7 +226,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('change', '.password-option', function(event) {
+  $('main').on('change', '.password-option', function() {
     if ($('.password-option').is(':checked')) {
       $('.checkbox-error').slideUp(10);
       const data = $('#generate-password-form').serialize();
@@ -240,21 +240,6 @@ $(() => {
       $('.checkbox-error').slideDown(150);
     }
   });
-
-// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
-// <label for="current-master-password" class="label">Current Master Password</label>
-// <input type="password" name="current-master-password" placeholder="Master Password" class="current-master-password input">
-// </div>
-
-// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
-// <label for="new-master-password" class="label">New Master Password</label>
-// <input type="password" name="new-master-password" placeholder="New Master Password" class="new-master-password input">
-// </div>
-
-// <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
-// <label for="confirm-master-password" class="label">Confirm Master Password</label>
-// <input type="password" name="confirm-master-password" placeholder="Confirm Master Password" class="confirm-master-password input">
-// </div>
 
   $('main').on('submit', '#edit-org-form', function(event) {
     event.preventDefault();
@@ -311,7 +296,7 @@ $(() => {
       .catch(e => console.log(e));
   });
 
-  $('main').on('click', '.delete-org', function(event) {
+  $('main').on('click', '.delete-org', function() {
     deleteOrg()
       .then(userLogout)
       .then(getOrgInfo)

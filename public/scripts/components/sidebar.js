@@ -183,7 +183,7 @@ $(() => {
 
           return $orgLinks;
         });
-    };
+    }
   };
 
   sidenav.showSidebar = showSidebar;
@@ -196,13 +196,13 @@ $(() => {
 
   // org selector listener
   // make sure to change org cookie upon changing org
-  $('main').on('change', '#organizations-dropdown', function(event) {
+  $('main').on('change', '#organizations-dropdown', function() {
     const data = $(this).serialize();
     views_manager.show();
     getAllAccounts(data)
       .then(() => {
         addAccountToTable();
-      })
+      });
   });
 
   // edit user listener
@@ -234,7 +234,7 @@ $(() => {
         } else {
           views_manager.show('allAccounts');
         }
-      })
+      });
   });
 
   // generate password listener
@@ -292,6 +292,6 @@ $(() => {
       addAccountToTable(data);
       $('#account-search-bar').val('');
     }
-  })
+  });
 
 });

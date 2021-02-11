@@ -68,7 +68,7 @@ const addUser = (user) => {
   const query = `
   INSERT INTO users (first_name, last_name, email, password)
   VALUES ($1, $2, $3, $4)
-  RETURNING *;`
+  RETURNING *;`;
   return db.query(query, [user.first_name, user.last_name, user.email, user.password])
     .then((res) => res.rows[0])
     .catch();
@@ -114,7 +114,7 @@ const updateUserInfo = (user) => {
       last_name = $2,
       email = $3,
       password = $4
-  WHERE id = $5;`
+  WHERE id = $5;`;
   return db.query(query, [user.first_name, user.last_name, user.email, hashedPassword, user.id])
     .then((res) => res.rows[0])
     .catch((err) => console.log(err));
@@ -129,7 +129,7 @@ const addAccountToOrg = (params) => {
   const query = `
   INSERT INTO accounts (name, password, website, account_type_id, org_id, creation_date)
   VALUES ($1, $2, $3, $4, $5, NOW()::timestamp)
-  RETURNING *;`
+  RETURNING *;`;
   return db.query(query, [
     params.name,
     params.password,
@@ -147,15 +147,15 @@ exports.addAccountToOrg = addAccountToOrg;
    * @param {Object} options account_type_id and timestamp
 **/
 const getAllAccounts = (options) => {
-  const queryParams = [options.org_id]
-  const websiteParam = `%${options.website}%`
+  const queryParams = [options.org_id];
+  const websiteParam = `%${options.website}%`;
   let query = `
   SELECT accounts.*
   FROM accounts
   JOIN organizations ON org_id = organizations.id
   WHERE org_id = $1
   AND accounts.is_deleted = FALSE
-  AND organizations.is_deleted = FALSE`
+  AND organizations.is_deleted = FALSE`;
 
   if (options.id) {
     queryParams.push(options.id);
@@ -171,11 +171,6 @@ const getAllAccounts = (options) => {
     queryParams.push(websiteParam);
     query += ` AND website LIKE $${queryParams.length}`;
   }
-
-  // if (options.creation_date) {
-  //   queryParams.push(options.creation_date);
-  //   query += ` ORDER BY creation_date = $${queryParams.length}`;
-  // }
 
   query += ' ORDER BY creation_date DESC;';
 
@@ -411,7 +406,7 @@ const checkOrgExists = function(orgKey) {
   `;
   return db.query(query, [orgKey])
     .then(res => res.rows[0]);
-}
+};
 exports.checkOrgExists = checkOrgExists;
 
 /**

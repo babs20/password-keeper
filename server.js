@@ -18,7 +18,7 @@ app.use(cookieSession({
 }));
 
 // database helpers
-const database = require('./server/database')
+const database = require('./server/database');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

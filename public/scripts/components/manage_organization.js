@@ -41,8 +41,8 @@ $(() => {
 
           $userRow.appendTo('.all-users-table');
         }
-      })
-  }
+      });
+  };
 
   window.addUsersToTable = addUsersToTable;
 
@@ -53,6 +53,6 @@ $(() => {
     removeUserFromOrg(data)
       .then(() => {
         views_manager.show('manageOrg');
-      })
-  })
+      });
+  });
 });

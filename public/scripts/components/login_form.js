@@ -69,26 +69,26 @@ $(() => {
           $('.login-error').slideDown(200);
         } else {
           sidenav.showSidebar(json.user.org, json.user.id)
-          .then($sidebar => {
-            const $main = $('main');
-            sidenav.detachSidebar();
-            $sidebar.appendTo($main)
-            views_manager.show('allAccounts');
-          })
-          .catch(err => console.log(err));
+            .then($sidebar => {
+              const $main = $('main');
+              sidenav.detachSidebar();
+              $sidebar.appendTo($main);
+              views_manager.show('allAccounts');
+            })
+            .catch(err => console.log(err));
         }
       });
   });
 
-  $('main').on('click', '#org-login-link', (event) => {
+  $('main').on('click', '#org-login-link', () => {
     views_manager.show('orgLogin');
   });
 
-  $('main').on('click', '#sign-up-link', (event) => {
+  $('main').on('click', '#sign-up-link', () => {
     views_manager.show('signup');
   });
 
-  $('main').on('click', '#user-sign-up-link', (event) => {
+  $('main').on('click', '#user-sign-up-link', () => {
     views_manager.show('signup');
   });
 

@@ -1,9 +1,7 @@
 $(() => {
   window.header = {};
 
-  const $main = $('#main-content');
   const $pageHeader = $('#page-header');
-  let currentUser = null;
   const updateHeader = function(user) {
     currentUser = user;
     $pageHeader.find('#page-header_user-links').remove();
@@ -52,44 +50,44 @@ $(() => {
       updateHeader(json.org);
     });
 
-  $('header').on('click', '.login-button', (event) => {
+  $('header').on('click', '.login-button', () => {
     views_manager.show('login');
   });
 
-  $('header').on('click', '#logo', (event) => {
+  $('header').on('click', '#logo', () => {
     getUserInfo()
-    .then(json => {
-      if (json.user) {
-        header.update(json.user);
-        sidenav.showSidebar(json.user.org, json.user.id)
-          .then($sidebar => {
-            const $main = $('main');
-            sidenav.detachSidebar();
-            $sidebar.appendTo($main);
-            $('#organizations-dropdown').val(json.user.org);
-            views_manager.show('allAccounts');
-          })
-      } else {
-        getOrgInfo()
-          .then(json => {
-            if (json.org) {
-              header.update(json.org);
-              sidenav.showSidebar(json.org.orgId, json.org.user_id)
-                .then($sidebar => {
-                  const $main = $('main');
-                  sidenav.detachSidebar();
-                  $sidebar.appendTo($main);
-                  views_manager.show('allAccounts');
-                })
-            } else {
-              views_manager.show('homepage');
-            }
-          })
-      }
-    })
+      .then(json => {
+        if (json.user) {
+          header.update(json.user);
+          sidenav.showSidebar(json.user.org, json.user.id)
+            .then($sidebar => {
+              const $main = $('main');
+              sidenav.detachSidebar();
+              $sidebar.appendTo($main);
+              $('#organizations-dropdown').val(json.user.org);
+              views_manager.show('allAccounts');
+            });
+        } else {
+          getOrgInfo()
+            .then(json => {
+              if (json.org) {
+                header.update(json.org);
+                sidenav.showSidebar(json.org.orgId, json.org.user_id)
+                  .then($sidebar => {
+                    const $main = $('main');
+                    sidenav.detachSidebar();
+                    $sidebar.appendTo($main);
+                    views_manager.show('allAccounts');
+                  });
+              } else {
+                views_manager.show('homepage');
+              }
+            });
+        }
+      });
   });
 
-  $('header').on('click', '#logout-button', (event) => {
+  $('header').on('click', '#logout-button', () => {
     userLogout()
       .then(getUserInfo)
       .then(json => {
@@ -99,7 +97,7 @@ $(() => {
       });
   });
 
-  $('header').on('click', '.register-button', (event) => {
+  $('header').on('click', '.register-button', () => {
     views_manager.show('signup');
   });
 });
