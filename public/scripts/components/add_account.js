@@ -142,12 +142,6 @@ $(() => {
     const data = $(this).serialize();
     createAccount(data)
       .then(() => {
-        $('.empty-fields-error').slideUp();
-        $('#email-username').val('');
-        $('#account-password-field').val('');
-        $('#website').val('https://');
-        $('#account-type-dropdown').val('1');
-        $('.password-option0').val('12');
         views_manager.show('allAccounts');
       });
   });
