@@ -54,7 +54,7 @@ $(() => {
             </div>
 
             <div class="master-password_field-wrapper">
-              <button class="master-password button">Submit</button>
+              <button class="master-password button font-bold">Submit</button>
             </div>
           </form>
         </div>

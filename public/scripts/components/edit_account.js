@@ -52,7 +52,7 @@ $(() => {
                 class="flex justify-center items-center opacity-50 hover:opacity-100"><i title="Copy Password"
                   class="far fa-clipboard px-2"></i></button>
                 </div>
-                  <button type="button" class="generate-account-edit-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm ml-4">Generate</button>
+                  <button type="button" class="generate-account-edit-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm ml-4 font-bold">Generate</button>
                 </div>
               </div>
             </div>

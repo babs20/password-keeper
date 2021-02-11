@@ -78,7 +78,7 @@ $(() => {
                 </div>
 
               <button type="button"
-                class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 ml-4">Generate</button>
+                class="generate-org-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 ml-4 font-bold">Generate</button>
             </div>
           </div>
         </div>
@@ -147,13 +147,13 @@ $(() => {
         </div>
 
         <div class="edit-org-form_field-wrapper flex flex-col ml-3 mr-3 mb-3 w-full">
-          <button type="submit" class="save-org-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5">Save</button>
+          <button type="submit" class="save-org-info rounded p-1 bg-button w-full text-white hover:bg-hoverBlue mt-1.5 font-bold">Save</button>
         </div>
         <div class="edit-org-form_field-wrapper flex justify-between w-full">
           <button type="button"
-            class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3">Cancel</button>
+            class="cancel rounded p-1 bg-button w-2/3 text-white hover:bg-hoverBlue mt-1.5 mr-3 font-bold">Cancel</button>
           <button type="button"
-            class="delete-org rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5">Delete</button>
+            class="delete-org rounded p-1 bg-warning w-1/3 text-white hover:bg-warningHover mt-1.5 font-bold">Delete</button>
         </div>
         `);
 

@@ -36,7 +36,7 @@ $(() => {
                 </div>
 
               <button
-                class="generate-account-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center ml-4" type="button">Generate</button>
+                class="generate-account-password rounded p-1 bg-button w-1/4 text-white hover:bg-hoverBlue mt-1.5 text-sm text-center ml-4 font-bold" type="button">Generate</button>
             </div>
           </div>
         </div>
