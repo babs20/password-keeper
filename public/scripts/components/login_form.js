@@ -75,6 +75,7 @@ $(() => {
           sidenav.showSidebar(json.user.org, json.user.id)
           .then($sidebar => {
             const $main = $('main');
+            sidenav.detachSidebar();
             $sidebar.appendTo($main)
             views_manager.show('allAccounts');
           })
