@@ -55,7 +55,7 @@ $(() => {
     </div>
 
     <div class="signup-form_field_wrapper flex flex-col w-full ml-3 mr-3 mb-3">
-      <button class="button">Register</button>
+      <button class="button font-bold">Register</button>
     </div>
     </form>
     <p class="text-l font-normal mt-3">Need an Organization Account? <button type="button" id="org-sign-up-link"  class="cursor-pointer text-button hover:underline">Register</button></p>

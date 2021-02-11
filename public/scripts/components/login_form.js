@@ -31,7 +31,7 @@ $(() => {
         </div>
 
         <div class="login-form_field_wrapper w-full">
-          <button class="mt-2 rounded p-1 bg-button w-full text-white hover:bg-hoverBlue">Login</button>
+          <button class="mt-2 rounded p-1 bg-button w-full text-white hover:bg-hoverBlue font-bold">Login</button>
         </div>
       </form>
 
