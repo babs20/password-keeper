@@ -23,6 +23,9 @@ module.exports = {
       height: {
         'screen70': '70vh',
       },
+      zIndex: {
+        '-10': '-10',
+      },
     }
   },
   variants: {
