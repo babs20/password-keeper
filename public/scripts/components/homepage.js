@@ -17,7 +17,7 @@ $(() => {
            </p>
            <p class="px-8 py-4 text-lg">
               Organizations are able to add as many members as they like to their team.
-              Each member has access to all the organizations accounts using a <b>master password</b>,
+              Each member has access to all the organization's accounts using a <b>master password</b>,
               making sharing accounts across large teams a breeze and secure when changing members.
            </p>
            <p class="px-8 py-4 text-lg">
