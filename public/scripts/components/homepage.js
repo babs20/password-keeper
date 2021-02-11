@@ -14,9 +14,28 @@ $(() => {
 
   <h3 class="keeper-description">Keeper is a password storage system for organizations.<br>Generate and easily share passwords for use on any website<br>for all users in your organization.</h3>
 </div>
+`);
+
+  const $footer = $(`
+    <footer class="page-header w-screen bg-gray-600 py-12 border-t-2 border-gray-400 flex justify-between fixed bottom-0">
+
+    <div class="flex items-center justify-start h-12">
+      <span class="font-sans font-bold text-xl ml-6 text-white px-3 hidden md:inline">Follow Us!</span>
+      <i class="fab fa-twitter-square text-white px-3 fa-2x hover:text-blue-50 ml-6 md:ml-0"></i>
+      <i class="fab fa-instagram-square text-white px-3 fa-2x"></i>
+      <i class="fab fa-github-square text-white px-3 fa-2x"></i>
+    </div>
+
+    <div class="flex items-center justify-end h-12">
+      <span class="font-sans text-l font-bold text-white pr-2">Created By: </span>
+      <span class="font-sans text-l mr-6 text-white pr-3"> Rebecca Chen and Brady Blair</span>
+    </div>
+    </footer>
   `);
+
   window.$homepage = $homepage;
+  window.$footer = $footer;
 
   $main.append($homepage);
-
+  $footer.insertAfter($main);
 });

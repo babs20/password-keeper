@@ -16,6 +16,7 @@ $(() => {
   window.$getAllAccounts = $getAllAccounts;
 
   const addAccountToTable = function(data) {
+    $('footer').detach();
     $('.all-accounts-table').empty();
     $('#no-accounts-container').empty();
     $('#no-key-container').empty();

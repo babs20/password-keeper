@@ -17,6 +17,7 @@ $(() => {
     $editOrgForm.detach();
     $manageOrg.detach();
     $joinOrgForm.detach();
+    $footer.detach();
 
     switch (item) {
       case 'homepage':
