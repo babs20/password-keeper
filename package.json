@@ -1,7 +1,7 @@
 {
-  "name": "node-skeleton",
+  "name": "password-keeper",
   "version": "1.0.0",
-  "description": "",
+  "description": "A password management app for organizations.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
