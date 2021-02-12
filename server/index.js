@@ -9,7 +9,7 @@ const pool = new Pool(
     user: 'fvwzazmshaoxsj',
     port: 5432,
     password: '2369b5bbf5de5b2d1472583cecfc1d8cf204bc66162846ca0296c1b7d2553988',
-    ssl: true,
+    ssl: false,
   }
 );
 pool.connect();
